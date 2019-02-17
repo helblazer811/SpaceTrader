@@ -10,62 +10,180 @@
         android:layout_width="wrap_content"
         android:layout_height="70dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="12dp"
+        android:layout_marginBottom="636dp"
         android:text="Player Configuration"
         android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="41dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="29dp"
         android:text="Game Difficulty"
+        android:textSize="20sp"
         tools:layout_editor_absoluteX="45dp"
-        tools:layout_editor_absoluteY="163dp" />
+        tools:layout_editor_absoluteY="153dp" />
 
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="146dp"
         android:layout_height="31dp"
-        tools:layout_editor_absoluteX="187dp"
-        tools:layout_editor_absoluteY="162dp" />
-
-    <Spinner
-        android:id="@+id/spinner2"
-        android:layout_width="146dp"
-        android:layout_height="31dp"
-        tools:layout_editor_absoluteX="187dp"
-        tools:layout_editor_absoluteY="212dp" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="15dp"
-        android:text="Player Class"
-        tools:layout_editor_absoluteX="44dp"
-        tools:layout_editor_absoluteY="212dp" />
+        tools:layout_editor_absoluteX="188dp"
+        tools:layout_editor_absoluteY="153dp" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Player Name"
-        tools:layout_editor_absoluteX="44dp"
-        tools:layout_editor_absoluteY="111dp" />
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="45dp"
+        tools:layout_editor_absoluteY="106dp" />
 
     <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout"
         android:layout_width="152dp"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="186dp"
-        tools:layout_editor_absoluteY="103dp">
+        android:layout_marginStart="28dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        tools:layout_editor_absoluteY="95dp">
 
         <android.support.design.widget.TextInputEditText
-            android:layout_width="match_parent"
+            android:layout_width="225dp"
             android:layout_height="wrap_content"
             android:hint="name" />
     </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Skills"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="198dp" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pilot"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="45dp"
+        tools:layout_editor_absoluteY="267dp" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fighter"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/textView7"
+        tools:layout_editor_absoluteY="326dp" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Trader"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        tools:layout_editor_absoluteY="378dp" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Engineer"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/textView9"
+        tools:layout_editor_absoluteY="436dp" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Points Left"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="96dp"
+        tools:layout_editor_absoluteY="501dp" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="60dp"
+        android:layout_height="52dp"
+        android:ems="10"
+        android:inputType="number"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="@+id/textView7"
+        tools:layout_editor_absoluteX="188dp" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="4dp"
+        android:ems="10"
+        android:inputType="number"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="@+id/textView8"
+        app:layout_constraintEnd_toEndOf="@+id/editText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editText" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:inputType="number"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="@+id/textView9"
+        app:layout_constraintEnd_toEndOf="@+id/editText2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editText2" />
+
+    <EditText
+        android:id="@+id/editText4"
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:inputType="number"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="@+id/textView10"
+        app:layout_constraintEnd_toEndOf="@+id/editText3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editText3" />
+
+    <android.support.constraint.Group
+        android:id="@+id/group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="157dp"
+        tools:layout_editor_absoluteY="558dp" />
+
+    <EditText
+        android:id="@+id/editText5"
+        android:layout_width="63dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:inputType="number"
+        android:text="16"
+        tools:layout_editor_absoluteX="219dp"
+        tools:layout_editor_absoluteY="487dp" />
 
 </android.support.constraint.ConstraintLayout>
