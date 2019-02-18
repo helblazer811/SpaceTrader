@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/player_configuration_header"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
         android:layout_marginStart="24dp"
@@ -22,145 +22,206 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/game_difficulty"
         android:layout_width="wrap_content"
         android:layout_height="29dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="153dp"
+        android:layout_marginEnd="228dp"
+        android:layout_marginBottom="549dp"
         android:text="Game Difficulty"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="45dp"
-        tools:layout_editor_absoluteY="153dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/game_difficulty_spinner"
         android:layout_width="146dp"
         android:layout_height="31dp"
-        tools:layout_editor_absoluteX="188dp"
-        tools:layout_editor_absoluteY="153dp" />
+        android:layout_marginStart="188dp"
+        android:layout_marginTop="153dp"
+        android:layout_marginEnd="77dp"
+        android:layout_marginBottom="547dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/player_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="106dp"
+        android:layout_marginEnd="252dp"
+        android:layout_marginBottom="598dp"
         android:text="Player Name"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="45dp"
-        tools:layout_editor_absoluteY="106dp" />
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInputLayout"
-        android:layout_width="152dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:orientation="vertical"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
-        tools:layout_editor_absoluteY="95dp">
-
-        <android.support.design.widget.TextInputEditText
-            android:layout_width="225dp"
-            android:layout_height="wrap_content"
-            android:hint="name" />
-    </android.support.design.widget.TextInputLayout>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/skills_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="198dp"
+        android:layout_marginEnd="307dp"
+        android:layout_marginBottom="492dp"
         android:text="Skills"
         android:textSize="30sp"
-        tools:layout_editor_absoluteX="34dp"
-        tools:layout_editor_absoluteY="198dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/pilot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="267dp"
+        android:layout_marginEnd="326dp"
+        android:layout_marginBottom="437dp"
         android:text="Pilot"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="45dp"
-        tools:layout_editor_absoluteY="267dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/fighter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="326dp"
+        android:layout_marginEnd="304dp"
+        android:layout_marginBottom="378dp"
         android:text="Fighter"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/textView7"
-        tools:layout_editor_absoluteY="326dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/trader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="378dp"
+        android:layout_marginEnd="307dp"
+        android:layout_marginBottom="326dp"
         android:text="Trader"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/textView8"
-        tools:layout_editor_absoluteY="378dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/engineer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="436dp"
+        android:layout_marginEnd="288dp"
+        android:layout_marginBottom="268dp"
         android:text="Engineer"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/textView9"
-        tools:layout_editor_absoluteY="436dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/points_left_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="501dp"
+        android:layout_marginEnd="218dp"
+        android:layout_marginBottom="203dp"
         android:text="Points Left"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="96dp"
-        tools:layout_editor_absoluteY="501dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/pilot_number"
         android:layout_width="60dp"
         android:layout_height="52dp"
+        android:layout_marginStart="188dp"
+        android:layout_marginTop="242dp"
+        android:layout_marginEnd="163dp"
+        android:layout_marginBottom="437dp"
         android:ems="10"
         android:inputType="number"
         android:text="0"
-        app:layout_constraintBottom_toBottomOf="@+id/textView7"
-        tools:layout_editor_absoluteX="188dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/fighter_number"
         android:layout_width="60dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginStart="188dp"
+        android:layout_marginTop="304dp"
+        android:layout_marginEnd="163dp"
+        android:layout_marginBottom="382dp"
         android:ems="10"
         android:inputType="number"
         android:text="0"
-        app:layout_constraintBottom_toBottomOf="@+id/textView8"
-        app:layout_constraintEnd_toEndOf="@+id/editText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editText" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/trader_number"
         android:layout_width="60dp"
         android:layout_height="45dp"
+        android:layout_marginStart="188dp"
+        android:layout_marginTop="360dp"
+        android:layout_marginEnd="163dp"
+        android:layout_marginBottom="326dp"
         android:ems="10"
         android:inputType="number"
         android:text="0"
-        app:layout_constraintBottom_toBottomOf="@+id/textView9"
-        app:layout_constraintEnd_toEndOf="@+id/editText2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editText2" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/engineer_number"
         android:layout_width="60dp"
         android:layout_height="45dp"
+        android:layout_marginStart="188dp"
+        android:layout_marginTop="418dp"
+        android:layout_marginEnd="163dp"
+        android:layout_marginBottom="268dp"
         android:ems="10"
         android:inputType="number"
         android:text="0"
-        app:layout_constraintBottom_toBottomOf="@+id/textView10"
-        app:layout_constraintEnd_toEndOf="@+id/editText3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editText3" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.constraint.Group
         android:id="@+id/group"
@@ -168,22 +229,52 @@
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/submit_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="157dp"
+        android:layout_marginTop="558dp"
+        android:layout_marginEnd="157dp"
+        android:layout_marginBottom="125dp"
         android:text="Submit"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="157dp"
-        tools:layout_editor_absoluteY="558dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/points_left_number"
         android:layout_width="63dp"
         android:layout_height="41dp"
+        android:layout_marginStart="219dp"
+        android:layout_marginTop="487dp"
+        android:layout_marginEnd="129dp"
+        android:layout_marginBottom="203dp"
         android:ems="10"
         android:inputType="number"
         android:text="16"
-        tools:layout_editor_absoluteX="219dp"
-        tools:layout_editor_absoluteY="487dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/nameString"
+        android:layout_width="154dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="188dp"
+        android:layout_marginTop="95dp"
+        android:layout_marginEnd="135dp"
+        android:layout_marginBottom="591dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>

@@ -3,37 +3,67 @@ package com.example.spacetrader.views;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.spacetrader.R;
+import com.example.spacetrader.models.GameDifficulty;
+import com.example.spacetrader.viewmodels.PlayerConfigurationViewModel;
 
-import java.util.EventListener;
+import java.util.HashMap;
 
 public class PlayerConfigurationPage extends Activity {
-
-    private int pilotPoints;
-    private int fighterPoints;
-    private int traderPoints;
-    private int engineerPoints;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_configuration);
+
+        final PlayerConfigurationViewModel viewModel = new PlayerConfigurationViewModel();
+
+        //difficulty spinner
+        final Spinner gameDifficultySpinner = (Spinner) findViewById(R.id.game_difficulty_spinner);
+
+        ArrayAdapter<GameDifficulty> gameDifficultySpinnerAdapter = new ArrayAdapter<GameDifficulty>(this, android.R.layout.simple_spinner_item, GameDifficulty.values());
+        gameDifficultySpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        gameDifficultySpinner.setAdapter(gameDifficultySpinnerAdapter);
+
+        final EditText nameString =  ((EditText) findViewById(R.id.nameString));
+        final EditText pilotPoints = ((EditText) findViewById(R.id.pilot_number));
+        final EditText fighterPoints = ((EditText) findViewById(R.id.fighter_number));
+        final EditText engineerPoints = ((EditText) findViewById(R.id.engineer_number));
+        final EditText traderPoints = ((EditText) findViewById(R.id.trader_number));
+
+        Button submit = (Button) findViewById(R.id.submit_button);
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HashMap<String, Object> configuration = new HashMap<String, Object>();
+                //get all of the data from the forms
+                configuration.put("name", nameString.getText().toString());
+                configuration.put("game_difficulty", gameDifficultySpinner.getSelectedItem());
+                configuration.put("pilot", Integer.parseInt(pilotPoints.getText().toString()));
+                configuration.put("fighter", Integer.parseInt(fighterPoints.getText().toString()) );
+                configuration.put("trader", Integer.parseInt(traderPoints.getText().toString()));
+                configuration.put("engineer", Integer.parseInt(engineerPoints.getText().toString()));
+
+                try {
+                    viewModel.onSubmit(configuration);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    displayExceptionMessage(e.getMessage());
+                }
+            }
+        });
     }
 
-    public void increaseInteger(View view) {
-        minteger = minteger + 1;
-        display(minteger);
-
-    }public void decreaseInteger(View view) {
-        minteger = minteger - 1;
-        display(minteger);
+    private void displayExceptionMessage(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
-    private void display(int number) {
-        TextView displayInteger = (TextView) findViewById(
-                R.id.integer_number);
-        displayInteger.setText("" + number);
-    }
 
 }
