@@ -39,6 +39,17 @@ public class PlayerConfigurationPage extends Activity {
 
         Button submit = (Button) findViewById(R.id.submit_button);
 
+        Button btn1 = (Button) findViewById(R.id.close);
+        btn1.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                finish();
+                System.exit(0);
+            }
+        });
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

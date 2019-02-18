@@ -102,7 +102,7 @@ public class Player {
                 ", difficulty=" + difficulty +
                 ", name='" + name + '\'' +
                 ", gameShip=" + gameShip +
-                ", credits=" + credits + 
+                ", credits=" + credits +
                 '}';
     }
 }
