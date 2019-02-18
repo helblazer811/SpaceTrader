@@ -11,6 +11,7 @@ public class Player {
     private GameDifficulty difficulty;
     private String name;
     private Ship gameShip;
+    private int credits;
 
     public Player() {
         pilotPoints = 0;
@@ -20,6 +21,7 @@ public class Player {
         difficulty = GameDifficulty.BEGINNER;
         name = "";
         gameShip = null;
+        credits = 1000;
     }
 
     public Player(HashMap<String, Object> map) {
@@ -30,6 +32,7 @@ public class Player {
         difficulty = (GameDifficulty) map.get("game_difficulty");
         name = (String) map.get("name");
         gameShip = null;
+        credits = 1000;
     }
 
 
@@ -99,6 +102,7 @@ public class Player {
                 ", difficulty=" + difficulty +
                 ", name='" + name + '\'' +
                 ", gameShip=" + gameShip +
+                ", credits=" + credits + 
                 '}';
     }
 }
