@@ -89,4 +89,16 @@ public class Player {
         this.gameShip = gameShip;
     }
 
+    @Override
+    public String toString() {
+        return "Player{" +
+                "pilotPoints=" + pilotPoints +
+                ", fighterPoints=" + fighterPoints +
+                ", traderPoints=" + traderPoints +
+                ", engineerPoints=" + engineerPoints +
+                ", difficulty=" + difficulty +
+                ", name='" + name + '\'' +
+                ", gameShip=" + gameShip +
+                '}';
+    }
 }

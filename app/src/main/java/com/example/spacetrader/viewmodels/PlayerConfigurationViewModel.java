@@ -1,5 +1,7 @@
 package com.example.spacetrader.viewmodels;
 
+import android.util.Log;
+
 import com.example.spacetrader.models.Player;
 import com.example.spacetrader.views.PlayerConfigurationPage;
 
@@ -22,6 +24,7 @@ public class PlayerConfigurationViewModel {
         if (isValidSkillset(configuration)) {
             // creates an instnace of player
             Player player = new Player(configuration);
+            Log.i("New player created",player.toString());
         }
     }
 
