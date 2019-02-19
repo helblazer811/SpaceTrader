@@ -4,36 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.MainActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"
-        android:text="Space Trader"
-        android:textSize="50sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.283" />
+    tools:context=".views.MainActivity"
+    android:background="@drawable/mainscreen">
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="65dp"
-        android:layout_marginTop="467dp"
+        android:layout_width="224dp"
+        android:layout_height="105dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="443dp"
         android:layout_marginBottom="199dp"
+        android:background="@android:color/transparent"
         android:elevation="9dp"
-        android:background="@drawable/ic_button_bg_rounded_corners"
-        android:text="Start!"
-        android:textSize="35sp"
         android:paddingHorizontal="150px"
+        android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
