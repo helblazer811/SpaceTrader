@@ -3,12 +3,14 @@ package com.example.spacetrader.viewmodels;
 import android.util.Log;
 
 import com.example.spacetrader.models.Player;
+import com.example.spacetrader.models.Universe;
 import com.example.spacetrader.views.PlayerConfigurationPage;
 
 import java.util.HashMap;
 
 public class PlayerConfigurationViewModel {
 
+    private Universe universe = new Universe();
     /*
         For now this contains a connection between the player object and
      */

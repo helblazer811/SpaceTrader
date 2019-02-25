@@ -1,6 +1,7 @@
 package com.example.spacetrader.views;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -64,6 +65,10 @@ public class PlayerConfigurationPage extends Activity {
 
                 try {
                     viewModel.onSubmit(configuration);
+
+                    Intent myIntent = new Intent(PlayerConfigurationPage.this, MainGameActivity.class);
+                    startActivity(myIntent);
+
                 } catch (Exception e) {
                     e.printStackTrace();
                     displayExceptionMessage(e.getMessage());

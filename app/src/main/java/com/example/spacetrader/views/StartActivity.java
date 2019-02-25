@@ -7,7 +7,7 @@ import android.widget.Button;
 
 import com.example.spacetrader.R;
 
-public class MainActivity extends Activity {
+public class StartActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +18,7 @@ public class MainActivity extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this, PlayerConfigurationPage.class);
+                Intent myIntent = new Intent(StartActivity.this, PlayerConfigurationPage.class);
                 startActivity(myIntent);
             }
         });
