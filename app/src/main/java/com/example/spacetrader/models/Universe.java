@@ -1,37 +1,46 @@
 package com.example.spacetrader.models;
 
+import android.util.Log;
+
 import com.example.spacetrader.models.planet.Planet;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class Universe {
-    public static final Planet[] planets = generatePlanets();
+
+    private static final String [] planetNames = {
+            "Atlas",
+            "Seneca",
+            "Ezio",
+            "Cronus",
+            "Vulcan",
+            "Plato",
+            "Socrates",
+            "Aristotle",
+            "Pulomatis",
+            "Gratis"
+    };
+
+    public static final List<Planet> planets = generatePlanets();
 
     public static final int xRange = 30;
     public static final int yRange = 30;
-    public static final int numPlanets = 10;
+    public static final int numPlanets = planetNames.length;
 
-    private static Planet[] generatePlanets() {
-        ArrayList<Integer> xLocs = new ArrayList<Integer>(numPlanets);
-        ArrayList<Integer> yLocs = new ArrayList<Integer>(numPlanets);
+    /*
+        Generates a unique set of planets
+     */
+    private static List<Planet> generatePlanets() {
+        Set<Integer> xLocs = new HashSet<Integer>(numPlanets);
+        Set<Integer> yLocs = new HashSet<Integer>(numPlanets);
+        List<Planet> planets = new ArrayList<>(numPlanets);
 
-        String [] names = {
-                "Atlas",
-                "Seneca",
-                "Ezio",
-                "Cronus",
-                "Vulcan",
-                "Plato",
-                "Socrates",
-                "Aristotle",
-                "Pulomatis",
-                "Gratis"
-        };
-
-        ArrayList<Planet> planets = new ArrayList<>(numPlanets);
-
-        for (String name: names) {
+        for (String name: planetNames) {
             Planet planet = new Planet(name);
+            //recreates the planet until it is at a unique location
             while(xLocs.contains(planet.getxLoc())
                     && yLocs.contains(planet.getyLoc())) {
                 planet = new Planet(name);
@@ -39,10 +48,12 @@ public class Universe {
             xLocs.add(planet.getxLoc());
             yLocs.add(planet.getyLoc());
 
+            //saves created planet to LogCat
+            Log.i("Planet object created: ", planet.toString());
             planets.add(planet);
         }
 
-        return (Planet[]) planets.toArray();
+        return planets;
 
     }
 }

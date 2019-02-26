@@ -12,13 +12,13 @@ public class StartActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_start);
 
         final Button button = findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(StartActivity.this, PlayerConfigurationPage.class);
+                Intent myIntent = new Intent(StartActivity.this, PlayerConfigurationActivity.class);
                 startActivity(myIntent);
             }
         });

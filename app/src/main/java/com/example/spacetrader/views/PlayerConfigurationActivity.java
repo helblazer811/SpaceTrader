@@ -13,10 +13,11 @@ import android.widget.Toast;
 import com.example.spacetrader.R;
 import com.example.spacetrader.models.GameDifficulty;
 import com.example.spacetrader.viewmodels.PlayerConfigurationViewModel;
+import com.example.spacetrader.views.maingame.MapActivity;
 
 import java.util.HashMap;
 
-public class PlayerConfigurationPage extends Activity {
+public class PlayerConfigurationActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +67,7 @@ public class PlayerConfigurationPage extends Activity {
                 try {
                     viewModel.onSubmit(configuration);
 
-                    Intent myIntent = new Intent(PlayerConfigurationPage.this, MainGameActivity.class);
+                    Intent myIntent = new Intent(PlayerConfigurationActivity.this, MapActivity.class);
                     startActivity(myIntent);
 
                 } catch (Exception e) {
