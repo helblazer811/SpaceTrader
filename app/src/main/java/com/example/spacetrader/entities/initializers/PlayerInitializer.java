@@ -1,4 +1,4 @@
-package com.example.spacetrader.dataaccess;
+package com.example.spacetrader.entities.initializers;
 
 import android.util.Log;
 

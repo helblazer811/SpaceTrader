@@ -13,6 +13,9 @@ import com.example.spacetrader.entities.Player;
 @Database(entities = {Player.class, Game.class }, version = 1)
 @TypeConverters({GameDifficultyTypeConverter.class})
 public abstract class RoomDatabaseObject extends RoomDatabase {
+    /*
+        This class contains the
+     */
 
     public abstract GameDao getGameDao();
     public abstract PlayerDao getPlayerDao();

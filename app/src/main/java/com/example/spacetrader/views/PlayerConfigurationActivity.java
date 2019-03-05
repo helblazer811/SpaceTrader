@@ -13,26 +13,28 @@ import android.widget.Toast;
 import com.example.spacetrader.R;
 import com.example.spacetrader.entities.GameDifficulty;
 import com.example.spacetrader.viewmodels.PlayerConfigurationViewModel;
-import com.example.spacetrader.views.maingame.MapActivity;
+import com.example.spacetrader.views.maingame.MainActivity;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class PlayerConfigurationActivity extends Activity {
 
+    private PlayerConfigurationViewModel viewModel;
+
+    public PlayerConfigurationActivity() {
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_configuration);
 
-        final PlayerConfigurationViewModel viewModel = new PlayerConfigurationViewModel(getApplication());
+        //create view mode
+        viewModel = new PlayerConfigurationViewModel(getApplication());
 
         //difficulty spinner
-        final Spinner gameDifficultySpinner = (Spinner) findViewById(R.id.game_difficulty_spinner);
-
-        ArrayAdapter<GameDifficulty> gameDifficultySpinnerAdapter = new ArrayAdapter<GameDifficulty>(this, android.R.layout.simple_spinner_item, GameDifficulty.values());
-        gameDifficultySpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        gameDifficultySpinner.setAdapter(gameDifficultySpinnerAdapter);
+        final Spinner gameDifficultySpinner = defineGameDifficultySpinner();
 
         final EditText nameString =  ((EditText) findViewById(R.id.nameString));
         final EditText pilotPoints = ((EditText) findViewById(R.id.pilot_number));
@@ -42,16 +44,7 @@ public class PlayerConfigurationActivity extends Activity {
 
         Button submit = (Button) findViewById(R.id.submit_button);
 
-        Button btn1 = (Button) findViewById(R.id.close);
-        btn1.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                finish();
-                System.exit(0);
-            }
-        });
+        defineCloseButton();
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +61,13 @@ public class PlayerConfigurationActivity extends Activity {
                 try {
                     viewModel.onSubmit(configuration);
 
-                    Intent myIntent = new Intent(PlayerConfigurationActivity.this, MapActivity.class);
+                    Intent myIntent =
+                            new Intent(
+                                    PlayerConfigurationActivity.this,
+                                    MainActivity.class
+                            );
+                    System.out.println("Calling main activity intent");
+
                     startActivity(myIntent);
 
                 } catch (Exception e) {
@@ -81,6 +80,29 @@ public class PlayerConfigurationActivity extends Activity {
 
     private void displayExceptionMessage(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    private void defineCloseButton(){
+        Button btn1 = (Button) findViewById(R.id.close);
+        btn1.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                finish();
+                System.exit(0);
+            }
+        });
+    }
+
+    private Spinner defineGameDifficultySpinner(){
+        Spinner gameDifficultySpinner = (Spinner) findViewById(R.id.game_difficulty_spinner);
+
+        ArrayAdapter<GameDifficulty> gameDifficultySpinnerAdapter = new ArrayAdapter<GameDifficulty>(this, android.R.layout.simple_spinner_item, GameDifficulty.values());
+        gameDifficultySpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        gameDifficultySpinner.setAdapter(gameDifficultySpinnerAdapter);
+
+        return gameDifficultySpinner;
     }
 
 

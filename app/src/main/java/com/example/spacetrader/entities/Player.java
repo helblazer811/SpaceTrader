@@ -3,10 +3,7 @@ package com.example.spacetrader.entities;
 import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
-import android.arch.persistence.room.TypeConverter;
 import android.support.annotation.NonNull;
-
-import com.example.spacetrader.dataaccess.typeconverters.GameDifficultyTypeConverter;
 
 import java.util.Map;
 

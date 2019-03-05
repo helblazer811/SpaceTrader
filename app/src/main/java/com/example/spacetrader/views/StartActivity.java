@@ -14,11 +14,27 @@ public class StartActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        final Button button = findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
+        defineStartButton();
+        defineLoadButton();
+    }
+
+    private void defineStartButton(){
+        final Button start = findViewById(R.id.button);
+        start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(StartActivity.this, PlayerConfigurationActivity.class);
+                startActivity(myIntent);
+            }
+        });
+    }
+
+    private void defineLoadButton(){
+        final Button load = findViewById(R.id.button2);
+        load.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(StartActivity.this, LoadActivity.class);
                 startActivity(myIntent);
             }
         });
