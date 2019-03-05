@@ -1,4 +1,4 @@
-package com.example.spacetrader.models.planet;
+package com.example.spacetrader.entities.planet;
 
 public enum TechLevel {
     PRE_AGRICULTURE,

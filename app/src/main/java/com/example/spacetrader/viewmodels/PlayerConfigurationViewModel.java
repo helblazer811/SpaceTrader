@@ -1,51 +1,40 @@
 package com.example.spacetrader.viewmodels;
 
-import android.util.Log;
+import android.app.Application;
+import android.arch.lifecycle.AndroidViewModel;
+import android.support.annotation.NonNull;
 
-import com.example.spacetrader.models.Player;
-import com.example.spacetrader.models.Universe;
+import com.example.spacetrader.dataaccess.DataAccessFacade;
+import com.example.spacetrader.dataaccess.GameInitializer;
+import com.example.spacetrader.entities.Player;
+import com.example.spacetrader.entities.Universe;
 
-import java.util.HashMap;
+import java.util.Map;
 
-public class PlayerConfigurationViewModel {
+public class PlayerConfigurationViewModel extends AndroidViewModel {
 
-    private Universe universe = new Universe();
+    private GameInitializer gameInitializer;
+    private DataAccessFacade dataAccessFacade =
+            DataAccessFacade.getInstance(getApplication().getApplicationContext());
 
-    /*
-        For now this initializes a connection between
-     */
-    public PlayerConfigurationViewModel() {
-
+    public PlayerConfigurationViewModel(@NonNull Application application) {
+        super(application);
+        gameInitializer = new GameInitializer();
     }
 
     /*
         Handles the submission of the player configuration
      */
-    public void onSubmit(HashMap<String, Object> configuration) throws Exception{
+    public void onSubmit(Map<String, Object> configuration) throws Exception{
+        //initialize the game objects
+        Player player = gameInitializer.initializePlayer(configuration);
+        Universe universe = gameInitializer.initializeUniverse();
 
-        if (isValidSkillset(configuration)) {
-            // creates an instnace of player
-            Player player = new Player(configuration);
-            Log.i("New player created",player.toString());
-        }
-    }
+        dataAccessFacade.insertPlayer(player);
 
-    /*
-        Calculates whether or not skillset adds up to 16
-     */
-    private boolean isValidSkillset(HashMap<String, Object> configuration) throws Exception{
-        int sum = (int) configuration.get("engineer")
-                + (int) configuration.get("pilot")
-                + (int) configuration.get("trader")
-                + (int) configuration.get("fighter");
+        //store in database
+        //dataAccessFacade.insertGame();
 
-        if (sum > 16) {
-            throw new Exception("Too many points allocated");
-        } else if (sum < 16) {
-            throw new Exception("Not enough points allocated");
-        }
-
-        return sum == 16;
     }
 
 }

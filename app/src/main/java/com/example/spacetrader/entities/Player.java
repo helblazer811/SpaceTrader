@@ -1,15 +1,29 @@
-package com.example.spacetrader.models;
+package com.example.spacetrader.entities;
 
-import java.util.HashMap;
+import android.arch.persistence.room.Embedded;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.TypeConverter;
+import android.support.annotation.NonNull;
 
+import com.example.spacetrader.dataaccess.typeconverters.GameDifficultyTypeConverter;
+
+import java.util.Map;
+
+@Entity
 public class Player {
 
     private int pilotPoints;
     private int fighterPoints;
     private int traderPoints;
     private int engineerPoints;
+
     private GameDifficulty difficulty;
+
+    @PrimaryKey
+    @NonNull
     private String name;
+    @Embedded
     private Ship gameShip;
     private int credits;
 
@@ -24,7 +38,7 @@ public class Player {
         credits = 1000;
     }
 
-    public Player(HashMap<String, Object> map) {
+    public Player(Map<String, Object> map) {
         pilotPoints = (int) map.get("pilot");
         engineerPoints = (int) map.get("engineer");
         traderPoints = (int) map.get("trader");
@@ -90,6 +104,14 @@ public class Player {
 
     public void setGameShip(Ship gameShip) {
         this.gameShip = gameShip;
+    }
+
+    public int getCredits() {
+        return credits;
+    }
+
+    public void setCredits(int credits) {
+        this.credits = credits;
     }
 
     @Override

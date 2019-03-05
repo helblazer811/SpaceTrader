@@ -11,11 +11,12 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.spacetrader.R;
-import com.example.spacetrader.models.GameDifficulty;
+import com.example.spacetrader.entities.GameDifficulty;
 import com.example.spacetrader.viewmodels.PlayerConfigurationViewModel;
 import com.example.spacetrader.views.maingame.MapActivity;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class PlayerConfigurationActivity extends Activity {
 
@@ -24,7 +25,7 @@ public class PlayerConfigurationActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_configuration);
 
-        final PlayerConfigurationViewModel viewModel = new PlayerConfigurationViewModel();
+        final PlayerConfigurationViewModel viewModel = new PlayerConfigurationViewModel(getApplication());
 
         //difficulty spinner
         final Spinner gameDifficultySpinner = (Spinner) findViewById(R.id.game_difficulty_spinner);
@@ -55,7 +56,7 @@ public class PlayerConfigurationActivity extends Activity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HashMap<String, Object> configuration = new HashMap<String, Object>();
+                Map<String, Object> configuration = new HashMap<String, Object>();
                 //get all of the data from the forms
                 configuration.put("name", nameString.getText().toString());
                 configuration.put("game_difficulty", gameDifficultySpinner.getSelectedItem());

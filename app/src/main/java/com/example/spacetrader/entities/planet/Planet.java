@@ -1,8 +1,8 @@
-package com.example.spacetrader.models.planet;
+package com.example.spacetrader.entities.planet;
 
 import android.util.Log;
 
-import com.example.spacetrader.models.Universe;
+import com.example.spacetrader.entities.Universe;
 
 public class Planet {
 

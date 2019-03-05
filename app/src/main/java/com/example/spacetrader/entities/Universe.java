@@ -1,8 +1,8 @@
-package com.example.spacetrader.models;
+package com.example.spacetrader.entities;
 
 import android.util.Log;
 
-import com.example.spacetrader.models.planet.Planet;
+import com.example.spacetrader.entities.planet.Planet;
 
 import java.util.ArrayList;
 import java.util.HashSet;
