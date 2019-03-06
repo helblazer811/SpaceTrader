@@ -13,7 +13,7 @@ public class MapFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         // Defines the xml file for the fragment
         System.out.println("Map view created");
-        return inflater.inflate(R.layout.fragment_sell, parent, false);
+        return inflater.inflate(R.layout.fragment_map, parent, false);
     }
 
     @Override

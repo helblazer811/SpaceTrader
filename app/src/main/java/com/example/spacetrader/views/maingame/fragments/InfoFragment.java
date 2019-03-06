@@ -13,7 +13,7 @@ public class InfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         // Defines the xml file for the fragment
         System.out.println(parent);
-        return inflater.inflate(R.layout.fragment_sell, parent, false);
+        return inflater.inflate(R.layout.fragment_info, parent, false);
     }
 
     // This event is triggered soon after onCreateView().
