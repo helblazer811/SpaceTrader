@@ -1,8 +1,7 @@
 package com.example.spacetrader.viewmodels;
 
-import android.app.Application;
-import android.arch.lifecycle.AndroidViewModel;
-import android.support.annotation.NonNull;
+import android.databinding.BaseObservable;
+import android.databinding.ObservableField;
 
 import com.example.spacetrader.dataaccess.DataAccessFacade;
 import com.example.spacetrader.entities.initializers.GameInitializer;
@@ -11,16 +10,22 @@ import com.example.spacetrader.entities.Universe;
 
 import java.util.Map;
 
-public class PlayerConfigurationViewModel extends AndroidViewModel {
+public class PlayerConfigurationViewModel extends BaseObservable {
 
     private GameInitializer gameInitializer;
     private DataAccessFacade dataAccessFacade;
 
-    public PlayerConfigurationViewModel(@NonNull Application application) {
-        super(application);
+    public final ObservableField<Integer> pilotNumber = new ObservableField<>();
+    public final ObservableField<Integer> fighterNumber = new ObservableField<>();
+    public final ObservableField<Integer> engineerNumber = new ObservableField<>();
+    public final ObservableField<Integer> traderNumber = new ObservableField<>();
+    public final ObservableField<String> playerName = new ObservableField<>();
+
+    public PlayerConfigurationViewModel() {
         gameInitializer = new GameInitializer();
-        dataAccessFacade = DataAccessFacade.getInstance(
+        /*dataAccessFacade = DataAccessFacade.getInstance(
                 getApplication().getApplicationContext());
+        */
     }
 
     /*

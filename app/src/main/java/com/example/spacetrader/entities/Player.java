@@ -5,6 +5,8 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import com.example.spacetrader.entities.planet.Planet;
+
 import java.util.Map;
 
 @Entity
@@ -16,6 +18,8 @@ public class Player {
     private int engineerPoints;
 
     private GameDifficulty difficulty;
+    @Embedded
+    private Planet currentPlanet;
 
     @PrimaryKey
     @NonNull
