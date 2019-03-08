@@ -10,7 +10,6 @@ import android.support.v7.widget.AppCompatSpinner;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.spacetrader.R;
@@ -20,8 +19,6 @@ import com.example.spacetrader.entities.Player;
 import com.example.spacetrader.viewmodels.PlayerConfigurationViewModel;
 import com.example.spacetrader.views.maingame.MainActivity;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class PlayerConfigurationActivity extends AppCompatActivity {
 

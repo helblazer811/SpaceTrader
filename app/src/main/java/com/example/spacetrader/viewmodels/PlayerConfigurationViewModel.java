@@ -3,20 +3,13 @@ package com.example.spacetrader.viewmodels;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.databinding.BindingAdapter;
-import android.databinding.InverseBindingAdapter;
-import android.databinding.InverseBindingListener;
 import android.databinding.InverseBindingMethod;
 import android.databinding.InverseBindingMethods;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.spacetrader.dataaccess.DataAccessFacade;
-import com.example.spacetrader.entities.Game;
-import com.example.spacetrader.entities.GameDifficulty;
-import com.example.spacetrader.entities.initializers.GameInitializer;
 import com.example.spacetrader.entities.Player;
 
 @InverseBindingMethods({
@@ -24,7 +17,6 @@ import com.example.spacetrader.entities.Player;
 })
 public class PlayerConfigurationViewModel extends ViewModel {
 
-    private GameInitializer gameInitializer;
     private DataAccessFacade dataAccessFacade;
 
     private Player player;
@@ -37,7 +29,6 @@ public class PlayerConfigurationViewModel extends ViewModel {
 
     public PlayerConfigurationViewModel() {
         super();
-        gameInitializer = new GameInitializer();
         /*dataAccessFacade = DataAccessFacade.getInstance(
                 getApplication().getApplicationContext());
         */

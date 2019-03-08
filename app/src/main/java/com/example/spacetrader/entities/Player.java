@@ -49,6 +49,7 @@ public class Player extends BaseObservable {
     @Ignore
     public ObservableField<Integer> playerNameError = new ObservableField<>();
 
+    @Ignore
     Integer selectedDifficultyPosition = 0;
 
     public Player() {
@@ -61,18 +62,6 @@ public class Player extends BaseObservable {
         gameShip = null;
         credits = 1000;
     }
-
-    public Player(Map<String, Object> map) {
-        pilotPoints = (int) map.get("pilot");
-        engineerPoints = (int) map.get("engineer");
-        traderPoints = (int) map.get("trader");
-        fighterPoints = (int) map.get("fighter");
-        difficulty = (GameDifficulty) map.get("game_difficulty");
-        name = (String) map.get("name");
-        gameShip = null;
-        credits = 1000;
-    }
-
 
     public int getPilotPoints() {
         return pilotPoints;
