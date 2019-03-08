@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "d9823d504b1ae0e26ecca8197cb15c30",
+    "identityHash": "81d433a8c2edabfa892ac270faa68e03",
     "entities": [
       {
         "tableName": "Player",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pilotPoints` INTEGER NOT NULL, `fighterPoints` INTEGER NOT NULL, `traderPoints` INTEGER NOT NULL, `engineerPoints` INTEGER NOT NULL, `difficulty` INTEGER, `name` TEXT NOT NULL, `credits` INTEGER NOT NULL, `shipName` TEXT, PRIMARY KEY(`name`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pilotPoints` INTEGER NOT NULL, `fighterPoints` INTEGER NOT NULL, `traderPoints` INTEGER NOT NULL, `engineerPoints` INTEGER NOT NULL, `difficulty` INTEGER, `name` TEXT NOT NULL, `credits` INTEGER NOT NULL, `selectedDifficultyPosition` INTEGER, `shipName` TEXT, PRIMARY KEY(`name`))",
         "fields": [
           {
             "fieldPath": "pilotPoints",
@@ -51,6 +51,12 @@
             "notNull": true
           },
           {
+            "fieldPath": "selectedDifficultyPosition",
+            "columnName": "selectedDifficultyPosition",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
             "fieldPath": "gameShip.shipName",
             "columnName": "shipName",
             "affinity": "TEXT",
@@ -89,7 +95,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"d9823d504b1ae0e26ecca8197cb15c30\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"81d433a8c2edabfa892ac270faa68e03\")"
     ]
   }
 }

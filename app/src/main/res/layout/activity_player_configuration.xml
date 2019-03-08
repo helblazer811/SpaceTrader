@@ -40,10 +40,11 @@
         app:layout_constraintStart_toStartOf="@+id/player_name"
         app:layout_constraintTop_toTopOf="@+id/game_difficulty_spinner" />
 
-    <Spinner
+    <android.support.v7.widget.AppCompatSpinner
         android:id="@+id/game_difficulty_spinner"
         android:layout_width="146dp"
         android:layout_height="31dp"
+        android:selectedItemPosition="@={viewmodel.player.selectedDifficultyPosition}"
         app:layout_constraintEnd_toEndOf="@+id/nameString"
         app:layout_constraintTop_toBottomOf="@+id/player_configuration_header" />
 

@@ -6,15 +6,26 @@ import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.databinding.BindingAdapter;
+import android.databinding.InverseBindingAdapter;
+import android.databinding.InverseBindingListener;
+import android.databinding.InverseBindingMethod;
+import android.databinding.InverseBindingMethods;
 import android.databinding.ObservableField;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.AppCompatSpinner;
+import android.view.View;
+import android.widget.AdapterView;
 
+import com.example.spacetrader.BR;
 import com.example.spacetrader.R;
-import com.example.spacetrader.entities.planet.Planet;
 
 import java.util.Map;
 
 @Entity
+@InverseBindingMethods({
+        @InverseBindingMethod(type = AppCompatSpinner.class, attribute = "android:selectedItemPosition"),
+})
 public class Player extends BaseObservable {
 
     private int pilotPoints;
@@ -38,6 +49,7 @@ public class Player extends BaseObservable {
     @Ignore
     public ObservableField<Integer> playerNameError = new ObservableField<>();
 
+    Integer selectedDifficultyPosition = 0;
 
     public Player() {
         pilotPoints = 0;
@@ -68,7 +80,7 @@ public class Player extends BaseObservable {
 
     public void setPilotPoints(int pilotPoints) {
         // Notify that the valid property could have changed.
-        //notifyPropertyChanged(BR.valid);
+        notifyPropertyChanged(BR.valid);
         this.pilotPoints = pilotPoints;
     }
 
@@ -78,7 +90,7 @@ public class Player extends BaseObservable {
 
     public void setFighterPoints(int fighterPoints) {
         // Notify that the valid property could have changed.
-        //notifyPropertyChanged(BR.valid);
+        notifyPropertyChanged(BR.valid);
         this.fighterPoints = fighterPoints;
     }
 
@@ -88,7 +100,7 @@ public class Player extends BaseObservable {
 
     public void setTraderPoints(int traderPoints) {
         // Notify that the valid property could have changed.
-        //notifyPropertyChanged(BR.valid);
+        notifyPropertyChanged(BR.valid);
         this.traderPoints = traderPoints;
     }
 
@@ -98,26 +110,37 @@ public class Player extends BaseObservable {
 
     public void setEngineerPoints(int engineerPoints) {
         // Notify that the valid property could have changed.
-        //notifyPropertyChanged(BR.valid);
+        notifyPropertyChanged(BR.valid);
         this.engineerPoints = engineerPoints;
     }
-
-    public GameDifficulty getDifficulty() {
-        return difficulty;
-    }
-
-    public void setDifficulty(GameDifficulty difficulty) {
-        this.difficulty = difficulty;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         // Notify that the valid property could have changed.
-        //notifyPropertyChanged(BR.valid);
+        notifyPropertyChanged(BR.valid);
         this.name = name;
+    }
+
+    @Bindable
+    public GameDifficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(GameDifficulty difficulty) {
+        this.difficulty = difficulty;
+        //notifyPropertyChanged(BR.);
+    }
+
+    @Bindable
+    public Integer getSelectedDifficultyPosition() {
+        return selectedDifficultyPosition;
+    }
+
+    public void setSelectedDifficultyPosition(Integer position) {
+        selectedDifficultyPosition = position;
+        difficulty = GameDifficulty.values()[selectedDifficultyPosition];
     }
 
     public Ship getGameShip() {
@@ -135,7 +158,6 @@ public class Player extends BaseObservable {
     public void setCredits(int credits) {
         this.credits = credits;
     }
-
 
     @Bindable
     public boolean isValid() {
@@ -165,7 +187,6 @@ public class Player extends BaseObservable {
             playerConfigurationError.set(null);
             return true;
         }
-
     }
 
     @Override
@@ -181,4 +202,5 @@ public class Player extends BaseObservable {
                 ", credits=" + credits +
                 '}';
     }
+
 }

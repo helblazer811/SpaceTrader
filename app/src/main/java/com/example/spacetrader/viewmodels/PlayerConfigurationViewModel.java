@@ -3,16 +3,25 @@ package com.example.spacetrader.viewmodels;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.databinding.BindingAdapter;
+import android.databinding.InverseBindingAdapter;
+import android.databinding.InverseBindingListener;
+import android.databinding.InverseBindingMethod;
+import android.databinding.InverseBindingMethods;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.example.spacetrader.dataaccess.DataAccessFacade;
+import com.example.spacetrader.entities.Game;
+import com.example.spacetrader.entities.GameDifficulty;
 import com.example.spacetrader.entities.initializers.GameInitializer;
 import com.example.spacetrader.entities.Player;
-import com.example.spacetrader.entities.Universe;
 
-import java.util.Map;
-
+@InverseBindingMethods({
+        @InverseBindingMethod(type = Spinner.class, attribute = "android:selectedItemPosition"),
+})
 public class PlayerConfigurationViewModel extends ViewModel {
 
     private GameInitializer gameInitializer;
@@ -22,7 +31,6 @@ public class PlayerConfigurationViewModel extends ViewModel {
 
     private View.OnFocusChangeListener onFocusName;
     private View.OnFocusChangeListener onFocusPoint;
-    private View.OnClickListener onClickSubmit;
 
     //Live data objects for the form data
     private MutableLiveData<Player> submitButtonClick = new MutableLiveData<>();
@@ -33,23 +41,6 @@ public class PlayerConfigurationViewModel extends ViewModel {
         /*dataAccessFacade = DataAccessFacade.getInstance(
                 getApplication().getApplicationContext());
         */
-    }
-
-    /*
-        Handles the submission of the player configuration
-     */
-    public void onSubmit(Map<String, Object> configuration) throws Exception{
-        //initialize the game objects
-        //throws error if invalid configuration
-        Player player = gameInitializer.initializePlayer(configuration);
-        Universe universe = gameInitializer.initializeUniverse();
-
-        //throw an error if the player is already in the database maybe
-        dataAccessFacade.insertPlayer(player);
-
-        //store in database
-        //dataAccessFacade.insertGame();
-
     }
 
     /* init function
@@ -78,6 +69,7 @@ public class PlayerConfigurationViewModel extends ViewModel {
                 }
             }
         };
+
     }
 
     public Player getPlayer() {
@@ -109,15 +101,13 @@ public class PlayerConfigurationViewModel extends ViewModel {
         } else {
             editText.setError((String) strOrResId);
         }
-
     }
+
     @BindingAdapter("onFocus")
     public static void bindFocusChange(EditText editText, View.OnFocusChangeListener onFocusChangeListener) {
         if (editText.getOnFocusChangeListener() == null) {
             editText.setOnFocusChangeListener(onFocusChangeListener);
         }
     }
-
-
 
 }
