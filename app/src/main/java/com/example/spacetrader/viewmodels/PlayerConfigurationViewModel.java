@@ -1,23 +1,25 @@
 package com.example.spacetrader.viewmodels;
 
+import android.app.Application;
+import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
 import android.databinding.BindingAdapter;
 import android.databinding.InverseBindingMethod;
 import android.databinding.InverseBindingMethods;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.example.spacetrader.dataaccess.DataAccessFacade;
+import com.example.spacetrader.dataaccess.repositories.PlayerRepository;
 import com.example.spacetrader.entities.Player;
 
 @InverseBindingMethods({
         @InverseBindingMethod(type = Spinner.class, attribute = "android:selectedItemPosition"),
 })
-public class PlayerConfigurationViewModel extends ViewModel {
+public class PlayerConfigurationViewModel extends AndroidViewModel {
 
-    private DataAccessFacade dataAccessFacade;
+    private PlayerRepository playerRepository;
 
     private Player player;
 
@@ -27,11 +29,9 @@ public class PlayerConfigurationViewModel extends ViewModel {
     //Live data objects for the form data
     private MutableLiveData<Player> submitButtonClick = new MutableLiveData<>();
 
-    public PlayerConfigurationViewModel() {
-        super();
-        /*dataAccessFacade = DataAccessFacade.getInstance(
-                getApplication().getApplicationContext());
-        */
+    public PlayerConfigurationViewModel(@NonNull Application application) {
+        super(application);
+        playerRepository = new PlayerRepository(application.getApplicationContext());
     }
 
     /* init function
@@ -78,6 +78,7 @@ public class PlayerConfigurationViewModel extends ViewModel {
     public void onSubmitButtonClick(){
         if (player.isValid()) {
             submitButtonClick.setValue(player);
+            playerRepository.insertPlayer(player);
         }
     }
 
