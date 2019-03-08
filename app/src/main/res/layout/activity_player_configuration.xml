@@ -1,6 +1,4 @@
 <layout>
-<?xml version="1.0" encoding="utf-8"?>
-
 <data>
     <variable
         name="viewmodel"
@@ -68,7 +66,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@={viewmodel.player.name}"
-        app:error="@{viewmodel.player.nameError}"
+        app:error="@{viewmodel.player.playerNameError}"
         app:onFocus="@{viewmodel.getNameOnFocusChangeListener()}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -107,7 +105,7 @@
         android:layout_height="52dp"
         android:ems="10"
         android:inputType="number"
-        android:text="@={viewmodel.player.pilotPoints}"
+        android:text="@={``+viewmodel.player.pilotPoints}"
         app:onFocus="@{viewmodel.getPointOnFocusChangeListener()}"
         app:layout_constraintEnd_toEndOf="@+id/engineer_number"
         app:layout_constraintHorizontal_bias="0.0"
@@ -130,7 +128,7 @@
         android:layout_height="45dp"
         android:ems="10"
         android:inputType="number"
-        android:text="@={viewmodel.player.engineerPoints}"
+        android:text="@={``+viewmodel.player.engineerPoints}"
         app:onFocus="@{viewmodel.getPointOnFocusChangeListener()}"
         app:layout_constraintEnd_toEndOf="@+id/fighter_number"
         app:layout_constraintStart_toStartOf="@+id/fighter_number"
@@ -153,7 +151,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="number"
-        android:text="@={viewmodel.player.fighterPoints}"
+        android:text="@={``+viewmodel.player.fighterPoints}"
         app:onFocus="@{viewmodel.getPointOnFocusChangeListener()}"
         app:layout_constraintEnd_toEndOf="@+id/trader_number"
         app:layout_constraintStart_toStartOf="@+id/trader_number"
@@ -176,7 +174,7 @@
         android:layout_marginEnd="4dp"
         android:ems="10"
         android:inputType="number"
-        android:text="@={viewmodel.player.traderPoints}"
+        android:text="@={``+viewmodel.player.traderPoints}"
         app:onFocus="@{viewmodel.getPointOnFocusChangeListener()}"
         app:layout_constraintEnd_toEndOf="@+id/points_left_number"
         app:layout_constraintHorizontal_bias="1.0"

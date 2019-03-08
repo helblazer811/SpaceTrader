@@ -1,19 +1,20 @@
 package com.example.spacetrader.views;
 
-import android.app.Activity;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
+import android.arch.lifecycle.Observer;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.spacetrader.R;
+import com.example.spacetrader.databinding.ActivityPlayerConfigurationBinding;
 import com.example.spacetrader.entities.GameDifficulty;
+import com.example.spacetrader.entities.Player;
 import com.example.spacetrader.viewmodels.PlayerConfigurationViewModel;
 import com.example.spacetrader.views.maingame.MainActivity;
 
@@ -27,14 +28,12 @@ public class PlayerConfigurationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_player_configuration);
 
-
-        //create view mode
-        viewModel = ViewModelProviders.of(this).get(PlayerConfigurationViewModel.class);
+        setupBindings(savedInstanceState);
+        setupSubmitButton();
 
         //difficulty spinner
-        final Spinner gameDifficultySpinner = defineGameDifficultySpinner();
+        /*final Spinner gameDifficultySpinner = defineGameDifficultySpinner();
 
         final EditText nameString =  ((EditText) findViewById(R.id.nameString));
         final EditText pilotPoints = ((EditText) findViewById(R.id.pilot_number));
@@ -76,8 +75,36 @@ public class PlayerConfigurationActivity extends AppCompatActivity {
                 }
             }
         });
+        */
+
     }
 
+    private void setupBindings(Bundle savedInstanceState) {
+        ActivityPlayerConfigurationBinding binding =
+                DataBindingUtil.setContentView(this, R.layout.activity_player_configuration);
+
+        //create view mode
+        viewModel = ViewModelProviders.of(this).get(PlayerConfigurationViewModel.class);
+
+        if (savedInstanceState == null) {
+            viewModel.init();
+        }
+
+       binding.setViewmodel(viewModel);
+    }
+
+    private void setupSubmitButton() {
+        viewModel.getSubmitButtonClick().observe(this, new Observer<Player>() {
+            @Override
+            public void onChanged(Player playerModel) {
+                Toast.makeText(PlayerConfigurationActivity.this,
+                        playerModel.toString(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    /*
     private void displayExceptionMessage(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
@@ -104,6 +131,8 @@ public class PlayerConfigurationActivity extends AppCompatActivity {
 
         return gameDifficultySpinner;
     }
+
+    */
 
 
 }

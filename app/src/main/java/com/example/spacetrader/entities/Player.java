@@ -2,15 +2,20 @@ package com.example.spacetrader.entities;
 
 import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+import android.databinding.ObservableField;
 import android.support.annotation.NonNull;
 
+import com.example.spacetrader.R;
 import com.example.spacetrader.entities.planet.Planet;
 
 import java.util.Map;
 
 @Entity
-public class Player {
+public class Player extends BaseObservable {
 
     private int pilotPoints;
     private int fighterPoints;
@@ -18,15 +23,21 @@ public class Player {
     private int engineerPoints;
 
     private GameDifficulty difficulty;
-    @Embedded
+    /*@Embedded
     private Planet currentPlanet;
-
+    */
     @PrimaryKey
     @NonNull
     private String name;
     @Embedded
     private Ship gameShip;
     private int credits;
+
+    @Ignore
+    public ObservableField<Integer> playerConfigurationError = new ObservableField<>();
+    @Ignore
+    public ObservableField<Integer> playerNameError = new ObservableField<>();
+
 
     public Player() {
         pilotPoints = 0;
@@ -56,6 +67,8 @@ public class Player {
     }
 
     public void setPilotPoints(int pilotPoints) {
+        // Notify that the valid property could have changed.
+        //notifyPropertyChanged(BR.valid);
         this.pilotPoints = pilotPoints;
     }
 
@@ -64,6 +77,8 @@ public class Player {
     }
 
     public void setFighterPoints(int fighterPoints) {
+        // Notify that the valid property could have changed.
+        //notifyPropertyChanged(BR.valid);
         this.fighterPoints = fighterPoints;
     }
 
@@ -72,6 +87,8 @@ public class Player {
     }
 
     public void setTraderPoints(int traderPoints) {
+        // Notify that the valid property could have changed.
+        //notifyPropertyChanged(BR.valid);
         this.traderPoints = traderPoints;
     }
 
@@ -80,6 +97,8 @@ public class Player {
     }
 
     public void setEngineerPoints(int engineerPoints) {
+        // Notify that the valid property could have changed.
+        //notifyPropertyChanged(BR.valid);
         this.engineerPoints = engineerPoints;
     }
 
@@ -96,6 +115,8 @@ public class Player {
     }
 
     public void setName(String name) {
+        // Notify that the valid property could have changed.
+        //notifyPropertyChanged(BR.valid);
         this.name = name;
     }
 
@@ -113,6 +134,38 @@ public class Player {
 
     public void setCredits(int credits) {
         this.credits = credits;
+    }
+
+
+    @Bindable
+    public boolean isValid() {
+        return isValidConfiguration(false);
+    }
+
+    public boolean isValidConfiguration(boolean setMessage) {
+        int sum = 0;
+        sum += pilotPoints;
+        sum += engineerPoints;
+        sum += traderPoints;
+        sum += fighterPoints;
+
+        int totalPoints = 16;
+
+        if (sum < totalPoints) {
+            if (setMessage) {
+                playerConfigurationError.set(R.string.error_player_config_low);
+            }
+            return false;
+        } else if (sum > totalPoints) {
+            if (setMessage) {
+                playerConfigurationError.set(R.string.error_player_config_high);
+            }
+            return false;
+        } else {
+            playerConfigurationError.set(null);
+            return true;
+        }
+
     }
 
     @Override
