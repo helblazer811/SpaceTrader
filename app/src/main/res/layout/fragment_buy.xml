@@ -91,7 +91,7 @@
 
                 <TextView
                     android:padding="4dip"
-                    android:text="double" />
+                    android:text="int" />
 
                 <EditText
                     android:ems="5"
@@ -110,7 +110,7 @@
 
                 <TextView
                     android:padding="4dip"
-                    android:text="double" />
+                    android:text="int" />
 
                 <EditText
                     android:ems="5"
@@ -129,7 +129,7 @@
 
                 <TextView
                     android:padding="4dip"
-                    android:text="double" />
+                    android:text="int" />
 
                 <EditText
                     android:ems="5"
@@ -148,7 +148,7 @@
 
                 <TextView
                     android:padding="4dip"
-                    android:text="double" />
+                    android:text="int" />
 
                 <EditText
                     android:ems="5"
@@ -167,7 +167,7 @@
 
                 <TextView
                     android:padding="4dip"
-                    android:text="double" />
+                    android:text="int" />
 
                 <EditText
                     android:ems="5"
@@ -186,7 +186,7 @@
 
                 <TextView
                     android:padding="4dip"
-                    android:text="double" />
+                    android:text="int" />
 
                 <EditText
                     android:ems="5"
@@ -205,7 +205,7 @@
 
                 <TextView
                     android:padding="4dip"
-                    android:text="double" />
+                    android:text="int" />
 
                 <EditText
                     android:ems="5"
@@ -224,7 +224,7 @@
 
                 <TextView
                     android:padding="4dip"
-                    android:text="double" />
+                    android:text="int" />
 
                 <EditText
                     android:ems="5"
@@ -243,7 +243,7 @@
 
                 <TextView
                     android:padding="4dip"
-                    android:text="double" />
+                    android:text="int" />
 
                 <EditText
                     android:ems="5"
@@ -262,7 +262,7 @@
 
                 <TextView
                     android:padding="4dip"
-                    android:text="double" />
+                    android:text="int" />
 
                 <EditText
                     android:ems="5"
