@@ -11,4 +11,5 @@
     <string name="player_name">Player Name</string>
     <string name="skills">Skills</string>
     <string name="points_left">Points Left</string>
+    <string name="testing">Testing String</string>
 </resources>

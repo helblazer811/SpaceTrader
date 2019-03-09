@@ -23,6 +23,7 @@ public class StartActivity extends Activity {
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                Intent (from , to)
                 Intent myIntent = new Intent(StartActivity.this, PlayerConfigurationActivity.class);
                 startActivity(myIntent);
             }

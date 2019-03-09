@@ -12,6 +12,9 @@ import com.example.spacetrader.entities.Player;
 
 import java.util.concurrent.Executor;
 
+/*
+the single interface to interact with player objects
+ */
 public class PlayerRepository {
 
     private RoomDatabaseObject roomDatabase;

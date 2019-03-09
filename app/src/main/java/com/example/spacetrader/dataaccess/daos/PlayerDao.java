@@ -13,6 +13,9 @@ import com.example.spacetrader.entities.Player;
 import java.util.List;
 
 @Dao
+/*
+Interface that provides functions for accessing database
+ */
 public interface PlayerDao {
 
     @Query("SELECT * FROM player")

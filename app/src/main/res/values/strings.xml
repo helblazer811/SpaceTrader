@@ -2,4 +2,29 @@
     <string name="app_name">Space Trader</string>
     <string name="error_player_config_low">Too few points allocated</string>
     <string name="error_player_config_high">Too many points allocated</string>
+
+    <!--MARKET STRINGS-->
+    <string name="marketBuyHeader">Market Buy</string>
+    <string name="marketSellHeader">Market Sell</string>
+    <string name="marketBuy">Buy</string>
+    <string name="marketSell">Sell</string>
+    <string name="itemName">Item</string>
+    <string name="price">Price</string>
+    <string name="quantityAval">Available</string>
+    <string name="total">Total</string>
+
+    <!--MARKET GOODS-->
+    <string name="water">Water</string>
+    <string name="furs">Furs</string>
+    <string name="food">Food</string>
+    <string name="ore">Ore</string>
+    <string name="games">Games</string>
+    <string name="firearms">Firearms</string>
+    <string name="medicine">Medicine</string>
+    <string name="machines">Machines</string>
+    <string name="narcotics">Narcotics</string>
+    <string name="robots">Robots</string>
+
+
+
 </resources>
