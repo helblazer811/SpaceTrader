@@ -1,33 +1,37 @@
 package com.example.spacetrader.views.maingame;
 
-import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SampleFragmentPagerAdapter extends FragmentPagerAdapter {
-    final int PAGE_COUNT = 3;
-    private String tabTitles[] = new String[] { "Tab1", "Tab2", "Tab3" };
-    private Context context;
+    private final List<Fragment> mFragmentList = new ArrayList<>();
+    private final List<String> mFragmentTitleList = new ArrayList<>();
 
-    public SampleFragmentPagerAdapter(FragmentManager fm, Context context) {
-        super(fm);
-        this.context = context;
-    }
-
-    @Override
-    public int getCount() {
-        return PAGE_COUNT;
+    public SampleFragmentPagerAdapter(FragmentManager manager) {
+        super(manager);
     }
 
     @Override
     public Fragment getItem(int position) {
-        return MapFragment.newInstance(position + 1);
+        return mFragmentList.get(position);
+    }
+
+    @Override
+    public int getCount() {
+        return mFragmentList.size();
+    }
+
+    public void addFragment(Fragment fragment, String title) {
+        mFragmentList.add(fragment);
+        mFragmentTitleList.add(title);
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        // Generate title based on item position
-        return tabTitles[position];
+        return mFragmentTitleList.get(position);
     }
 }

@@ -2,13 +2,31 @@ package com.example.spacetrader.entities;
 
 import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+import android.databinding.BindingAdapter;
+import android.databinding.InverseBindingAdapter;
+import android.databinding.InverseBindingListener;
+import android.databinding.InverseBindingMethod;
+import android.databinding.InverseBindingMethods;
+import android.databinding.ObservableField;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.AppCompatSpinner;
+import android.view.View;
+import android.widget.AdapterView;
+
+import com.example.spacetrader.BR;
+import com.example.spacetrader.R;
 
 import java.util.Map;
 
 @Entity
-public class Player {
+@InverseBindingMethods({
+        @InverseBindingMethod(type = AppCompatSpinner.class, attribute = "android:selectedItemPosition"),
+})
+public class Player extends BaseObservable {
 
     private int pilotPoints;
     private int fighterPoints;
@@ -16,13 +34,23 @@ public class Player {
     private int engineerPoints;
 
     private GameDifficulty difficulty;
-
+    /*@Embedded
+    private Planet currentPlanet;
+    */
     @PrimaryKey
     @NonNull
     private String name;
     @Embedded
     private Ship gameShip;
     private int credits;
+
+    @Ignore
+    public ObservableField<Integer> playerConfigurationError = new ObservableField<>();
+    @Ignore
+    public ObservableField<Integer> playerNameError = new ObservableField<>();
+
+    @Ignore
+    Integer selectedDifficultyPosition = 0;
 
     public Player() {
         pilotPoints = 0;
@@ -35,23 +63,13 @@ public class Player {
         credits = 1000;
     }
 
-    public Player(Map<String, Object> map) {
-        pilotPoints = (int) map.get("pilot");
-        engineerPoints = (int) map.get("engineer");
-        traderPoints = (int) map.get("trader");
-        fighterPoints = (int) map.get("fighter");
-        difficulty = (GameDifficulty) map.get("game_difficulty");
-        name = (String) map.get("name");
-        gameShip = null;
-        credits = 1000;
-    }
-
-
     public int getPilotPoints() {
         return pilotPoints;
     }
 
     public void setPilotPoints(int pilotPoints) {
+        // Notify that the valid property could have changed.
+        notifyPropertyChanged(BR.valid);
         this.pilotPoints = pilotPoints;
     }
 
@@ -60,6 +78,8 @@ public class Player {
     }
 
     public void setFighterPoints(int fighterPoints) {
+        // Notify that the valid property could have changed.
+        notifyPropertyChanged(BR.valid);
         this.fighterPoints = fighterPoints;
     }
 
@@ -68,6 +88,8 @@ public class Player {
     }
 
     public void setTraderPoints(int traderPoints) {
+        // Notify that the valid property could have changed.
+        notifyPropertyChanged(BR.valid);
         this.traderPoints = traderPoints;
     }
 
@@ -76,23 +98,38 @@ public class Player {
     }
 
     public void setEngineerPoints(int engineerPoints) {
+        // Notify that the valid property could have changed.
+        notifyPropertyChanged(BR.valid);
         this.engineerPoints = engineerPoints;
     }
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        // Notify that the valid property could have changed.
+        notifyPropertyChanged(BR.valid);
+        this.name = name;
+    }
+
+    @Bindable
     public GameDifficulty getDifficulty() {
         return difficulty;
     }
 
     public void setDifficulty(GameDifficulty difficulty) {
         this.difficulty = difficulty;
+        //notifyPropertyChanged(BR.);
     }
 
-    public String getName() {
-        return name;
+    @Bindable
+    public Integer getSelectedDifficultyPosition() {
+        return selectedDifficultyPosition;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSelectedDifficultyPosition(Integer position) {
+        selectedDifficultyPosition = position;
+        difficulty = GameDifficulty.values()[selectedDifficultyPosition];
     }
 
     public Ship getGameShip() {
@@ -111,6 +148,36 @@ public class Player {
         this.credits = credits;
     }
 
+    @Bindable
+    public boolean isValid() {
+        return isValidConfiguration(false);
+    }
+
+    public boolean isValidConfiguration(boolean setMessage) {
+        int sum = 0;
+        sum += pilotPoints;
+        sum += engineerPoints;
+        sum += traderPoints;
+        sum += fighterPoints;
+
+        int totalPoints = 16;
+
+        if (sum < totalPoints) {
+            if (setMessage) {
+                playerConfigurationError.set(R.string.error_player_config_low);
+            }
+            return false;
+        } else if (sum > totalPoints) {
+            if (setMessage) {
+                playerConfigurationError.set(R.string.error_player_config_high);
+            }
+            return false;
+        } else {
+            playerConfigurationError.set(null);
+            return true;
+        }
+    }
+
     @Override
     public String toString() {
         return "Player{" +
@@ -124,4 +191,5 @@ public class Player {
                 ", credits=" + credits +
                 '}';
     }
+
 }

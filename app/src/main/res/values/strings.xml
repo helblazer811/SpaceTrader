@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Space Trader</string>
+    <string name="error_player_config_low">Too few points allocated</string>
+    <string name="error_player_config_high">Too many points allocated</string>
 </resources>

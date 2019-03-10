@@ -4,27 +4,45 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
 import com.example.spacetrader.R;
+import com.example.spacetrader.views.maingame.fragments.BuyFragment;
+import com.example.spacetrader.views.maingame.fragments.InfoFragment;
+import com.example.spacetrader.views.maingame.fragments.MapFragment;
+import com.example.spacetrader.views.maingame.fragments.SellFragment;
 
 public class MainActivity extends AppCompatActivity {
+
+    private Toolbar toolbar;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        System.out.println("Creating main activity");
         setContentView(R.layout.activity_main);
 
-        // Get the ViewPager and set it's PagerAdapter so that it can display items
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        viewPager.setAdapter(
-                new SampleFragmentPagerAdapter(
-                    getSupportFragmentManager(),
-                    MainActivity.this)
-        );
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        // Give the TabLayout the ViewPager
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        setupViewPager(viewPager);
+
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
+    }
+
+    private void setupViewPager(ViewPager viewPager) {
+        SampleFragmentPagerAdapter adapter =
+                new SampleFragmentPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new MapFragment(), "Map");
+        adapter.addFragment(new BuyFragment(), "Buy");
+        adapter.addFragment(new SellFragment(), "Sell");
+        adapter.addFragment(new InfoFragment(), "Info");
+        viewPager.setAdapter(adapter);
     }
 }

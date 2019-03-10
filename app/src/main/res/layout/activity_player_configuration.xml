@@ -1,4 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<data>
+    <variable
+        name="viewmodel"
+        type="com.example.spacetrader.viewmodels.PlayerConfigurationViewModel"/>
+</data>
 
 <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -14,12 +19,11 @@
     android:layout_height="wrap_content"
     android:layout_margin="10sp">
 
-
     <TextView
         android:id="@+id/player_configuration_header"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
-        android:text="Player Configuration"
+        android:text="@string/player_configuration"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -30,16 +34,17 @@
         android:id="@+id/game_difficulty"
         android:layout_width="wrap_content"
         android:layout_height="29dp"
-        android:text="Game Difficulty"
+        android:text="@string/game_difficulty"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/game_difficulty_spinner"
         app:layout_constraintStart_toStartOf="@+id/player_name"
         app:layout_constraintTop_toTopOf="@+id/game_difficulty_spinner" />
 
-    <Spinner
+    <android.support.v7.widget.AppCompatSpinner
         android:id="@+id/game_difficulty_spinner"
         android:layout_width="146dp"
         android:layout_height="31dp"
+        android:selectedItemPosition="@={viewmodel.player.selectedDifficultyPosition}"
         app:layout_constraintEnd_toEndOf="@+id/nameString"
         app:layout_constraintTop_toBottomOf="@+id/player_configuration_header" />
 
@@ -47,7 +52,7 @@
         android:id="@+id/player_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Player Name"
+        android:text="@string/player_name"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/nameString"
         app:layout_constraintEnd_toStartOf="@+id/nameString"
@@ -61,7 +66,9 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text="@={viewmodel.player.name}"
+        app:error="@{viewmodel.player.playerNameError}"
+        app:onFocus="@{viewmodel.getNameOnFocusChangeListener()}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/player_name"
@@ -73,7 +80,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="12dp"
-        android:text="Skills"
+        android:text="@string/skills"
         android:textSize="30sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameString" />
@@ -83,7 +90,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="Pilot"
+        android:text="@string/pilot"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/pilot_number"
         app:layout_constraintEnd_toStartOf="@id/pilot_number"
@@ -99,7 +106,8 @@
         android:layout_height="52dp"
         android:ems="10"
         android:inputType="number"
-        android:text="0"
+        android:text="@={``+viewmodel.player.pilotPoints}"
+        app:onFocus="@{viewmodel.getPointOnFocusChangeListener()}"
         app:layout_constraintEnd_toEndOf="@+id/engineer_number"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/engineer_number"
@@ -109,7 +117,7 @@
         android:id="@+id/engineer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Engineer"
+        android:text="@string/engineer"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/engineer_number"
         app:layout_constraintStart_toStartOf="@+id/pilot"
@@ -121,7 +129,8 @@
         android:layout_height="45dp"
         android:ems="10"
         android:inputType="number"
-        android:text="0"
+        android:text="@={``+viewmodel.player.engineerPoints}"
+        app:onFocus="@{viewmodel.getPointOnFocusChangeListener()}"
         app:layout_constraintEnd_toEndOf="@+id/fighter_number"
         app:layout_constraintStart_toStartOf="@+id/fighter_number"
         app:layout_constraintTop_toBottomOf="@id/pilot_number" />
@@ -130,7 +139,7 @@
         android:id="@+id/fighter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fighter"
+        android:text="@string/fighter"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/fighter_number"
         app:layout_constraintStart_toStartOf="@+id/engineer"
@@ -143,7 +152,8 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="number"
-        android:text="0"
+        android:text="@={``+viewmodel.player.fighterPoints}"
+        app:onFocus="@{viewmodel.getPointOnFocusChangeListener()}"
         app:layout_constraintEnd_toEndOf="@+id/trader_number"
         app:layout_constraintStart_toStartOf="@+id/trader_number"
         app:layout_constraintTop_toBottomOf="@id/engineer_number" />
@@ -152,7 +162,7 @@
         android:id="@+id/trader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Trader"
+        android:text="@string/trader"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/trader_number"
         app:layout_constraintStart_toStartOf="@+id/fighter"
@@ -165,7 +175,8 @@
         android:layout_marginEnd="4dp"
         android:ems="10"
         android:inputType="number"
-        android:text="0"
+        android:text="@={``+viewmodel.player.traderPoints}"
+        app:onFocus="@{viewmodel.getPointOnFocusChangeListener()}"
         app:layout_constraintEnd_toEndOf="@+id/points_left_number"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/points_left_number"
@@ -175,7 +186,7 @@
         android:id="@+id/points_left_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Points Left"
+        android:text="@string/points_left"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/points_left_number"
         app:layout_constraintStart_toStartOf="@+id/trader"
@@ -198,8 +209,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="Submit"
+        android:text="@string/submit_button"
         android:textSize="20sp"
+        android:enabled="@{viewmodel.player.valid}"
+        android:onClick="@{() -> viewmodel.onSubmitButtonClick()}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/points_left_number" />
@@ -210,7 +223,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/submit_button"
         android:layout_marginTop="4dp"
-        android:text="Close"
+        android:text="@string/close_button"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -220,3 +233,4 @@
 </android.support.constraint.ConstraintLayout>
 
 </ScrollView>
+</layout>
