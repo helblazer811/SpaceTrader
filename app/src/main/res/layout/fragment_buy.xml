@@ -1,296 +1,305 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout>
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.spacetrader.viewmodels.BuyViewModel"/>
+    </data>
 
-    <android.support.constraint.ConstraintLayout
+    <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android">
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="4dip"
-            android:text="@string/total"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="565dp" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="4dip"
-            android:text="double"
-            tools:layout_editor_absoluteX="109dp"
-            tools:layout_editor_absoluteY="565dp" />
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="70dp" />
-
-        <android.support.constraint.Group
-            android:id="@+id/group"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/marketBuyHeader"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginTop="4dp"
-            android:text="@string/marketBuyHeader"
-            android:textSize="40sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.373"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TableLayout
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:layout_marginBottom="48dp"
-            android:padding="20dip"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:layout_editor_absoluteX="0dp">
+            android:layout_height="match_parent">
 
-            <TableRow>
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dip"
+                android:text="@string/total"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="565dp" />
 
-                <TextView
-                    android:paddingRight="60dip"
-                    android:text="@string/itemName" />
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dip"
+                android:text="double"
+                tools:layout_editor_absoluteX="109dp"
+                tools:layout_editor_absoluteY="565dp" />
 
-                <TextView
-                    android:paddingRight="50dip"
-                    android:text="@string/price" />
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="70dp" />
 
-                <TextView
-                    android:paddingRight="40dip"
-                    android:text="@string/quantityAval" />
-            </TableRow>
+            <android.support.constraint.Group
+                android:id="@+id/group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <TableRow>
+            <TextView
+                android:id="@+id/marketBuyHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/marketBuyHeader"
+                android:textSize="40sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.373"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="@string/water" />
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:layout_marginBottom="48dp"
+                android:padding="20dip"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:layout_editor_absoluteX="0dp">
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="double" />
+                <TableRow>
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="int" />
+                    <TextView
+                        android:paddingRight="60dip"
+                        android:text="@string/itemName" />
 
-                <EditText
-                    android:ems="5"
-                    android:inputType="number" />
-            </TableRow>
+                    <TextView
+                        android:paddingRight="50dip"
+                        android:text="@string/price" />
 
-            <TableRow>
+                    <TextView
+                        android:paddingRight="40dip"
+                        android:text="@string/quantityAval" />
+                </TableRow>
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="@string/furs" />
+                <TableRow>
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="double" />
+                    <TextView
+                        android:padding="4dip"
+                        android:text="@string/water" />
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="int" />
+                    <TextView
+                        android:padding="4dip"
+                        android:text="double" />
 
-                <EditText
-                    android:ems="5"
-                    android:inputType="number" />
-            </TableRow>
+                    <TextView
+                        android:padding="4dip"
+                        android:text="int" />
 
-            <TableRow>
+                    <EditText
+                        android:ems="5"
+                        android:inputType="number" />
+                </TableRow>
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="@string/food" />
+                <TableRow>
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="double" />
+                    <TextView
+                        android:padding="4dip"
+                        android:text="@string/furs" />
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="int" />
+                    <TextView
+                        android:padding="4dip"
+                        android:text="double" />
 
-                <EditText
-                    android:ems="5"
-                    android:inputType="number" />
-            </TableRow>
+                    <TextView
+                        android:padding="4dip"
+                        android:text="int" />
 
-            <TableRow>
+                    <EditText
+                        android:ems="5"
+                        android:inputType="number" />
+                </TableRow>
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="@string/ore" />
+                <TableRow>
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="double" />
+                    <TextView
+                        android:padding="4dip"
+                        android:text="@string/food" />
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="int" />
+                    <TextView
+                        android:padding="4dip"
+                        android:text="double" />
 
-                <EditText
-                    android:ems="5"
-                    android:inputType="number" />
-            </TableRow>
+                    <TextView
+                        android:padding="4dip"
+                        android:text="int" />
 
-            <TableRow>
+                    <EditText
+                        android:ems="5"
+                        android:inputType="number" />
+                </TableRow>
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="@string/games" />
+                <TableRow>
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="double" />
+                    <TextView
+                        android:padding="4dip"
+                        android:text="@string/ore" />
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="int" />
+                    <TextView
+                        android:padding="4dip"
+                        android:text="double" />
 
-                <EditText
-                    android:ems="5"
-                    android:inputType="number" />
-            </TableRow>
+                    <TextView
+                        android:padding="4dip"
+                        android:text="int" />
 
-            <TableRow>
+                    <EditText
+                        android:ems="5"
+                        android:inputType="number" />
+                </TableRow>
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="@string/firearms" />
+                <TableRow>
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="double" />
+                    <TextView
+                        android:padding="4dip"
+                        android:text="@string/games" />
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="int" />
+                    <TextView
+                        android:padding="4dip"
+                        android:text="double" />
 
-                <EditText
-                    android:ems="5"
-                    android:inputType="number" />
-            </TableRow>
+                    <TextView
+                        android:padding="4dip"
+                        android:text="int" />
 
-            <TableRow>
+                    <EditText
+                        android:ems="5"
+                        android:inputType="number" />
+                </TableRow>
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="@string/medicine" />
+                <TableRow>
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="double" />
+                    <TextView
+                        android:padding="4dip"
+                        android:text="@string/firearms" />
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="int" />
+                    <TextView
+                        android:padding="4dip"
+                        android:text="double" />
 
-                <EditText
-                    android:ems="5"
-                    android:inputType="number" />
-            </TableRow>
+                    <TextView
+                        android:padding="4dip"
+                        android:text="int" />
 
-            <TableRow>
+                    <EditText
+                        android:ems="5"
+                        android:inputType="number" />
+                </TableRow>
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="@string/machines" />
+                <TableRow>
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="double" />
+                    <TextView
+                        android:padding="4dip"
+                        android:text="@string/medicine" />
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="int" />
+                    <TextView
+                        android:padding="4dip"
+                        android:text="double" />
 
-                <EditText
-                    android:ems="5"
-                    android:inputType="number" />
-            </TableRow>
+                    <TextView
+                        android:padding="4dip"
+                        android:text="int" />
 
-            <TableRow>
+                    <EditText
+                        android:ems="5"
+                        android:inputType="number" />
+                </TableRow>
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="@string/narcotics" />
+                <TableRow>
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="double" />
+                    <TextView
+                        android:padding="4dip"
+                        android:text="@string/machines" />
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="int" />
+                    <TextView
+                        android:padding="4dip"
+                        android:text="double" />
 
-                <EditText
-                    android:ems="5"
-                    android:inputType="number" />
-            </TableRow>
+                    <TextView
+                        android:padding="4dip"
+                        android:text="int" />
 
-            <TableRow>
+                    <EditText
+                        android:ems="5"
+                        android:inputType="number" />
+                </TableRow>
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="@string/robots" />
+                <TableRow>
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="double" />
+                    <TextView
+                        android:padding="4dip"
+                        android:text="@string/narcotics" />
 
-                <TextView
-                    android:padding="4dip"
-                    android:text="int" />
+                    <TextView
+                        android:padding="4dip"
+                        android:text="double" />
 
-                <EditText
-                    android:ems="5"
-                    android:inputType="number" />
-            </TableRow>
+                    <TextView
+                        android:padding="4dip"
+                        android:text="int" />
 
-        </TableLayout>
+                    <EditText
+                        android:ems="5"
+                        android:inputType="number" />
+                </TableRow>
 
-        <Button
-            android:id="@+id/buyButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="280dp"
-            android:layout_marginTop="560dp"
-            android:layout_marginEnd="34dp"
-            android:text="@string/marketBuy"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+                <TableRow>
 
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="280dp" />
+                    <TextView
+                        android:padding="4dip"
+                        android:text="@string/robots" />
 
-    </android.support.constraint.ConstraintLayout>
-</ScrollView>
+                    <TextView
+                        android:padding="4dip"
+                        android:text="double" />
+
+                    <TextView
+                        android:padding="4dip"
+                        android:text="int" />
+
+                    <EditText
+                        android:ems="5"
+                        android:inputType="number" />
+                </TableRow>
+
+            </TableLayout>
+
+            <Button
+                android:id="@+id/buyButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="280dp"
+                android:layout_marginTop="560dp"
+                android:layout_marginEnd="34dp"
+                android:text="@string/marketBuy"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="280dp" />
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+</layout>

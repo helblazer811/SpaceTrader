@@ -39,8 +39,18 @@ public class MainActivity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         SampleFragmentPagerAdapter adapter =
                 new SampleFragmentPagerAdapter(getSupportFragmentManager());
+
+        String playerId = getIntent().getExtras().getString("playerId");
+
+        Bundle bundle = new Bundle();
+        bundle.putString("playerId", playerId);
+
         adapter.addFragment(new MapFragment(), "Map");
-        adapter.addFragment(new BuyFragment(), "Buy");
+
+        BuyFragment buyFragment = new BuyFragment();
+        buyFragment.setArguments(bundle);
+        adapter.addFragment(buyFragment, "Buy");
+
         adapter.addFragment(new SellFragment(), "Sell");
         adapter.addFragment(new InfoFragment(), "Info");
         viewPager.setAdapter(adapter);

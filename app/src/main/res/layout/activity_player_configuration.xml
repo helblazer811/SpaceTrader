@@ -65,10 +65,10 @@
         android:layout_width="154dp"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="bob"
         android:inputType="textPersonName"
         android:text="@={viewmodel.player.name}"
         app:error="@{viewmodel.player.playerNameError}"
-        app:onFocus="@{viewmodel.getNameOnFocusChangeListener()}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/player_name"
@@ -105,13 +105,14 @@
         android:layout_width="60dp"
         android:layout_height="52dp"
         android:ems="10"
+        android:hint="0"
         android:inputType="number"
         android:text="@={``+viewmodel.player.pilotPoints}"
-        app:onFocus="@{viewmodel.getPointOnFocusChangeListener()}"
         app:layout_constraintEnd_toEndOf="@+id/engineer_number"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/engineer_number"
-        app:layout_constraintTop_toBottomOf="@+id/skills_header" />
+        app:layout_constraintTop_toBottomOf="@+id/skills_header"
+        app:onFocus="@{viewmodel.getPointOnFocusChangeListener()}" />
 
     <TextView
         android:id="@+id/engineer"
@@ -128,12 +129,13 @@
         android:layout_width="60dp"
         android:layout_height="45dp"
         android:ems="10"
+        android:hint="0"
         android:inputType="number"
         android:text="@={``+viewmodel.player.engineerPoints}"
-        app:onFocus="@{viewmodel.getPointOnFocusChangeListener()}"
         app:layout_constraintEnd_toEndOf="@+id/fighter_number"
         app:layout_constraintStart_toStartOf="@+id/fighter_number"
-        app:layout_constraintTop_toBottomOf="@id/pilot_number" />
+        app:layout_constraintTop_toBottomOf="@id/pilot_number"
+        app:onFocus="@{viewmodel.getPointOnFocusChangeListener()}" />
 
     <TextView
         android:id="@+id/fighter"
@@ -151,12 +153,13 @@
         android:layout_height="45dp"
         android:layout_marginTop="8dp"
         android:ems="10"
+        android:hint="0"
         android:inputType="number"
         android:text="@={``+viewmodel.player.fighterPoints}"
-        app:onFocus="@{viewmodel.getPointOnFocusChangeListener()}"
         app:layout_constraintEnd_toEndOf="@+id/trader_number"
         app:layout_constraintStart_toStartOf="@+id/trader_number"
-        app:layout_constraintTop_toBottomOf="@id/engineer_number" />
+        app:layout_constraintTop_toBottomOf="@id/engineer_number"
+        app:onFocus="@{viewmodel.getPointOnFocusChangeListener()}" />
 
     <TextView
         android:id="@+id/trader"
@@ -174,13 +177,14 @@
         android:layout_height="45dp"
         android:layout_marginEnd="4dp"
         android:ems="10"
+        android:hint="0"
         android:inputType="number"
         android:text="@={``+viewmodel.player.traderPoints}"
-        app:onFocus="@{viewmodel.getPointOnFocusChangeListener()}"
         app:layout_constraintEnd_toEndOf="@+id/points_left_number"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/points_left_number"
-        app:layout_constraintTop_toBottomOf="@id/fighter_number" />
+        app:layout_constraintTop_toBottomOf="@id/fighter_number"
+        app:onFocus="@{viewmodel.getPointOnFocusChangeListener()}" />
 
     <TextView
         android:id="@+id/points_left_text"

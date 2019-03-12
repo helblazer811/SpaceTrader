@@ -6,14 +6,15 @@ import android.arch.persistence.room.RoomDatabase;
 import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 
-import com.example.spacetrader.dataaccess.daos.GameDao;
 import com.example.spacetrader.dataaccess.daos.PlayerDao;
-import com.example.spacetrader.dataaccess.typeconverters.GameDifficultyTypeConverter;
-import com.example.spacetrader.entities.Game;
+import com.example.spacetrader.dataaccess.typeconverters.TypeConverterClass;
+import com.example.spacetrader.entities.Inventory;
 import com.example.spacetrader.entities.Player;
+import com.example.spacetrader.entities.planet.Planet;
+import com.example.spacetrader.entities.ship.Ship;
 
-@Database(entities = {Player.class, Game.class }, version = 1)
-@TypeConverters({GameDifficultyTypeConverter.class})
+@Database(entities = {Player.class, Planet.class, Ship.class, Inventory.class}, version = 2)
+@TypeConverters({TypeConverterClass.class})
 public abstract class RoomDatabaseObject extends RoomDatabase {
     /*
         This class contains the room database singleton
@@ -21,7 +22,6 @@ public abstract class RoomDatabaseObject extends RoomDatabase {
 
     public static final String NAME = "room_db";
 
-    public abstract GameDao getGameDao();
     public abstract PlayerDao getPlayerDao();
 
     private static RoomDatabaseObject instance;
@@ -33,6 +33,7 @@ public abstract class RoomDatabaseObject extends RoomDatabase {
                 if (instance == null) {
                     instance = Room.databaseBuilder(context.getApplicationContext(),
                             RoomDatabaseObject.class, NAME)
+                            .fallbackToDestructiveMigration()
                             .build();
                 }
             }

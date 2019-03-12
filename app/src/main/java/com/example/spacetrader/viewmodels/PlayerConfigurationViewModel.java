@@ -23,7 +23,6 @@ public class PlayerConfigurationViewModel extends AndroidViewModel {
 
     private Player player;
 
-    private View.OnFocusChangeListener onFocusName;
     private View.OnFocusChangeListener onFocusPoint;
 
     //Live data objects for the form data
@@ -39,17 +38,6 @@ public class PlayerConfigurationViewModel extends AndroidViewModel {
      */
     public void init() {
         player = new Player();
-        onFocusName = new View.OnFocusChangeListener() {
-
-            @Override
-            public void onFocusChange(View view, boolean focused) {
-                if (!focused) {
-                    EditText et = (EditText) view;
-                    //see if name already exists
-                    //in the database for this user
-                }
-            }
-        };
 
         onFocusPoint = new View.OnFocusChangeListener() {
             @Override
@@ -71,9 +59,6 @@ public class PlayerConfigurationViewModel extends AndroidViewModel {
         return onFocusPoint;
     }
 
-    public View.OnFocusChangeListener getNameOnFocusChangeListener() {
-        return onFocusName;
-    }
 
     public void onSubmitButtonClick(){
         if (player.isValid()) {

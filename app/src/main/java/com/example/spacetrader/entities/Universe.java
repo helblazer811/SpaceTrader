@@ -41,12 +41,12 @@ public class Universe {
         for (String name: planetNames) {
             Planet planet = new Planet(name);
             //recreates the planet until it is at a unique location
-            while(xLocs.contains(planet.getxLoc())
-                    && yLocs.contains(planet.getyLoc())) {
+            while(xLocs.contains(planet.getXLoc())
+                    && yLocs.contains(planet.getYLoc())) {
                 planet = new Planet(name);
             }
-            xLocs.add(planet.getxLoc());
-            yLocs.add(planet.getyLoc());
+            xLocs.add(planet.getXLoc());
+            yLocs.add(planet.getYLoc());
 
             //saves created planet to LogCat
             Log.i("Planet object created: ", planet.toString());

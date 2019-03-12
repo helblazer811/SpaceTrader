@@ -32,7 +32,6 @@ public class PlayerConfigurationActivity extends AppCompatActivity {
         setupSubmitButton();
         setupGameDifficultySpinner();
         setupCloseButton();
-
     }
 
     private void setupBindings(Bundle savedInstanceState) {
@@ -62,9 +61,8 @@ public class PlayerConfigurationActivity extends AppCompatActivity {
                                 PlayerConfigurationActivity.this,
                                 MainActivity.class
                     );
-
-                System.out.println("Calling main activity intent");
-
+                //pass the player id in the intent so it can be pulled from the next activity
+                myIntent.putExtra("playerId", playerModel.getPlayerId());
                 startActivity(myIntent);
             }
         });

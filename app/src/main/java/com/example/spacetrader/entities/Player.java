@@ -2,13 +2,11 @@ package com.example.spacetrader.entities;
 
 import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
-import android.databinding.BindingAdapter;
-import android.databinding.InverseBindingAdapter;
-import android.databinding.InverseBindingListener;
 import android.databinding.InverseBindingMethod;
 import android.databinding.InverseBindingMethods;
 import android.databinding.ObservableField;
@@ -20,13 +18,16 @@ import android.widget.AdapterView;
 import com.example.spacetrader.BR;
 import com.example.spacetrader.R;
 
-import java.util.Map;
-
 @Entity
 @InverseBindingMethods({
         @InverseBindingMethod(type = AppCompatSpinner.class, attribute = "android:selectedItemPosition"),
 })
 public class Player extends BaseObservable {
+
+    @PrimaryKey(autoGenerate = true)
+    private long playerId;
+
+    private String name;
 
     private int pilotPoints;
     private int fighterPoints;
@@ -34,16 +35,27 @@ public class Player extends BaseObservable {
     private int engineerPoints;
 
     private GameDifficulty difficulty;
-    /*@Embedded
-    private Planet currentPlanet;
-    */
-    @PrimaryKey
-    @NonNull
-    private String name;
-    @Embedded
-    private Ship gameShip;
+
     private int credits;
 
+    /*
+        Encapsulated objects.
+        These objects are not stored in the database.
+        Instead keys are stored for them and the repository class
+        handles building up the object from the disconnected data
+        in different tables
+
+        @Ignore
+        private Ship gameShip;
+        @Ignore
+        private Planet currentPlanet;
+
+     */
+    /*
+        encapsulated objects keys
+    */
+
+    //errors
     @Ignore
     public ObservableField<Integer> playerConfigurationError = new ObservableField<>();
     @Ignore
@@ -52,15 +64,27 @@ public class Player extends BaseObservable {
     @Ignore
     Integer selectedDifficultyPosition = 0;
 
+    public Player(long playerId, String name, int pilotPoints, int fighterPoints, int traderPoints, int engineerPoints, GameDifficulty difficulty, int credits,  int shipId, int planetId) {
+        this.playerId = playerId;
+        this.name = name;
+        this.pilotPoints = pilotPoints;
+        this.fighterPoints = fighterPoints;
+        this.traderPoints = traderPoints;
+        this.engineerPoints = engineerPoints;
+        this.difficulty = difficulty;
+        this.credits = credits;
+    }
+
     public Player() {
-        pilotPoints = 0;
-        fighterPoints = 0;
-        traderPoints = 0;
-        engineerPoints = 0;
-        difficulty = GameDifficulty.BEGINNER;
-        name = "";
-        gameShip = null;
-        credits = 1000;
+
+    }
+
+    public long getPlayerId() {
+        return playerId;
+    }
+
+    public void setPlayerId(long playerId) {
+        this.playerId = playerId;
     }
 
     public int getPilotPoints() {
@@ -132,14 +156,6 @@ public class Player extends BaseObservable {
         difficulty = GameDifficulty.values()[selectedDifficultyPosition];
     }
 
-    public Ship getGameShip() {
-        return gameShip;
-    }
-
-    public void setGameShip(Ship gameShip) {
-        this.gameShip = gameShip;
-    }
-
     public int getCredits() {
         return credits;
     }
@@ -187,7 +203,6 @@ public class Player extends BaseObservable {
                 ", engineerPoints=" + engineerPoints +
                 ", difficulty=" + difficulty +
                 ", name='" + name + '\'' +
-                ", gameShip=" + gameShip +
                 ", credits=" + credits +
                 '}';
     }
