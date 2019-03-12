@@ -12,6 +12,9 @@
     <string name="price">Price</string>
     <string name="quantityAval">Available</string>
     <string name="total">Total</string>
+    <string name="creditsAval">Credits</string>
+    <string name="quantityOwned">You Own</string>
+    <string name="cargo">Cargo Used</string>
 
     <!--MARKET GOODS-->
     <string name="water">Water</string>
