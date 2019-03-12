@@ -2,10 +2,10 @@ package com.example.spacetrader.entities;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.databinding.BaseObservable;
 
-import com.example.spacetrader.entities.ship.Ship;
 import com.example.spacetrader.entities.tradegoods.TradeGood;
 
 import java.util.HashMap;
@@ -13,21 +13,17 @@ import java.util.HashMap;
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 
-@Entity(foreignKeys = @ForeignKey(entity = Ship.class,
-        parentColumns = "shipId",
-        childColumns = "shipId",
-        onDelete = CASCADE))
+@Entity
 public class Inventory extends BaseObservable {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     private long inventoryId;
-
-    private long shipId;
 
     private HashMap<TradeGood, Integer> inventoryMap;
     private int capacity;
     private int count;
 
+    @Ignore
     public Inventory(int capacity) {
         this.capacity = capacity;
         this.count = 0;
@@ -45,6 +41,13 @@ public class Inventory extends BaseObservable {
         inventoryMap.put(TradeGood.ROBOTS,0);
     }
 
+    public Inventory(long inventoryId, HashMap<TradeGood, Integer> inventoryMap, int capacity, int count) {
+        this.inventoryId = inventoryId;
+        this.inventoryMap = inventoryMap;
+        this.capacity = capacity;
+        this.count = count;
+    }
+
     public void put(TradeGood type, int amount) {
         if (count + amount > capacity) {
             //throw an inventory full exception
@@ -52,22 +55,6 @@ public class Inventory extends BaseObservable {
             count += amount;
             this.inventoryMap.put(type, amount);
         }
-    }
-
-    public long getInventoryId() {
-        return inventoryId;
-    }
-
-    public void setInventoryId(long inventoryId) {
-        this.inventoryId = inventoryId;
-    }
-
-    public long getShipId() {
-        return shipId;
-    }
-
-    public void setShipId(long shipId) {
-        this.shipId = shipId;
     }
 
     public HashMap<TradeGood, Integer> getInventoryMap() {
@@ -92,5 +79,13 @@ public class Inventory extends BaseObservable {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public long getInventoryId() {
+        return inventoryId;
+    }
+
+    public void setInventoryId(long inventoryId) {
+        this.inventoryId = inventoryId;
     }
 }

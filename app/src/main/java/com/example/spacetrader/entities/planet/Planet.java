@@ -7,22 +7,14 @@ import android.arch.persistence.room.PrimaryKey;
 import android.util.Log;
 
 import com.example.spacetrader.entities.Player;
-import com.example.spacetrader.entities.Universe;
 
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
-
-@Entity(foreignKeys = @ForeignKey(entity = Player.class,
-        parentColumns = "playerId",
-        childColumns = "playerId",
-        onDelete = CASCADE),
-        indices = {})
+@Entity
 public class Planet {
 
     @PrimaryKey(autoGenerate = true)
     private long planetId;
-
-    private long playerId;
 
     private String planetName;
     private int xLoc;
@@ -100,15 +92,6 @@ public class Planet {
     public void setPlanetId(long planetId) {
         this.planetId = planetId;
     }
-
-    public long getPlayerId() {
-        return playerId;
-    }
-
-    public void setPlayerId(long playerId) {
-        this.playerId = playerId;
-    }
-
 
     @Override
     public String toString() {

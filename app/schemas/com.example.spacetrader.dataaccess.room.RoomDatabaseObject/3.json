@@ -1,12 +1,12 @@
 {
   "formatVersion": 1,
   "database": {
-    "version": 2,
-    "identityHash": "6ba8223a6c20df8977bd857b2298f1aa",
+    "version": 3,
+    "identityHash": "ad67ae70319b205a75c2dfb8164a45a3",
     "entities": [
       {
         "tableName": "Player",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`playerId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `planetId` INTEGER NOT NULL, `name` TEXT, `pilotPoints` INTEGER NOT NULL, `fighterPoints` INTEGER NOT NULL, `traderPoints` INTEGER NOT NULL, `engineerPoints` INTEGER NOT NULL, `difficulty` INTEGER, `credits` INTEGER NOT NULL, `inventoryId` INTEGER, `inventoryMap` TEXT, `capacity` INTEGER, `count` INTEGER)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`playerId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `planetId` INTEGER NOT NULL, `name` TEXT, `pilotPoints` INTEGER NOT NULL, `fighterPoints` INTEGER NOT NULL, `traderPoints` INTEGER NOT NULL, `engineerPoints` INTEGER NOT NULL, `difficulty` INTEGER, `credits` INTEGER NOT NULL, `inventoryId` INTEGER, `inventoryMap` TEXT, `capacity` INTEGER, `count` INTEGER, FOREIGN KEY(`planetId`) REFERENCES `Planet`(`planetId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "playerId",
@@ -63,25 +63,25 @@
             "notNull": true
           },
           {
-            "fieldPath": "gameShip.inventory.inventoryId",
+            "fieldPath": "inventory.inventoryId",
             "columnName": "inventoryId",
             "affinity": "INTEGER",
             "notNull": false
           },
           {
-            "fieldPath": "gameShip.inventory.inventoryMap",
+            "fieldPath": "inventory.inventoryMap",
             "columnName": "inventoryMap",
             "affinity": "TEXT",
             "notNull": false
           },
           {
-            "fieldPath": "gameShip.inventory.capacity",
+            "fieldPath": "inventory.capacity",
             "columnName": "capacity",
             "affinity": "INTEGER",
             "notNull": false
           },
           {
-            "fieldPath": "gameShip.inventory.count",
+            "fieldPath": "inventory.count",
             "columnName": "count",
             "affinity": "INTEGER",
             "notNull": false
@@ -94,7 +94,19 @@
           "autoGenerate": true
         },
         "indices": [],
-        "foreignKeys": []
+        "foreignKeys": [
+          {
+            "table": "Planet",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "planetId"
+            ],
+            "referencedColumns": [
+              "planetId"
+            ]
+          }
+        ]
       },
       {
         "tableName": "Planet",
@@ -166,8 +178,14 @@
       },
       {
         "tableName": "Ship",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`inventoryId` INTEGER, `inventoryMap` TEXT, `capacity` INTEGER, `count` INTEGER)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`shipId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `inventoryId` INTEGER, `inventoryMap` TEXT, `capacity` INTEGER, `count` INTEGER)",
         "fields": [
+          {
+            "fieldPath": "shipId",
+            "columnName": "shipId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
           {
             "fieldPath": "inventory.inventoryId",
             "columnName": "inventoryId",
@@ -194,8 +212,10 @@
           }
         ],
         "primaryKey": {
-          "columnNames": [],
-          "autoGenerate": false
+          "columnNames": [
+            "shipId"
+          ],
+          "autoGenerate": true
         },
         "indices": [],
         "foreignKeys": []
@@ -241,7 +261,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"6ba8223a6c20df8977bd857b2298f1aa\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"ad67ae70319b205a75c2dfb8164a45a3\")"
     ]
   }
 }

@@ -17,6 +17,10 @@ import android.widget.AdapterView;
 
 import com.example.spacetrader.BR;
 import com.example.spacetrader.R;
+import com.example.spacetrader.entities.planet.Planet;
+import com.example.spacetrader.entities.planet.Universe;
+
+import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 @Entity
 @InverseBindingMethods({
@@ -44,16 +48,13 @@ public class Player extends BaseObservable {
         Instead keys are stored for them and the repository class
         handles building up the object from the disconnected data
         in different tables
-
-        @Ignore
-        private Ship gameShip;
-        @Ignore
-        private Planet currentPlanet;
-
-     */
-    /*
-        encapsulated objects keys
     */
+    @Embedded
+    private Inventory inventory;
+    @Embedded
+    private Planet planet;
+    @Embedded
+    private Universe universe;
 
     //errors
     @Ignore
@@ -64,7 +65,7 @@ public class Player extends BaseObservable {
     @Ignore
     Integer selectedDifficultyPosition = 0;
 
-    public Player(long playerId, String name, int pilotPoints, int fighterPoints, int traderPoints, int engineerPoints, GameDifficulty difficulty, int credits,  int shipId, int planetId) {
+    public Player(long playerId, String name, int pilotPoints, int fighterPoints, int traderPoints, int engineerPoints, GameDifficulty difficulty, int credits, Inventory inventory, Planet planet, Universe universe) {
         this.playerId = playerId;
         this.name = name;
         this.pilotPoints = pilotPoints;
@@ -73,10 +74,16 @@ public class Player extends BaseObservable {
         this.engineerPoints = engineerPoints;
         this.difficulty = difficulty;
         this.credits = credits;
+        this.inventory = inventory;
+        this.planet = planet;
+        this.universe = universe;
     }
 
+    @Ignore
     public Player() {
-
+        inventory = new Inventory(10);
+        universe = new Universe();
+        planet = universe.pickRandomPlanet();
     }
 
     public long getPlayerId() {
@@ -162,6 +169,30 @@ public class Player extends BaseObservable {
 
     public void setCredits(int credits) {
         this.credits = credits;
+    }
+
+    public Universe getUniverse() {
+        return universe;
+    }
+
+    public void setUniverse(Universe universe) {
+        this.universe = universe;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
+
+    public Planet getPlanet() {
+        return planet;
+    }
+
+    public void setPlanet(Planet planet) {
+        this.planet = planet;
     }
 
     @Bindable

@@ -1,22 +1,16 @@
 {
   "formatVersion": 1,
   "database": {
-    "version": 2,
-    "identityHash": "6ba8223a6c20df8977bd857b2298f1aa",
+    "version": 8,
+    "identityHash": "3e30031cdbb9c925bef0381863b3a56f",
     "entities": [
       {
         "tableName": "Player",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`playerId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `planetId` INTEGER NOT NULL, `name` TEXT, `pilotPoints` INTEGER NOT NULL, `fighterPoints` INTEGER NOT NULL, `traderPoints` INTEGER NOT NULL, `engineerPoints` INTEGER NOT NULL, `difficulty` INTEGER, `credits` INTEGER NOT NULL, `inventoryId` INTEGER, `inventoryMap` TEXT, `capacity` INTEGER, `count` INTEGER)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`playerId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `pilotPoints` INTEGER NOT NULL, `fighterPoints` INTEGER NOT NULL, `traderPoints` INTEGER NOT NULL, `engineerPoints` INTEGER NOT NULL, `difficulty` INTEGER, `credits` INTEGER NOT NULL, `inventoryId` INTEGER, `inventoryMap` TEXT, `capacity` INTEGER, `count` INTEGER, `planetId` INTEGER, `planetName` TEXT, `xLoc` INTEGER, `yLoc` INTEGER, `techLevel` INTEGER, `resourceType` INTEGER, `universeId` INTEGER, `planets` TEXT)",
         "fields": [
           {
             "fieldPath": "playerId",
             "columnName": "playerId",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "planetId",
-            "columnName": "planetId",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -63,27 +57,75 @@
             "notNull": true
           },
           {
-            "fieldPath": "gameShip.inventory.inventoryId",
+            "fieldPath": "inventory.inventoryId",
             "columnName": "inventoryId",
             "affinity": "INTEGER",
             "notNull": false
           },
           {
-            "fieldPath": "gameShip.inventory.inventoryMap",
+            "fieldPath": "inventory.inventoryMap",
             "columnName": "inventoryMap",
             "affinity": "TEXT",
             "notNull": false
           },
           {
-            "fieldPath": "gameShip.inventory.capacity",
+            "fieldPath": "inventory.capacity",
             "columnName": "capacity",
             "affinity": "INTEGER",
             "notNull": false
           },
           {
-            "fieldPath": "gameShip.inventory.count",
+            "fieldPath": "inventory.count",
             "columnName": "count",
             "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "planet.planetId",
+            "columnName": "planetId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "planet.planetName",
+            "columnName": "planetName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "planet.xLoc",
+            "columnName": "xLoc",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "planet.yLoc",
+            "columnName": "yLoc",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "planet.techLevel",
+            "columnName": "techLevel",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "planet.resourceType",
+            "columnName": "resourceType",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "universe.universeId",
+            "columnName": "universeId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "universe.planets",
+            "columnName": "planets",
+            "affinity": "TEXT",
             "notNull": false
           }
         ],
@@ -98,17 +140,11 @@
       },
       {
         "tableName": "Planet",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`planetId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `playerId` INTEGER NOT NULL, `planetName` TEXT, `xLoc` INTEGER NOT NULL, `yLoc` INTEGER NOT NULL, `techLevel` INTEGER, `resourceType` INTEGER, FOREIGN KEY(`playerId`) REFERENCES `Player`(`playerId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`planetId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `planetName` TEXT, `xLoc` INTEGER NOT NULL, `yLoc` INTEGER NOT NULL, `techLevel` INTEGER, `resourceType` INTEGER)",
         "fields": [
           {
             "fieldPath": "planetId",
             "columnName": "planetId",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "playerId",
-            "columnName": "playerId",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -150,54 +186,6 @@
           "autoGenerate": true
         },
         "indices": [],
-        "foreignKeys": [
-          {
-            "table": "Player",
-            "onDelete": "CASCADE",
-            "onUpdate": "NO ACTION",
-            "columns": [
-              "playerId"
-            ],
-            "referencedColumns": [
-              "playerId"
-            ]
-          }
-        ]
-      },
-      {
-        "tableName": "Ship",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`inventoryId` INTEGER, `inventoryMap` TEXT, `capacity` INTEGER, `count` INTEGER)",
-        "fields": [
-          {
-            "fieldPath": "inventory.inventoryId",
-            "columnName": "inventoryId",
-            "affinity": "INTEGER",
-            "notNull": false
-          },
-          {
-            "fieldPath": "inventory.inventoryMap",
-            "columnName": "inventoryMap",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "inventory.capacity",
-            "columnName": "capacity",
-            "affinity": "INTEGER",
-            "notNull": false
-          },
-          {
-            "fieldPath": "inventory.count",
-            "columnName": "count",
-            "affinity": "INTEGER",
-            "notNull": false
-          }
-        ],
-        "primaryKey": {
-          "columnNames": [],
-          "autoGenerate": false
-        },
-        "indices": [],
         "foreignKeys": []
       },
       {
@@ -237,11 +225,37 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "tableName": "Universe",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`universeId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `planets` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "universeId",
+            "columnName": "universeId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "planets",
+            "columnName": "planets",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "universeId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"6ba8223a6c20df8977bd857b2298f1aa\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"3e30031cdbb9c925bef0381863b3a56f\")"
     ]
   }
 }

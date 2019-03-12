@@ -11,9 +11,9 @@ import com.example.spacetrader.dataaccess.typeconverters.TypeConverterClass;
 import com.example.spacetrader.entities.Inventory;
 import com.example.spacetrader.entities.Player;
 import com.example.spacetrader.entities.planet.Planet;
-import com.example.spacetrader.entities.ship.Ship;
+import com.example.spacetrader.entities.planet.Universe;
 
-@Database(entities = {Player.class, Planet.class, Ship.class, Inventory.class}, version = 2)
+@Database(entities = {Player.class, Planet.class, Inventory.class, Universe.class}, version = 8)
 @TypeConverters({TypeConverterClass.class})
 public abstract class RoomDatabaseObject extends RoomDatabase {
     /*

@@ -1,16 +1,24 @@
-package com.example.spacetrader.entities;
+package com.example.spacetrader.entities.planet;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
+import android.databinding.BaseObservable;
 import android.util.Log;
 
 import com.example.spacetrader.entities.planet.Planet;
 
+import java.security.interfaces.ECPrivateKey;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Universe {
+@Entity
+public class Universe extends BaseObservable {
 
+    @Ignore
     private static final String [] planetNames = {
             "Atlas",
             "Seneca",
@@ -24,16 +32,48 @@ public class Universe {
             "Gratis"
     };
 
-    public static final List<Planet> planets = generatePlanets();
+    @PrimaryKey(autoGenerate = true)
+    private long universeId;
 
+    private List<Planet> planets = generatePlanets();
+
+    @Ignore
     public static final int xRange = 30;
+    @Ignore
     public static final int yRange = 30;
+    @Ignore
     public static final int numPlanets = planetNames.length;
 
+    @Ignore
+    public Universe() {
+        generatePlanets();
+    }
+
+    public Universe(long universeId, List<Planet> planets) {
+        this.universeId = universeId;
+        this.planets = planets;
+    }
+
+    public long getUniverseId() {
+        return universeId;
+    }
+
+    public void setUniverseId(long universeId) {
+        this.universeId = universeId;
+    }
+
+    public List<Planet> getPlanets() {
+        return planets;
+    }
+
+    public void setPlanets(List<Planet> planets) {
+        this.planets = planets;
+    }
+
     /*
-        Generates a unique set of planets
-     */
-    private static List<Planet> generatePlanets() {
+            Generates a unique set of planets
+         */
+    private List<Planet> generatePlanets() {
         Set<Integer> xLocs = new HashSet<Integer>(numPlanets);
         Set<Integer> yLocs = new HashSet<Integer>(numPlanets);
         List<Planet> planets = new ArrayList<>(numPlanets);
@@ -55,5 +95,12 @@ public class Universe {
 
         return planets;
 
+    }
+
+
+    public Planet pickRandomPlanet() {
+        int num = (int) (Math.random() * planets.size());
+
+        return planets.get(num);
     }
 }
