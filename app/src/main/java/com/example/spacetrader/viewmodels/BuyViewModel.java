@@ -4,7 +4,9 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.Observer;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.EditText;
 
@@ -17,7 +19,8 @@ public class BuyViewModel extends AndroidViewModel {
 
     private View.OnFocusChangeListener onPurchaseFocus;
 
-    private LiveData<Player> player;
+    private MutableLiveData<Player> player;
+    private LiveData<Player> data;
 
     private MutableLiveData<Player> purchaseButtonClick = new MutableLiveData<>();
 
@@ -27,19 +30,12 @@ public class BuyViewModel extends AndroidViewModel {
         playerRepository = new PlayerRepository(application.getApplicationContext());
     }
 
-    public void init(String playerId) {
+    public void init(long playerId) {
         //initialize player object
         //encapsulation does not work by default
         //everything needs to be pulled from the database
-        player = playerRepository.getPlayer(playerId);
-        onPurchaseFocus = new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean focused) {
-                if (!focused) {
-                    player.getValue().isValidConfiguration(true);
-                }
-            }
-        };
+        player = new MutableLiveData<Player>();
+        data = playerRepository.getPlayer(playerId);
     }
 
     public MutableLiveData<Player> getPurchaseButtonClick() {
@@ -52,7 +48,14 @@ public class BuyViewModel extends AndroidViewModel {
 
     public void onPurchaseButtonClick() {
         //click event
+    }
 
+    public MutableLiveData<Player> getPlayer() {
+        return player;
+    }
+
+    public LiveData<Player> getLiveData() {
+        return data;
     }
 
 }

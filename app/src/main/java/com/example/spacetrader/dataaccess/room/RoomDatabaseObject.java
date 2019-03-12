@@ -34,6 +34,7 @@ public abstract class RoomDatabaseObject extends RoomDatabase {
                     instance = Room.databaseBuilder(context.getApplicationContext(),
                             RoomDatabaseObject.class, NAME)
                             .fallbackToDestructiveMigration()
+                            .allowMainThreadQueries()
                             .build();
                 }
             }

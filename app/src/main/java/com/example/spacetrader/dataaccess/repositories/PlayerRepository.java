@@ -1,6 +1,7 @@
 package com.example.spacetrader.dataaccess.repositories;
 
 import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
 import android.content.Context;
 import android.os.AsyncTask;
 
@@ -17,6 +18,7 @@ public class PlayerRepository {
 
     private RoomDatabaseObject roomDatabase;
     private PlayerDao playerDao;
+    private long playerId;
 
     /*
         Dependency injection
@@ -33,23 +35,16 @@ public class PlayerRepository {
     //todo implement player cache
     //private PlayerCache playerCache;
 
-    public LiveData<Player> getPlayer(final String playerName) {
-        LiveData<Player> data = playerDao.findByName(playerName);
-
+    public LiveData<Player> getPlayer(final long playerId) {
+        LiveData<Player> data = playerDao.findByPlayerId(playerId);
         return data;
     }
 
-    public void insertPlayer(final Player player) {
+    public long insertPlayer(final Player player) {
         //implement thread safety
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... voids) {
-                playerDao.insert(player);
-                return null;
-            }
-        }.execute();
-
+        return playerDao.insert(player);
     }
+
 
 
 }

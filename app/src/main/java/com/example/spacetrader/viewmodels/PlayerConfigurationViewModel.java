@@ -13,7 +13,6 @@ import android.widget.Spinner;
 
 import com.example.spacetrader.dataaccess.repositories.PlayerRepository;
 import com.example.spacetrader.entities.Player;
-import com.example.spacetrader.entities.planet.Universe;
 
 @InverseBindingMethods({
         @InverseBindingMethod(type = Spinner.class, attribute = "android:selectedItemPosition"),
@@ -63,9 +62,9 @@ public class PlayerConfigurationViewModel extends AndroidViewModel {
 
     public void onSubmitButtonClick(){
         if (player.isValid()) {
+            long value = playerRepository.insertPlayer(player);
+            player.setPlayerId(value);
             submitButtonClick.setValue(player);
-
-            playerRepository.insertPlayer(player);
         }
     }
 

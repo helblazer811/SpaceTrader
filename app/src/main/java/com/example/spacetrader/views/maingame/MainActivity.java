@@ -40,10 +40,9 @@ public class MainActivity extends AppCompatActivity {
         SampleFragmentPagerAdapter adapter =
                 new SampleFragmentPagerAdapter(getSupportFragmentManager());
 
-        String playerId = getIntent().getExtras().getString("playerId");
-
+        long playerId = getIntent().getExtras().getLong("playerId");
         Bundle bundle = new Bundle();
-        bundle.putString("playerId", playerId);
+        bundle.putLong("playerId", playerId);
 
         adapter.addFragment(new MapFragment(), "Map");
 

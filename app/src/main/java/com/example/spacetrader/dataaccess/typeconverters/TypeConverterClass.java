@@ -82,7 +82,7 @@ public class TypeConverterClass {
 
     @TypeConverter
     public static List<Planet> fromPlanetString(String value) {
-        Type mapType = new TypeToken<HashMap<TradeGood, Integer>>() {
+        Type mapType = new TypeToken<List<Planet>>() {
         }.getType();
         return new Gson().fromJson(value, mapType);
     }

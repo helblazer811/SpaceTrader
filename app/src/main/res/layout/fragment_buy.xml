@@ -94,7 +94,7 @@
 
                     <TextView
                         android:padding="4dip"
-                        android:text="double" />
+                        android:text="@{viewmodel.player.name}" />
 
                     <TextView
                         android:padding="4dip"

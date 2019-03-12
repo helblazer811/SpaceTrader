@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Layout;
 import android.view.LayoutInflater;
@@ -36,14 +37,24 @@ public class BuyFragment extends Fragment {
         viewModel = ViewModelProviders.of(this).get(BuyViewModel.class);
 
         if (savedInstanceState == null) {
-            String playerId = this.getArguments().getString("playerId");
-            System.out.println(playerId);
+            long playerId = this.getArguments().getLong("playerId");
             viewModel.init(playerId);
         }
 
         binding.setViewmodel(viewModel);
 
         setupPurchaseButton(parent);
+
+        viewModel.getLiveData().observe(this, new Observer<Player>() {
+            @Override
+            public void onChanged(@Nullable Player player) {
+                System.out.println("==================");
+                System.out.println(player);
+                viewModel.getPlayer().setValue(player);
+            }
+        });
+
+        binding.setLifecycleOwner(this);
 
         return view;
     }
