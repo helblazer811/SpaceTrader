@@ -257,11 +257,21 @@ public class Player extends BaseObservable {
     public void applyPurchase(Purchase purchase) {
         inventory.applyPurchase(purchase);
         credits -= purchase.getPurchaseAmount();
+        for (TradeGood good: planet.getPlanetInventory().keySet()) {
+            planet.getPlanetInventory().put(good,
+                    planet.getPlanetInventory().get(good)
+                            - purchase.getAmounts().get(good));
+        }
     }
 
     public void applySale(Sale sale) {
         inventory.applySale(sale);
         credits += sale.getSaleAmount();
+        for (TradeGood good: planet.getPlanetInventory().keySet()) {
+            planet.getPlanetInventory().put(good,
+                    planet.getPlanetInventory().get(good)
+                            + sale.getSaleAmounts().get(good));
+        }
     }
 
 }

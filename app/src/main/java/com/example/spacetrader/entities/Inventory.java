@@ -98,6 +98,7 @@ public class Inventory extends BaseObservable {
         for (TradeGood good: purchase.getAmounts().keySet()) {
             inventoryMap.put(good, inventoryMap.get(good) + purchase.getAmounts().get(good));
             count += purchase.getAmounts().get(good);
+
         }
     }
 

@@ -55,16 +55,16 @@ public class Planet {
         planetInventory = new HashMap<>();
         planetPrices = new HashMap<>();
 
-        planetInventory.put(TradeGood.WATER,0);
-        planetInventory.put(TradeGood.FURS,0);
-        planetInventory.put(TradeGood.FOOD,0);
-        planetInventory.put(TradeGood.ORE,0);
-        planetInventory.put(TradeGood.GAMES,0);
-        planetInventory.put(TradeGood.FIREARMS,0);
-        planetInventory.put(TradeGood.MEDICINE,0);
-        planetInventory.put(TradeGood.MACHINES,0);
-        planetInventory.put(TradeGood.NARCOTICS,0);
-        planetInventory.put(TradeGood.ROBOTS,0);
+        planetInventory.put(TradeGood.WATER,(int) (Math.random() * 20));
+        planetInventory.put(TradeGood.FURS,(int) (Math.random() * 20));
+        planetInventory.put(TradeGood.FOOD,(int) (Math.random() * 20));
+        planetInventory.put(TradeGood.ORE,(int) (Math.random() * 20));
+        planetInventory.put(TradeGood.GAMES,(int) (Math.random() * 20));
+        planetInventory.put(TradeGood.FIREARMS,(int) (Math.random() * 20));
+        planetInventory.put(TradeGood.MEDICINE,(int) (Math.random() * 20));
+        planetInventory.put(TradeGood.MACHINES,(int) (Math.random() * 20));
+        planetInventory.put(TradeGood.NARCOTICS,(int) (Math.random() * 20));
+        planetInventory.put(TradeGood.ROBOTS,(int) (Math.random() * 20));
 
         calculatePrices();
 

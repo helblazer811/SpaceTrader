@@ -12,6 +12,7 @@ public class Purchase extends BaseObservable {
 
     private HashMap<TradeGood, Integer> amounts;
     private HashMap<TradeGood, Double> prices;
+    private HashMap<TradeGood, Integer> marketAvailability;
 
     private int availableSpace;
     private double availableCredits;
@@ -68,9 +69,19 @@ public class Purchase extends BaseObservable {
     @Bindable
     public boolean isValidPurchase() {
         notifyPropertyChanged(BR.validPurchase);
+
+        boolean lessThanAvailable = true;
+
+        if (marketAvailability == null)
+            return false;
+
+        for (TradeGood good: marketAvailability.keySet()) {
+            lessThanAvailable = lessThanAvailable && (amounts.get(good) <= marketAvailability.get(good));
+        }
+
         return getPurchaseAmount() <= availableCredits
                 && getPurchaseCount() <= availableSpace
-                && getPurchaseCount()!=0;
+                && getPurchaseCount()!=0 && lessThanAvailable;
     }
 
     public HashMap<TradeGood, Integer> getAmounts() {
@@ -102,6 +113,18 @@ public class Purchase extends BaseObservable {
     }
 
     public void setAvailableCredits(int availableCredits) {
+        this.availableCredits = availableCredits;
+    }
+
+    public HashMap<TradeGood, Integer> getMarketAvailability() {
+        return marketAvailability;
+    }
+
+    public void setMarketAvailability(HashMap<TradeGood, Integer> marketAvailability) {
+        this.marketAvailability = marketAvailability;
+    }
+
+    public void setAvailableCredits(double availableCredits) {
         this.availableCredits = availableCredits;
     }
 }

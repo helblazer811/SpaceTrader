@@ -46,6 +46,7 @@ public class BuyViewModel extends AndroidViewModel {
             public void onChanged(@Nullable Player data) {
                 player.setValue(data);
                 Purchase purchase_obj = new Purchase(data.getAvailableInventorySpace(), data.getCredits());
+                purchase_obj.setMarketAvailability(data.getPlanet().getPlanetInventory());
                 purchase_obj.setPrices(player.getValue().getPlanet().getPlanetPrices());
                 purchase.setValue(purchase_obj);
             }
