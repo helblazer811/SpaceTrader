@@ -1,12 +1,12 @@
 {
   "formatVersion": 1,
   "database": {
-    "version": 8,
-    "identityHash": "8bed967c7fbf627d80533b1fd4011b20",
+    "version": 9,
+    "identityHash": "beafe6ec99bbcce945f3ac359820b8fc",
     "entities": [
       {
         "tableName": "Player",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`playerId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `pilotPoints` INTEGER NOT NULL, `fighterPoints` INTEGER NOT NULL, `traderPoints` INTEGER NOT NULL, `engineerPoints` INTEGER NOT NULL, `difficulty` INTEGER, `credits` INTEGER NOT NULL, `inventoryId` INTEGER, `inventoryMap` TEXT, `capacity` INTEGER, `count` INTEGER, `planetId` INTEGER, `planetName` TEXT, `xLoc` INTEGER, `yLoc` INTEGER, `techLevel` INTEGER, `resourceType` INTEGER, `planetInventory` TEXT, `planetPrices` TEXT, `universeId` INTEGER, `planets` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`playerId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `pilotPoints` INTEGER NOT NULL, `fighterPoints` INTEGER NOT NULL, `traderPoints` INTEGER NOT NULL, `engineerPoints` INTEGER NOT NULL, `difficulty` INTEGER, `credits` REAL NOT NULL, `inventoryId` INTEGER, `inventoryMap` TEXT, `capacity` INTEGER, `count` INTEGER, `planetId` INTEGER, `planetName` TEXT, `xLoc` INTEGER, `yLoc` INTEGER, `techLevel` INTEGER, `resourceType` INTEGER, `planetInventory` TEXT, `planetPrices` TEXT, `universeId` INTEGER, `planets` TEXT)",
         "fields": [
           {
             "fieldPath": "playerId",
@@ -53,7 +53,7 @@
           {
             "fieldPath": "credits",
             "columnName": "credits",
-            "affinity": "INTEGER",
+            "affinity": "REAL",
             "notNull": true
           },
           {
@@ -279,7 +279,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"8bed967c7fbf627d80533b1fd4011b20\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"beafe6ec99bbcce945f3ac359820b8fc\")"
     ]
   }
 }

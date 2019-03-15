@@ -50,7 +50,10 @@ public class MainActivity extends AppCompatActivity {
         buyFragment.setArguments(bundle);
         adapter.addFragment(buyFragment, "Buy");
 
-        adapter.addFragment(new SellFragment(), "Sell");
+        SellFragment sellFragment = new SellFragment();
+        sellFragment.setArguments(bundle);
+        adapter.addFragment(sellFragment, "Sell");
+
         adapter.addFragment(new InfoFragment(), "Info");
         viewPager.setAdapter(adapter);
     }

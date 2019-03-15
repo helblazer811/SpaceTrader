@@ -1,6 +1,6 @@
 package com.example.spacetrader.entities.tradegoods;
 
-public enum TradeGood {
+ public enum TradeGood {
     WATER(0,0,0,2,30,3.0,4.0,IncreaseEvent.DROUGHT, DecreaseEvent.LOTSOFWATER, ExpensiveEvent.DESERT, 30, 50),
     FURS(1,0,0,0,250,10.0,10.0,IncreaseEvent.COLD, DecreaseEvent.RICHFAUNA,ExpensiveEvent.LIFELESS, 230, 280),
     FOOD(2,1,0,1,100,5.0,5.0,IncreaseEvent.CROPFAIL, DecreaseEvent.RICHSOIL, ExpensiveEvent.POORSOIL, 90, 160),
@@ -12,18 +12,18 @@ public enum TradeGood {
     NARCOTICS(8,5,0,5,3500,-125.0,150.0,IncreaseEvent.BOREDOM, DecreaseEvent.WEIRDMUSHROOMS, null, 2000, 3000),
     ROBOTS(9,6,4,7,5000,-150.0,100.0,IncreaseEvent.LACKOFWORKERS,null,null,3500,5000);
 
-    private Integer code;
-    private Integer minTechLevelProduce;
-    private Integer minTechLevelUse;
-    private Integer techLevelMost;
-    private Integer increacePerTechLevel;
-    private Double basePrice;
-    private Double variance;
-    private IncreaseEvent ie;
-    private DecreaseEvent de;
-    private ExpensiveEvent ee;
-    private Integer minPriceTrader;
-    private Integer maxPriceTrader;
+    public Integer code;
+    public Integer minTechLevelProduce;
+    public Integer minTechLevelUse;
+    public Integer techLevelMost;
+    public Integer increacePerTechLevel;
+    public Double basePrice;
+    public Double variance;
+    public IncreaseEvent ie;
+    public DecreaseEvent de;
+    public ExpensiveEvent ee;
+    public Integer minPriceTrader;
+    public Integer maxPriceTrader;
 
     TradeGood(Integer code, Integer minTechLevelProduce, Integer minTechLevelUse, Integer techLevelMost, Integer increacePerTechLevel, Double basePrice, Double variance, IncreaseEvent ie, DecreaseEvent de, ExpensiveEvent ee, Integer minPriceTrader, Integer maxPriceTrader) {
         this.code = code;
@@ -40,7 +40,7 @@ public enum TradeGood {
         this.maxPriceTrader = maxPriceTrader;
     }
 
-    public Integer getCode() {
+     public Integer getCode() {
         return code;
     }
 }

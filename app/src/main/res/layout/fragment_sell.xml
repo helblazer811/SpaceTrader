@@ -5,12 +5,11 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.example.spacetrader.viewmodels.BuyViewModel"/>
+            type="com.example.spacetrader.viewmodels.SellViewModel"/>
+        <import type="com.example.spacetrader.entities.tradegoods.TradeGood"/>
     </data>
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -35,11 +34,11 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/marketSellHeader"
+                android:id="@+id/marketBuyHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_marginTop="4dp"
-                android:text="@string/marketSellHeader"
+                android:text="@string/marketBuyHeader"
                 android:textSize="40sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.373"
@@ -47,11 +46,15 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TableLayout
+                android:id="@+id/tableLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="580dp"
+                android:layout_marginBottom="21dp"
                 android:padding="20dip"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="54dp">
+                app:layout_constraintBottom_toTopOf="@+id/buyButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/marketBuyHeader">
 
                 <TableRow>
 
@@ -79,20 +82,23 @@
                         android:text="@string/water" />
 
                     <TextView
-                        android:padding="2dip"
-                        android:text="double" />
+                        android:padding="4dip"
+                        android:text='@{String.valueOf(viewmodel.player.planet.planetPrices[TradeGood.WATER])}' />
 
                     <TextView
                         android:padding="2dip"
-                        android:text="int" />
+                        android:text="@{String.valueOf(viewmodel.player.planet.planetInventory[TradeGood.WATER])}" />
 
                     <TextView
                         android:padding="2dip"
-                        android:text="int" />
+                        android:text="@{String.valueOf(viewmodel.player.inventory.inventoryMap[TradeGood.WATER])}" />
 
                     <EditText
                         android:ems="5"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:hint="0"
+                        android:text="@={``+viewmodel.sale.saleAmounts[TradeGood.WATER]}"
+                        app:onFocus="@{viewmodel.getSaleFocus()}"/>
                 </TableRow>
 
                 <TableRow>
@@ -103,19 +109,22 @@
 
                     <TextView
                         android:padding="2dip"
-                        android:text="double" />
+                        android:text="@{String.valueOf(viewmodel.player.planet.planetPrices[TradeGood.FURS])}" />
 
                     <TextView
                         android:padding="2dip"
-                        android:text="int" />
+                        android:text="@{String.valueOf(viewmodel.player.planet.planetInventory[TradeGood.FURS])}" />
 
                     <TextView
                         android:padding="2dip"
-                        android:text="int" />
+                        android:text="@{String.valueOf(viewmodel.player.inventory.inventoryMap[TradeGood.FURS])}" />
 
                     <EditText
                         android:ems="5"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:hint="0"
+                        android:text="@={``+viewmodel.sale.saleAmounts[TradeGood.FURS]}"
+                        app:onFocus="@{viewmodel.getSaleFocus()}"/>
                 </TableRow>
 
                 <TableRow>
@@ -126,19 +135,22 @@
 
                     <TextView
                         android:padding="2dip"
-                        android:text="double" />
+                        android:text="@{String.valueOf(viewmodel.player.planet.planetPrices[TradeGood.FOOD])}" />
 
                     <TextView
                         android:padding="2dip"
-                        android:text="int" />
+                        android:text="@{String.valueOf(viewmodel.player.planet.planetInventory[TradeGood.FOOD])}" />
 
                     <TextView
                         android:padding="2dip"
-                        android:text="int" />
+                        android:text="@{String.valueOf(viewmodel.player.inventory.inventoryMap[TradeGood.FOOD])}" />
 
                     <EditText
                         android:ems="5"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:hint="0"
+                        android:text="@={``+viewmodel.sale.saleAmounts[TradeGood.FOOD]}"
+                        app:onFocus="@{viewmodel.getSaleFocus()}"/>
                 </TableRow>
 
                 <TableRow>
@@ -149,19 +161,22 @@
 
                     <TextView
                         android:padding="2dip"
-                        android:text="double" />
+                        android:text="@{String.valueOf(viewmodel.player.planet.planetPrices[TradeGood.ORE])}" />
 
                     <TextView
                         android:padding="2dip"
-                        android:text="int" />
+                        android:text="@{String.valueOf(viewmodel.player.planet.planetInventory[TradeGood.ORE])}" />
 
                     <TextView
                         android:padding="2dip"
-                        android:text="int" />
+                        android:text="@{String.valueOf(viewmodel.player.inventory.inventoryMap[TradeGood.ORE])}" />
 
                     <EditText
                         android:ems="5"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:hint="0"
+                        android:text="@={``+viewmodel.sale.saleAmounts[TradeGood.ORE]}"
+                        app:onFocus="@{viewmodel.getSaleFocus()}"/>
                 </TableRow>
 
                 <TableRow>
@@ -172,19 +187,22 @@
 
                     <TextView
                         android:padding="2dip"
-                        android:text="double" />
+                        android:text="@{String.valueOf(viewmodel.player.planet.planetPrices[TradeGood.GAMES])}" />
 
                     <TextView
                         android:padding="2dip"
-                        android:text="int" />
+                        android:text="@{String.valueOf(viewmodel.player.planet.planetInventory[TradeGood.GAMES])}" />
 
                     <TextView
                         android:padding="2dip"
-                        android:text="int" />
+                        android:text="@{String.valueOf(viewmodel.player.inventory.inventoryMap[TradeGood.GAMES])}" />
 
                     <EditText
                         android:ems="5"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:hint="0"
+                        android:text="@={``+viewmodel.sale.saleAmounts[TradeGood.GAMES]}"
+                        app:onFocus="@{viewmodel.getSaleFocus()}"/>
                 </TableRow>
 
                 <TableRow>
@@ -195,19 +213,22 @@
 
                     <TextView
                         android:padding="2dip"
-                        android:text="double" />
+                        android:text="@{String.valueOf(viewmodel.player.planet.planetPrices[TradeGood.FIREARMS])}" />
 
                     <TextView
                         android:padding="2dip"
-                        android:text="int" />
+                        android:text="@{String.valueOf(viewmodel.player.planet.planetInventory[TradeGood.FIREARMS])}" />
 
                     <TextView
                         android:padding="2dip"
-                        android:text="int" />
+                        android:text="@{String.valueOf(viewmodel.player.inventory.inventoryMap[TradeGood.FIREARMS])}" />
 
                     <EditText
                         android:ems="5"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:hint="0"
+                        android:text="@={``+viewmodel.sale.saleAmounts[TradeGood.FIREARMS]}"
+                        app:onFocus="@{viewmodel.getSaleFocus()}"/>
                 </TableRow>
 
                 <TableRow>
@@ -218,19 +239,22 @@
 
                     <TextView
                         android:padding="2dip"
-                        android:text="double" />
+                        android:text="@{String.valueOf(viewmodel.player.planet.planetPrices[TradeGood.MEDICINE])}" />
 
                     <TextView
                         android:padding="2dip"
-                        android:text="int" />
+                        android:text="@{String.valueOf(viewmodel.player.planet.planetInventory[TradeGood.MEDICINE])}" />
 
                     <TextView
                         android:padding="2dip"
-                        android:text="int" />
+                        android:text="@{String.valueOf(viewmodel.player.inventory.inventoryMap[TradeGood.MEDICINE])}" />
 
                     <EditText
                         android:ems="5"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:hint="0"
+                        android:text="@={``+viewmodel.sale.saleAmounts[TradeGood.MEDICINE]}"
+                        app:onFocus="@{viewmodel.getSaleFocus()}"/>
                 </TableRow>
 
                 <TableRow>
@@ -241,19 +265,22 @@
 
                     <TextView
                         android:padding="2dip"
-                        android:text="double" />
+                        android:text="@{String.valueOf(viewmodel.player.planet.planetPrices[TradeGood.MACHINES])}" />
 
                     <TextView
                         android:padding="2dip"
-                        android:text="int" />
+                        android:text="@{String.valueOf(viewmodel.player.planet.planetInventory[TradeGood.MACHINES])}" />
 
                     <TextView
                         android:padding="2dip"
-                        android:text="int" />
+                        android:text="@{String.valueOf(viewmodel.player.inventory.inventoryMap[TradeGood.MACHINES])}" />
 
                     <EditText
                         android:ems="5"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:hint="0"
+                        android:text="@={``+viewmodel.sale.saleAmounts[TradeGood.MACHINES]}"
+                        app:onFocus="@{viewmodel.getSaleFocus()}"/>
                 </TableRow>
 
                 <TableRow>
@@ -264,19 +291,22 @@
 
                     <TextView
                         android:padding="2dip"
-                        android:text="double" />
+                        android:text="@{String.valueOf(viewmodel.player.planet.planetPrices[TradeGood.NARCOTICS])}" />
 
                     <TextView
                         android:padding="2dip"
-                        android:text="int" />
+                        android:text="@{String.valueOf(viewmodel.player.planet.planetInventory[TradeGood.NARCOTICS])}" />
 
                     <TextView
                         android:padding="2dip"
-                        android:text="int" />
+                        android:text="@{String.valueOf(viewmodel.player.inventory.inventoryMap[TradeGood.NARCOTICS])}" />
 
                     <EditText
                         android:ems="5"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:hint="0"
+                        android:text="@={``+viewmodel.sale.saleAmounts[TradeGood.NARCOTICS]}"
+                        app:onFocus="@{viewmodel.getSaleFocus()}"/>
                 </TableRow>
 
                 <TableRow>
@@ -287,19 +317,22 @@
 
                     <TextView
                         android:padding="2dip"
-                        android:text="double" />
+                        android:text="@{String.valueOf(viewmodel.player.planet.planetPrices[TradeGood.ROBOTS])}" />
 
                     <TextView
                         android:padding="2dip"
-                        android:text="int" />
+                        android:text="@{String.valueOf(viewmodel.player.planet.planetInventory[TradeGood.ROBOTS])}" />
 
                     <TextView
                         android:padding="2dip"
-                        android:text="int" />
+                        android:text="@{String.valueOf(viewmodel.player.inventory.inventoryMap[TradeGood.ROBOTS])}" />
 
                     <EditText
                         android:ems="5"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:hint="0"
+                        android:text="@={``+viewmodel.sale.saleAmounts[TradeGood.ROBOTS]}"
+                        app:onFocus="@{viewmodel.getSaleFocus()}"/>
                 </TableRow>
 
                 <TableRow>
@@ -308,7 +341,9 @@
                         android:paddingRight="10dip"
                         android:text="@string/cargo" />
 
-                    <TextView android:text="int/int" />
+                    <TextView
+                        android:padding="4dip"
+                        android:text='@{String.format("%d/%d", viewmodel.player.inventory.count,viewmodel.player.inventory.capacity)}' />
 
                     <TextView
                         android:padding="4dip"
@@ -329,7 +364,7 @@
                         android:paddingRight="10dip"
                         android:text="@string/creditsAval" />
 
-                    <TextView android:text="double" />
+                    <TextView android:text="@{String.valueOf(viewmodel.player.credits)}" />
 
                     <TextView
                         android:padding="4dip"
@@ -341,19 +376,26 @@
 
                     <TextView
                         android:padding="4dip"
-                        android:text="double" />
+                        android:text="" />
                 </TableRow>
 
             </TableLayout>
 
             <Button
-                android:id="@+id/marketSell"
+                android:id="@+id/buyButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="607dp"
                 android:text="@string/marketSell"
                 android:textSize="20sp"
-                tools:layout_editor_absoluteX="161dp"
-                tools:layout_editor_absoluteY="607dp" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/tableLayout2"
+                app:layout_constraintTop_toTopOf="parent"
+                android:onClick="@{() -> viewmodel.onSaleButtonClick()}"
+                android:enabled="@{viewmodel.sale.validSale}"/>
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

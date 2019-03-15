@@ -5,13 +5,12 @@ import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.databinding.BaseObservable;
+import android.databinding.Bindable;
 
+import com.example.spacetrader.BR;
 import com.example.spacetrader.entities.tradegoods.TradeGood;
 
 import java.util.HashMap;
-
-import static android.arch.persistence.room.ForeignKey.CASCADE;
-
 
 @Entity
 public class Inventory extends BaseObservable {
@@ -58,10 +57,13 @@ public class Inventory extends BaseObservable {
     }
 
     public HashMap<TradeGood, Integer> getInventoryMap() {
+        notifyPropertyChanged(BR.validPurchase);
         return inventoryMap;
     }
 
     public void setInventoryMap(HashMap<TradeGood, Integer> inventoryMap) {
+
+        notifyPropertyChanged(BR.validPurchase);
         this.inventoryMap = inventoryMap;
     }
 
@@ -70,6 +72,7 @@ public class Inventory extends BaseObservable {
     }
 
     public void setCapacity(int capacity) {
+        notifyPropertyChanged(BR.validPurchase);
         this.capacity = capacity;
     }
 
@@ -78,6 +81,7 @@ public class Inventory extends BaseObservable {
     }
 
     public void setCount(int count) {
+        notifyPropertyChanged(BR.validPurchase);
         this.count = count;
     }
 
@@ -88,4 +92,22 @@ public class Inventory extends BaseObservable {
     public void setInventoryId(long inventoryId) {
         this.inventoryId = inventoryId;
     }
+
+    public void applyPurchase(Purchase purchase) {
+        notifyPropertyChanged(BR.validPurchase);
+        for (TradeGood good: purchase.getAmounts().keySet()) {
+            inventoryMap.put(good, inventoryMap.get(good) + purchase.getAmounts().get(good));
+            count += purchase.getAmounts().get(good);
+        }
+    }
+
+    public void applySale(Sale sale) {
+        notifyPropertyChanged(BR.validPurchase);
+        for (TradeGood good: sale.getSaleAmounts().keySet()) {
+            inventoryMap.put(good, inventoryMap.get(good) - sale.getSaleAmounts().get(good));
+            count -= sale.getSaleAmounts().get(good);
+        }
+    }
+
+
 }

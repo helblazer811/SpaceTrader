@@ -81,6 +81,19 @@ public class TypeConverterClass {
     }
 
     @TypeConverter
+    public static HashMap<TradeGood, Double> doubleMapString(String value) {
+        Type mapType = new TypeToken<HashMap<TradeGood, Double>>() {
+        }.getType();
+        return new Gson().fromJson(value, mapType);
+    }
+
+    @TypeConverter
+    public static String doubleMapStringMap(HashMap<TradeGood, Double> map) {
+        Gson gson = new Gson();
+        return gson.toJson(map);
+    }
+
+    @TypeConverter
     public static List<Planet> fromPlanetString(String value) {
         Type mapType = new TypeToken<List<Planet>>() {
         }.getType();

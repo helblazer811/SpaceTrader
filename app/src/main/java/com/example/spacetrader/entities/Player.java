@@ -19,6 +19,9 @@ import com.example.spacetrader.BR;
 import com.example.spacetrader.R;
 import com.example.spacetrader.entities.planet.Planet;
 import com.example.spacetrader.entities.planet.Universe;
+import com.example.spacetrader.entities.tradegoods.TradeGood;
+
+import java.util.HashMap;
 
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
@@ -40,7 +43,7 @@ public class Player extends BaseObservable {
 
     private GameDifficulty difficulty;
 
-    private int credits;
+    private double credits;
 
     /*
         Encapsulated objects.
@@ -65,7 +68,7 @@ public class Player extends BaseObservable {
     @Ignore
     Integer selectedDifficultyPosition = 0;
 
-    public Player(long playerId, String name, int pilotPoints, int fighterPoints, int traderPoints, int engineerPoints, GameDifficulty difficulty, int credits, Inventory inventory, Planet planet, Universe universe) {
+    public Player(long playerId, String name, int pilotPoints, int fighterPoints, int traderPoints, int engineerPoints, GameDifficulty difficulty, double credits, Inventory inventory, Planet planet, Universe universe) {
         this.playerId = playerId;
         this.name = name;
         this.pilotPoints = pilotPoints;
@@ -84,6 +87,7 @@ public class Player extends BaseObservable {
         inventory = new Inventory(10);
         universe = new Universe();
         planet = universe.pickRandomPlanet();
+        credits = 1000;
     }
 
     public long getPlayerId() {
@@ -163,11 +167,13 @@ public class Player extends BaseObservable {
         difficulty = GameDifficulty.values()[selectedDifficultyPosition];
     }
 
-    public int getCredits() {
+    public double getCredits() {
         return credits;
     }
 
-    public void setCredits(int credits) {
+    public void setCredits(double credits)
+    {
+        notifyPropertyChanged(BR.validPurchase);
         this.credits = credits;
     }
 
@@ -184,6 +190,8 @@ public class Player extends BaseObservable {
     }
 
     public void setInventory(Inventory inventory) {
+
+        notifyPropertyChanged(BR.validPurchase);
         this.inventory = inventory;
     }
 
@@ -225,6 +233,10 @@ public class Player extends BaseObservable {
         }
     }
 
+    public void changeCredits(Double amount) {
+        credits += amount;
+    }
+
     @Override
     public String toString() {
         return "Player{" +
@@ -236,6 +248,20 @@ public class Player extends BaseObservable {
                 ", name='" + name + '\'' +
                 ", credits=" + credits +
                 '}';
+    }
+
+    public int getAvailableInventorySpace() {
+        return inventory.getCapacity() - inventory.getCount();
+    }
+
+    public void applyPurchase(Purchase purchase) {
+        inventory.applyPurchase(purchase);
+        credits -= purchase.getPurchaseAmount();
+    }
+
+    public void applySale(Sale sale) {
+        inventory.applySale(sale);
+        credits += sale.getSaleAmount();
     }
 
 }

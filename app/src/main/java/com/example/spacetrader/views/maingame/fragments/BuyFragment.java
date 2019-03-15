@@ -17,6 +17,7 @@ import com.example.spacetrader.R;
 import com.example.spacetrader.dataaccess.repositories.PlayerRepository;
 import com.example.spacetrader.databinding.FragmentBuyBinding;
 import com.example.spacetrader.entities.Player;
+import com.example.spacetrader.entities.Purchase;
 import com.example.spacetrader.viewmodels.BuyViewModel;
 import com.example.spacetrader.viewmodels.PlayerConfigurationViewModel;
 import com.example.spacetrader.views.PlayerConfigurationActivity;
@@ -26,7 +27,7 @@ public class BuyFragment extends Fragment {
 
     private BuyViewModel viewModel;
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater,final ViewGroup parent, Bundle savedInstanceState) {
         // Defines the xml file for the fragment
         //setup data binding here
         FragmentBuyBinding binding =
@@ -38,21 +39,12 @@ public class BuyFragment extends Fragment {
 
         if (savedInstanceState == null) {
             long playerId = this.getArguments().getLong("playerId");
-            viewModel.init(playerId);
+            viewModel.init(playerId, this);
         }
 
         binding.setViewmodel(viewModel);
 
         setupPurchaseButton(parent);
-
-        viewModel.getLiveData().observe(this, new Observer<Player>() {
-            @Override
-            public void onChanged(@Nullable Player player) {
-                System.out.println("==================");
-                System.out.println(player);
-                viewModel.getPlayer().setValue(player);
-            }
-        });
 
         binding.setLifecycleOwner(this);
 

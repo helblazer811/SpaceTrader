@@ -1,33 +1,59 @@
 package com.example.spacetrader.views.maingame.fragments;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.spacetrader.R;
+import com.example.spacetrader.databinding.FragmentBuyBinding;
+import com.example.spacetrader.databinding.FragmentSellBinding;
+import com.example.spacetrader.entities.Player;
+import com.example.spacetrader.viewmodels.BuyViewModel;
+import com.example.spacetrader.viewmodels.SellViewModel;
 
 public class SellFragment extends Fragment {
 
+    private SellViewModel viewModel;
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater,final ViewGroup parent, Bundle savedInstanceState) {
         // Defines the xml file for the fragment
-        return inflater.inflate(R.layout.fragment_sell, parent, false);
+        //setup data binding here
+        FragmentSellBinding binding =
+                DataBindingUtil.inflate(inflater, R.layout.fragment_sell, parent, false);
+
+        View view = binding.getRoot();
+
+        viewModel = ViewModelProviders.of(this).get(SellViewModel.class);
+
+        if (savedInstanceState == null) {
+            long playerId = this.getArguments().getLong("playerId");
+            viewModel.init(playerId, this);
+        }
+
+        binding.setViewmodel(viewModel);
+
+        setupSaleButton(parent);
+
+        binding.setLifecycleOwner(this);
+
+        return view;
     }
 
-    // This event is triggered soon after onCreateView().
-    // Any view setup should occur here.  E.g., view lookups and attaching view listeners.
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        // Setup any handles to view objects here
-        // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
-
-    }
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    private void setupSaleButton(final ViewGroup parent) {
+        viewModel.getSaleButtonClick().observe(this, new Observer<Player>() {
+            @Override
+            public void onChanged(Player playerModel) {
+                Toast.makeText(parent.getContext(),
+                        playerModel.toString(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 
