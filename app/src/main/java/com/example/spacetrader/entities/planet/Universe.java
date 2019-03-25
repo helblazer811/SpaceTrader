@@ -1,19 +1,16 @@
 package com.example.spacetrader.entities.planet;
 
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.ForeignKey;
-import android.arch.persistence.room.Ignore;
-import android.arch.persistence.room.PrimaryKey;
-import android.databinding.BaseObservable;
 import android.util.Log;
 
-import com.example.spacetrader.entities.planet.Planet;
-
-import java.security.interfaces.ECPrivateKey;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import androidx.databinding.BaseObservable;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
 @Entity
 public class Universe extends BaseObservable {

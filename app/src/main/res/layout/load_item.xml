@@ -6,8 +6,9 @@
             type="com.example.spacetrader.entities.Player"/>
     </data>
     <Button
+        android:id="@+id/load_item_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@{player.name}">
+        android:text='@{player.playerId + "    " + player.name}'>
     </Button>
 </layout>

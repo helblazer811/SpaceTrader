@@ -5,7 +5,7 @@
             name="viewmodel"
             type="com.example.spacetrader.viewmodels.load.LoadViewModel"/>
     </data>
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -59,5 +59,5 @@
             </LinearLayout>
         </ScrollView>
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

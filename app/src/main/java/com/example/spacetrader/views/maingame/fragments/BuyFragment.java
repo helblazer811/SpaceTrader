@@ -1,13 +1,6 @@
 package com.example.spacetrader.views.maingame.fragments;
 
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +12,11 @@ import com.example.spacetrader.databinding.FragmentBuyBinding;
 import com.example.spacetrader.entities.Player;
 import com.example.spacetrader.entities.Purchase;
 import com.example.spacetrader.viewmodels.BuyViewModel;
-import com.example.spacetrader.viewmodels.PlayerConfigurationViewModel;
-import com.example.spacetrader.views.PlayerConfigurationActivity;
-import com.example.spacetrader.views.maingame.MainActivity;
+
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 public class BuyFragment extends Fragment {
 
