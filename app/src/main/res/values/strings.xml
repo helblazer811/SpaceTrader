@@ -28,6 +28,25 @@
     <string name="narcotics">Narcotics</string>
     <string name="robots">Robots</string>
 
+    <!--PLANET INFO-->
+    <string name="playerInfo">Player Information</string>
+    <string name="planetInfo">Planet Information</string>
+    <string name="planetName">Planet Name</string>
+    <string name="size">Size</string>
+    <string name="techLevel">Tech Level</string>
+    <string name="government">Government</string>
+    <string name="resource">Resource</string>
+    <string name="police">Police</string>
+    <string name="pirates">Pirates</string>
+    <string name="distance">Distance</string>
+
+    <!--Player info (credits and cargo used above already)-->
+    <string name="playerFuel">Fuel Left</string>
+    <string name="shipHealth">Ship Health</string>
+    <string name="playerLocation">Player Location</string>
+
+
+
 
 
 </resources>
