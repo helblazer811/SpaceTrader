@@ -1,6 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.spacetrader.viewmodels.BuyViewModel"/>
+        <import type="com.example.spacetrader.entities.tradegoods.TradeGood"/>
+    </data>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TableLayout
+                android:id="@+id/tableLayout1"
+                android:layout_width="336dp"
+                android:layout_height="219dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="59dp"
+                android:padding="20dip"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/playerInfo"
+                tools:layout_editor_absoluteY="362dp">
+
+                <TableRow>
+
+                    <TextView
+                        android:paddingRight="50dip"
+                        android:text="@string/creditsAval" />
+
+                    <TextView android:text="@{String.valueOf(viewmodel.player.credits)}" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:padding="2dip"
+                        android:text="@string/cargo" />
+
+                    <TextView
+                        android:padding="4dip"
+                        android:text='@{String.format("%d/%d", viewmodel.player.inventory.count,viewmodel.player.inventory.capacity)}' />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:padding="2dip"
+                        android:text="@string/playerFuel" />
+
+                    <TextView
+                        android:padding="4dip"
+                        android:text='' />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:padding="2dip"
+                        android:text="@string/shipHealth" />
+
+                    <TextView
+                        android:padding="4dip"
+                        android:text='' />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:padding="2dip"
+                        android:text="@string/playerLocation" />
+
+                    <TextView
+                        android:padding="4dip"
+                        android:text='' />
+                </TableRow>
+
+
+            </TableLayout>
+
+            <TextView
+                android:id="@+id/playerInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginTop="300dp"
+                android:text="@string/playerInfo"
+                android:textSize="40sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.493"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="70dp" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/info"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/planetInfo"
+                android:textSize="40sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.468"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TableLayout
+                android:id="@+id/tableLayout2"
+                android:layout_width="336dp"
+                android:layout_height="219dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="59dp"
+                android:padding="20dip"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/info">
+
+                <TableRow>
+
+                    <TextView
+                        android:paddingRight="50dip"
+                        android:text="@string/planetName" />
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:padding="2dip"
+                        android:text="@string/size" />
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:padding="2dip"
+                        android:text="@string/techLevel" />
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:padding="2dip"
+                        android:text="@string/government" />
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:padding="2dip"
+                        android:text="@string/resource" />
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:padding="2dip"
+                        android:text="@string/police" />
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:padding="2dip"
+                        android:text="@string/pirates" />
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:padding="2dip"
+                        android:text="@string/distance" />
+
+                </TableRow>
+
+
+            </TableLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</layout>
