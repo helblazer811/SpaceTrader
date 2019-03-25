@@ -39,7 +39,6 @@ public class LoadActivity extends AppCompatActivity {
         players.observe(this, new Observer<List<Player>>() {
             @Override
             public void onChanged(List<Player> players) {
-                System.out.println(players.get(0));
                 ListView listView = findViewById(R.id.load_list);
                 Intent myIntent = new Intent(
                         LoadActivity.this,

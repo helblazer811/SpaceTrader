@@ -5,8 +5,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.example.spacetrader.viewmodels.BuyViewModel"/>
-        <import type="com.example.spacetrader.entities.tradegoods.TradeGood"/>
+            type="com.example.spacetrader.viewmodels.InfoViewModel"/>
     </data>
 
     <ScrollView

@@ -14,7 +14,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
-@Database(entities = {Player.class, Planet.class, Inventory.class, Universe.class}, version = 10)
+@Database(entities = {Player.class, Planet.class, Inventory.class, Universe.class}, version = 1)
 @TypeConverters({TypeConverterClass.class})
 public abstract class RoomDatabaseObject extends RoomDatabase {
     /*

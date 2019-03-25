@@ -9,6 +9,8 @@ import com.example.spacetrader.views.maingame.fragments.MapFragment;
 import com.example.spacetrader.views.maingame.fragments.SellFragment;
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.Map;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
@@ -45,7 +47,9 @@ public class MainActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putLong("playerId", playerId);
 
-        adapter.addFragment(new MapFragment(), "Map");
+        MapFragment mapFragment = new MapFragment();
+        mapFragment.setArguments(bundle);
+        adapter.addFragment(mapFragment, "Map");
 
         BuyFragment buyFragment = new BuyFragment();
         buyFragment.setArguments(bundle);
@@ -55,7 +59,10 @@ public class MainActivity extends AppCompatActivity {
         sellFragment.setArguments(bundle);
         adapter.addFragment(sellFragment, "Sell");
 
-        adapter.addFragment(new InfoFragment(), "Info");
+        InfoFragment infoFragment = new InfoFragment();
+        infoFragment.setArguments(bundle);
+        adapter.addFragment(infoFragment, "Info");
+
         viewPager.setAdapter(adapter);
     }
 }

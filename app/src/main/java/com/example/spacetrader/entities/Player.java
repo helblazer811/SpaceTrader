@@ -50,6 +50,8 @@ public class Player extends BaseObservable {
     private Planet planet;
     @Embedded
     private Universe universe;
+    @Embedded
+    private Ship ship;
 
     //errors
     @Ignore
@@ -60,7 +62,7 @@ public class Player extends BaseObservable {
     @Ignore
     Integer selectedDifficultyPosition = 0;
 
-    public Player(long playerId, String name, int pilotPoints, int fighterPoints, int traderPoints, int engineerPoints, GameDifficulty difficulty, double credits, Inventory inventory, Planet planet, Universe universe) {
+    public Player(long playerId, String name, int pilotPoints, int fighterPoints, int traderPoints, int engineerPoints, GameDifficulty difficulty, double credits, Inventory inventory, Planet planet, Universe universe, Ship ship) {
         this.playerId = playerId;
         this.name = name;
         this.pilotPoints = pilotPoints;
@@ -72,6 +74,7 @@ public class Player extends BaseObservable {
         this.inventory = inventory;
         this.planet = planet;
         this.universe = universe;
+        this.ship = ship;
     }
 
     @Ignore
@@ -193,6 +196,14 @@ public class Player extends BaseObservable {
 
     public void setPlanet(Planet planet) {
         this.planet = planet;
+    }
+
+    public Ship getShip() {
+        return ship;
+    }
+
+    public void setShip(Ship ship) {
+        this.ship = ship;
     }
 
     @Bindable
