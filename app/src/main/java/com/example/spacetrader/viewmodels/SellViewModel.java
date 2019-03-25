@@ -4,9 +4,8 @@ import android.app.Application;
 import android.view.View;
 
 import com.example.spacetrader.dataaccess.repositories.PlayerRepository;
-import com.example.spacetrader.entities.Inventory;
 import com.example.spacetrader.entities.Player;
-import com.example.spacetrader.entities.Sale;
+import com.example.spacetrader.entities.tradegoods.Sale;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

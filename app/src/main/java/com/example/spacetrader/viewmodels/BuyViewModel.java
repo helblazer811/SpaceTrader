@@ -2,12 +2,10 @@ package com.example.spacetrader.viewmodels;
 
 import android.app.Application;
 import android.view.View;
-import android.widget.EditText;
 
 import com.example.spacetrader.dataaccess.repositories.PlayerRepository;
-import com.example.spacetrader.entities.Inventory;
 import com.example.spacetrader.entities.Player;
-import com.example.spacetrader.entities.Purchase;
+import com.example.spacetrader.entities.tradegoods.Purchase;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

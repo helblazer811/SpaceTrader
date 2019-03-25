@@ -4,6 +4,10 @@ import com.example.spacetrader.BR;
 import com.example.spacetrader.R;
 import com.example.spacetrader.entities.planet.Planet;
 import com.example.spacetrader.entities.planet.Universe;
+import com.example.spacetrader.entities.ship.Ship;
+import com.example.spacetrader.entities.ship.ShipType;
+import com.example.spacetrader.entities.tradegoods.Purchase;
+import com.example.spacetrader.entities.tradegoods.Sale;
 import com.example.spacetrader.entities.tradegoods.TradeGood;
 
 import androidx.appcompat.widget.AppCompatSpinner;
@@ -81,6 +85,7 @@ public class Player extends BaseObservable {
     public Player() {
         inventory = new Inventory(10);
         universe = new Universe();
+        ship = new Ship(ShipType.FIREFLY);
         planet = universe.pickRandomPlanet();
         credits = 1000;
     }

@@ -7,10 +7,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.spacetrader.R;
-import com.example.spacetrader.dataaccess.repositories.PlayerRepository;
 import com.example.spacetrader.databinding.FragmentBuyBinding;
 import com.example.spacetrader.entities.Player;
-import com.example.spacetrader.entities.Purchase;
 import com.example.spacetrader.viewmodels.BuyViewModel;
 
 import androidx.databinding.DataBindingUtil;

@@ -1,4 +1,4 @@
-package com.example.spacetrader.entities;
+package com.example.spacetrader.entities.tradegoods;
 
 
 import com.example.spacetrader.BR;

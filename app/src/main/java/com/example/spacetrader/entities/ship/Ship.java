@@ -1,6 +1,7 @@
-package com.example.spacetrader.entities;
+package com.example.spacetrader.entities.ship;
 
 import androidx.databinding.BaseObservable;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 public class Ship extends BaseObservable {
@@ -21,6 +22,15 @@ public class Ship extends BaseObservable {
         this.shipMaxHealth = shipMaxHealth;
         this.fuel = fuel;
         this.maxFuel = maxFuel;
+    }
+
+    @Ignore
+    public Ship(ShipType type) {
+        this.cargoLimit = type.cargoLimit;
+        this.shipHealth = type.shipHealth;
+        this.shipMaxHealth = type.shipMaxHealth;
+        this.fuel = type.fuel;
+        this.maxFuel = type.maxFuel;
     }
 
     public long getShipId() {

@@ -56,7 +56,7 @@
 
                     <TextView
                         android:padding="4dip"
-                        android:text='' />
+                        android:text='@{String.format("%d/%d", viewmodel.player.ship.fuel,viewmodel.player.ship.maxFuel)}' />
                 </TableRow>
 
                 <TableRow>
@@ -67,7 +67,7 @@
 
                     <TextView
                         android:padding="4dip"
-                        android:text='' />
+                        android:text='@{String.format("%d/%d", viewmodel.player.ship.shipHealth,viewmodel.player.ship.shipMaxHealth)}' />
                 </TableRow>
 
                 <TableRow>
@@ -78,7 +78,7 @@
 
                     <TextView
                         android:padding="4dip"
-                        android:text='' />
+                        android:text='@{viewmodel.player.planet.planetName}' />
                 </TableRow>
 
 
@@ -140,14 +140,9 @@
                     <TextView
                         android:paddingRight="50dip"
                         android:text="@string/planetName" />
-
-                </TableRow>
-
-                <TableRow>
-
                     <TextView
-                        android:padding="2dip"
-                        android:text="@string/size" />
+                        android:padding="4dip"
+                        android:text='@{viewmodel.player.planet.planetName}' />
 
                 </TableRow>
 
@@ -156,14 +151,9 @@
                     <TextView
                         android:padding="2dip"
                         android:text="@string/techLevel" />
-
-                </TableRow>
-
-                <TableRow>
-
                     <TextView
-                        android:padding="2dip"
-                        android:text="@string/government" />
+                        android:padding="4dip"
+                        android:text='@{viewmodel.player.planet.techLevel.toString()}' />
 
                 </TableRow>
 
@@ -172,6 +162,10 @@
                     <TextView
                         android:padding="2dip"
                         android:text="@string/resource" />
+
+                    <TextView
+                        android:padding="4dip"
+                        android:text='@{viewmodel.player.planet.resourceType.toString()}' />
 
                 </TableRow>
 
@@ -190,15 +184,6 @@
                         android:text="@string/pirates" />
 
                 </TableRow>
-
-                <TableRow>
-
-                    <TextView
-                        android:padding="2dip"
-                        android:text="@string/distance" />
-
-                </TableRow>
-
 
             </TableLayout>
 

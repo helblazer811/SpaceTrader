@@ -2,6 +2,8 @@ package com.example.spacetrader.entities;
 
 
 import com.example.spacetrader.BR;
+import com.example.spacetrader.entities.tradegoods.Purchase;
+import com.example.spacetrader.entities.tradegoods.Sale;
 import com.example.spacetrader.entities.tradegoods.TradeGood;
 
 import java.util.HashMap;
