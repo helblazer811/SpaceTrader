@@ -1,29 +1,21 @@
 package com.example.spacetrader.entities;
 
-import android.arch.persistence.room.Embedded;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.ForeignKey;
-import android.arch.persistence.room.Ignore;
-import android.arch.persistence.room.PrimaryKey;
-import android.databinding.BaseObservable;
-import android.databinding.Bindable;
-import android.databinding.InverseBindingMethod;
-import android.databinding.InverseBindingMethods;
-import android.databinding.ObservableField;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.AppCompatSpinner;
-import android.view.View;
-import android.widget.AdapterView;
-
 import com.example.spacetrader.BR;
 import com.example.spacetrader.R;
 import com.example.spacetrader.entities.planet.Planet;
 import com.example.spacetrader.entities.planet.Universe;
 import com.example.spacetrader.entities.tradegoods.TradeGood;
 
-import java.util.HashMap;
-
-import static android.arch.persistence.room.ForeignKey.CASCADE;
+import androidx.appcompat.widget.AppCompatSpinner;
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
+import androidx.databinding.InverseBindingMethod;
+import androidx.databinding.InverseBindingMethods;
+import androidx.databinding.ObservableField;
+import androidx.room.Embedded;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
 @Entity
 @InverseBindingMethods({

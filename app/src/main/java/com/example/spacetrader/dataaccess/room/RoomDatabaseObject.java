@@ -1,9 +1,5 @@
 package com.example.spacetrader.dataaccess.room;
 
-import android.arch.persistence.room.Database;
-import android.arch.persistence.room.Room;
-import android.arch.persistence.room.RoomDatabase;
-import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 
 import com.example.spacetrader.dataaccess.daos.PlayerDao;
@@ -12,6 +8,11 @@ import com.example.spacetrader.entities.Inventory;
 import com.example.spacetrader.entities.Player;
 import com.example.spacetrader.entities.planet.Planet;
 import com.example.spacetrader.entities.planet.Universe;
+
+import androidx.room.Database;
+import androidx.room.Room;
+import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 
 @Database(entities = {Player.class, Planet.class, Inventory.class, Universe.class}, version = 10)
 @TypeConverters({TypeConverterClass.class})

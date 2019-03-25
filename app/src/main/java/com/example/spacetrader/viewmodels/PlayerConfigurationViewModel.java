@@ -1,18 +1,19 @@
 package com.example.spacetrader.viewmodels;
 
 import android.app.Application;
-import android.arch.lifecycle.AndroidViewModel;
-import android.arch.lifecycle.MutableLiveData;
-import android.databinding.BindingAdapter;
-import android.databinding.InverseBindingMethod;
-import android.databinding.InverseBindingMethods;
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.spacetrader.dataaccess.repositories.PlayerRepository;
 import com.example.spacetrader.entities.Player;
+
+import androidx.annotation.NonNull;
+import androidx.databinding.BindingAdapter;
+import androidx.databinding.InverseBindingMethod;
+import androidx.databinding.InverseBindingMethods;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.MutableLiveData;
 
 @InverseBindingMethods({
         @InverseBindingMethod(type = Spinner.class, attribute = "android:selectedItemPosition"),

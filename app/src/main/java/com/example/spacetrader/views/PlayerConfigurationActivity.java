@@ -1,12 +1,7 @@
 package com.example.spacetrader.views;
 
-import android.arch.lifecycle.ViewModelProviders;
-import android.arch.lifecycle.Observer;
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatSpinner;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,6 +13,12 @@ import com.example.spacetrader.entities.GameDifficulty;
 import com.example.spacetrader.entities.Player;
 import com.example.spacetrader.viewmodels.PlayerConfigurationViewModel;
 import com.example.spacetrader.views.maingame.MainActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatSpinner;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 
 public class PlayerConfigurationActivity extends AppCompatActivity {

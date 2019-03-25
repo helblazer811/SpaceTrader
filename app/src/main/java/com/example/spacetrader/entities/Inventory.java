@@ -1,16 +1,15 @@
 package com.example.spacetrader.entities;
 
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.ForeignKey;
-import android.arch.persistence.room.Ignore;
-import android.arch.persistence.room.PrimaryKey;
-import android.databinding.BaseObservable;
-import android.databinding.Bindable;
 
 import com.example.spacetrader.BR;
 import com.example.spacetrader.entities.tradegoods.TradeGood;
 
 import java.util.HashMap;
+
+import androidx.databinding.BaseObservable;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
 @Entity
 public class Inventory extends BaseObservable {

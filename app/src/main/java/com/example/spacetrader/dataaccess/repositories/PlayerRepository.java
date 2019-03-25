@@ -1,15 +1,13 @@
 package com.example.spacetrader.dataaccess.repositories;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
 import android.content.Context;
-import android.os.AsyncTask;
-
 import com.example.spacetrader.dataaccess.daos.PlayerDao;
 import com.example.spacetrader.dataaccess.room.RoomDatabaseObject;
 import com.example.spacetrader.entities.Player;
 
-import java.util.concurrent.Executor;
+import java.util.List;
+
+import androidx.lifecycle.LiveData;
 
 /*
 the single interface to interact with player objects
@@ -43,6 +41,10 @@ public class PlayerRepository {
     public long insertPlayer(final Player player) {
         //implement thread safety
         return playerDao.insert(player);
+    }
+
+    public LiveData<List<Player>> getAllPlayers() {
+        return playerDao.getAllPlayers();
     }
 
 

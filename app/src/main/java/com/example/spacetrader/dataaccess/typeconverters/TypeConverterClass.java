@@ -1,7 +1,5 @@
 package com.example.spacetrader.dataaccess.typeconverters;
 
-import android.arch.persistence.room.TypeConverter;
-import android.arch.persistence.room.TypeConverters;
 import android.media.Image;
 
 import com.example.spacetrader.entities.GameDifficulty;
@@ -16,6 +14,8 @@ import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import androidx.room.TypeConverter;
 
 public class TypeConverterClass {
     //todo refactor this to be generic

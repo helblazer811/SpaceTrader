@@ -1,12 +1,13 @@
 package com.example.spacetrader.entities;
 
-import android.databinding.BaseObservable;
-import android.databinding.Bindable;
 
 import com.example.spacetrader.BR;
 import com.example.spacetrader.entities.tradegoods.TradeGood;
 
 import java.util.HashMap;
+
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
 
 public class Sale extends BaseObservable {
     private HashMap<TradeGood, Integer> saleAmounts;
