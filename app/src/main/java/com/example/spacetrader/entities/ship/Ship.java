@@ -1,5 +1,7 @@
 package com.example.spacetrader.entities.ship;
 
+import com.example.spacetrader.entities.planet.Planet;
+
 import androidx.databinding.BaseObservable;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;

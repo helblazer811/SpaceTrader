@@ -39,4 +39,5 @@ public class LoadViewModel extends AndroidViewModel {
     public LiveData<List<Player>> getPlayers() {
         return players;
     }
+
 }

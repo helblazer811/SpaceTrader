@@ -35,9 +35,9 @@ public class Universe extends BaseObservable {
     private List<Planet> planets = generatePlanets();
 
     @Ignore
-    public static final int xRange = 30;
+    public static final int xRange = 300;
     @Ignore
-    public static final int yRange = 30;
+    public static final int yRange = 300;
     @Ignore
     public static final int numPlanets = planetNames.length;
 

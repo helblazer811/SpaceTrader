@@ -10,6 +10,9 @@ import com.example.spacetrader.entities.tradegoods.Purchase;
 import com.example.spacetrader.entities.tradegoods.Sale;
 import com.example.spacetrader.entities.tradegoods.TradeGood;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
@@ -280,6 +283,45 @@ public class Player extends BaseObservable {
                     planet.getPlanetInventory().get(good)
                             + sale.getSaleAmounts().get(good));
         }
+    }
+
+    public boolean isPlanetWithinRange(Planet planet) {
+        //fuel is in the units of distance
+        return calculateDistance(planet, this.planet) < ship.getFuel();
+    }
+
+    public void travelToPlanet(Planet planet) {
+        //subtracts fuel
+        ship.setFuel(ship.getFuel() - calculateDistance(this.planet, planet));
+        //change player location
+        this.planet = planet;
+    }
+
+    private int calculateDistance(Planet a, Planet b) {
+        //simple pythagorean theorem
+        return (int) Math.ceil(
+                    Math.sqrt(
+                        Math.pow(a.getXLoc() - b.getXLoc(), 2)
+                        + Math.pow(a.getYLoc() - b.getYLoc(), 2)
+                        )
+                );
+
+    }
+
+    public int getDistance(Planet planet) {
+        return calculateDistance(planet, this.planet);
+    }
+
+    public List<Planet> getPlanetsWithinRange() {
+        List<Planet> list = new ArrayList<>();
+
+        for (Planet planet: universe.getPlanets()) {
+            if (isPlanetWithinRange(planet)) {
+                list.add(planet);
+            }
+        }
+
+        return list;
     }
 
 }

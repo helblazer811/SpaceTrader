@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="planet"
+            type="com.example.spacetrader.entities.planet.Planet"/>
+        <variable
+            name="distance"
+            type="Integer"/>
+    </data>
+    <Button
+        android:id="@+id/travel_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text='@{planet.planetName + "    " + distance }'>
+    </Button>
+</layout>
