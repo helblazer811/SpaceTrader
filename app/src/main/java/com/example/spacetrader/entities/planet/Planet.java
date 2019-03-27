@@ -50,21 +50,8 @@ public class Planet {
         this.techLevel = TechLevel.values()[(int)(Math.random() * TechLevel.numLevels)];
         this.resourceType = ResourceType.values()[(int)(Math.random() * ResourceType.numTypes)];
 
-        planetInventory = new HashMap<>();
-        planetPrices = new HashMap<>();
-
-        planetInventory.put(TradeGood.WATER,(int) (Math.random() * 20));
-        planetInventory.put(TradeGood.FURS,(int) (Math.random() * 20));
-        planetInventory.put(TradeGood.FOOD,(int) (Math.random() * 20));
-        planetInventory.put(TradeGood.ORE,(int) (Math.random() * 20));
-        planetInventory.put(TradeGood.GAMES,(int) (Math.random() * 20));
-        planetInventory.put(TradeGood.FIREARMS,(int) (Math.random() * 20));
-        planetInventory.put(TradeGood.MEDICINE,(int) (Math.random() * 20));
-        planetInventory.put(TradeGood.MACHINES,(int) (Math.random() * 20));
-        planetInventory.put(TradeGood.NARCOTICS,(int) (Math.random() * 20));
-        planetInventory.put(TradeGood.ROBOTS,(int) (Math.random() * 20));
-
-        calculatePrices();
+        planetPrices = calculatePrices();
+        planetInventory = calculateAmounts();
 
         Log.i("Planet Information: ", this.toString());
     }
@@ -149,7 +136,8 @@ public class Planet {
         this.planetPrices = planetPrices;
     }
 
-    private void calculatePrices() {
+    private HashMap<TradeGood, Double> calculatePrices() {
+        HashMap<TradeGood, Double> planetPrices = new HashMap<>();
 
         planetPrices.put(TradeGood.WATER,getPriceFromGood(TradeGood.WATER));
         planetPrices.put(TradeGood.FURS,getPriceFromGood(TradeGood.FURS));
@@ -161,10 +149,37 @@ public class Planet {
         planetPrices.put(TradeGood.MACHINES,getPriceFromGood(TradeGood.MACHINES));
         planetPrices.put(TradeGood.NARCOTICS,getPriceFromGood(TradeGood.NARCOTICS));
         planetPrices.put(TradeGood.ROBOTS,getPriceFromGood(TradeGood.ROBOTS));
+
+        return planetPrices;
+    }
+
+    private HashMap<TradeGood, Integer> calculateAmounts() {
+        HashMap<TradeGood, Integer> planetInventory = new HashMap<>();
+
+        planetInventory.put(TradeGood.WATER, calculateAmount(TradeGood.WATER));
+        planetInventory.put(TradeGood.FURS,calculateAmount(TradeGood.FURS));
+        planetInventory.put(TradeGood.FOOD,calculateAmount(TradeGood.FOOD));
+        planetInventory.put(TradeGood.ORE,calculateAmount(TradeGood.ORE));
+        planetInventory.put(TradeGood.GAMES,calculateAmount(TradeGood.GAMES));
+        planetInventory.put(TradeGood.FIREARMS,calculateAmount(TradeGood.FIREARMS));
+        planetInventory.put(TradeGood.MEDICINE,calculateAmount(TradeGood.MEDICINE));
+        planetInventory.put(TradeGood.MACHINES,calculateAmount(TradeGood.MACHINES));
+        planetInventory.put(TradeGood.NARCOTICS,calculateAmount(TradeGood.NARCOTICS));
+        planetInventory.put(TradeGood.ROBOTS,calculateAmount(TradeGood.ROBOTS));
+
+        return planetInventory;
+    }
+
+    private int calculateAmount(TradeGood good) {
+        if (good.minTechLevelProduce > techLevel.getCode())
+            return 0;
+        return (int) (Math.random() * 20);
     }
 
     private double getPriceFromGood(TradeGood good) {
-        return good.basePrice + (good.increacePerTechLevel * (good.techLevelMost - good.minTechLevelProduce)) + good.variance;
+        if (good.minTechLevelProduce > techLevel.getCode())
+            return 0.0;
+        return good.basePrice + (good.increacePerTechLevel * (techLevel.getCode() - good.minTechLevelProduce)) + good.variance;
     }
 
     @Override

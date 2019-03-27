@@ -49,11 +49,6 @@ public class MapFragment extends Fragment {
             public void onChanged(Player player) {
                 ListView listView = getView().findViewById(R.id.planet_list);
                 List<Planet> planets = viewModel.getTravelablePlanets().getValue();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println(planets.size());
                 listView.setAdapter(new MapAdapter(owner, planets, player, viewModel));
             }
         });
