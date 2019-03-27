@@ -12,18 +12,14 @@ import com.example.spacetrader.R;
 import com.example.spacetrader.databinding.FragmentMapBinding;
 import com.example.spacetrader.entities.Player;
 import com.example.spacetrader.entities.planet.Planet;
-import com.example.spacetrader.viewmodels.load.LoadAdapter;
 import com.example.spacetrader.viewmodels.travel.MapAdapter;
 import com.example.spacetrader.viewmodels.travel.MapViewModel;
-import com.example.spacetrader.views.LoadActivity;
-import com.example.spacetrader.views.maingame.MainActivity;
 
 import java.util.List;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -53,6 +49,11 @@ public class MapFragment extends Fragment {
             public void onChanged(Player player) {
                 ListView listView = getView().findViewById(R.id.planet_list);
                 List<Planet> planets = viewModel.getTravelablePlanets().getValue();
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println(planets.size());
                 listView.setAdapter(new MapAdapter(owner, planets, player, viewModel));
             }
         });
