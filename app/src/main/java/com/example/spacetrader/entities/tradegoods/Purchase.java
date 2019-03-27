@@ -1,7 +1,6 @@
 package com.example.spacetrader.entities.tradegoods;
 
 import com.example.spacetrader.BR;
-import com.example.spacetrader.entities.tradegoods.TradeGood;
 
 import java.util.HashMap;
 
@@ -13,11 +12,13 @@ public class Purchase extends BaseObservable {
     private HashMap<TradeGood, Integer> amounts;
     private HashMap<TradeGood, Double> prices;
     private HashMap<TradeGood, Integer> marketAvailability;
+    private int fuel;
+    private int maxFuel;
 
     private int availableSpace;
     private double availableCredits;
 
-    public Purchase(int availableSpace, double availableCredits) {
+    public Purchase(int availableSpace, double availableCredits, int maxFuel) {
         this.availableSpace = availableSpace;
         this.availableCredits = availableCredits;
         amounts = new HashMap<>();
@@ -45,6 +46,9 @@ public class Purchase extends BaseObservable {
         prices.put(TradeGood.MACHINES,0.0);
         prices.put(TradeGood.NARCOTICS,0.0);
         prices.put(TradeGood.ROBOTS,0.0);
+        System.out.println("Fuel  " + maxFuel);
+        fuel = 0;
+        this.maxFuel = maxFuel;
         
     }
 
@@ -54,7 +58,7 @@ public class Purchase extends BaseObservable {
             total += amounts.get(good) * prices.get(good);
         }
 
-        return total;
+        return total + fuel * 2; // 2 is the price of fuel
     }
 
     public int getPurchaseCount() {
@@ -75,13 +79,16 @@ public class Purchase extends BaseObservable {
         if (marketAvailability == null)
             return false;
 
+        if (fuel > maxFuel)
+            return false;
+
         for (TradeGood good: marketAvailability.keySet()) {
             lessThanAvailable = lessThanAvailable && (amounts.get(good) <= marketAvailability.get(good));
         }
 
         return getPurchaseAmount() <= availableCredits
                 && getPurchaseCount() <= availableSpace
-                && getPurchaseCount()!=0 && lessThanAvailable;
+                && (getPurchaseCount()!=0 || fuel > 0 ) && lessThanAvailable;
     }
 
     public HashMap<TradeGood, Integer> getAmounts() {
@@ -114,6 +121,22 @@ public class Purchase extends BaseObservable {
 
     public void setAvailableCredits(int availableCredits) {
         this.availableCredits = availableCredits;
+    }
+
+    public int getFuel() {
+        return fuel;
+    }
+
+    public void setFuel(int fuel) {
+        this.fuel = fuel;
+    }
+
+    public int getMaxFuel() {
+        return maxFuel;
+    }
+
+    public void setMaxFuel(int maxFuel) {
+        this.maxFuel = maxFuel;
     }
 
     public HashMap<TradeGood, Integer> getMarketAvailability() {

@@ -48,13 +48,58 @@
             <TableLayout
                 android:id="@+id/tableLayout2"
                 android:layout_width="match_parent"
-                android:layout_height="580dp"
+                android:layout_height="633dp"
                 android:layout_marginBottom="21dp"
                 android:padding="20dip"
                 app:layout_constraintBottom_toTopOf="@+id/buyButton"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/marketBuyHeader">
+
+                <TableRow>
+
+                    <TextView
+                        android:paddingRight="50dip"
+                        android:text="Fuel" />
+
+                    <TextView
+                        android:paddingRight="40dip"
+                        android:text="Price" />
+
+                    <TextView
+                        android:paddingRight="20dip"
+                        android:text="Current" />
+
+                    <TextView
+                        android:paddingRight="20dip"
+                        android:text="Max" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:padding="2dip"
+                        android:text="" />
+
+                    <TextView
+                        android:padding="4dip"
+                        android:text='2.0' />
+
+                    <TextView
+                        android:padding="2dip"
+                        android:text="@{String.valueOf(viewmodel.player.ship.fuel)}" />
+
+                    <TextView
+                        android:padding="2dip"
+                        android:text="@{String.valueOf(viewmodel.player.ship.maxFuel)}" />
+
+                    <EditText
+                        android:ems="5"
+                        android:hint="0"
+                        android:inputType="number"
+                        android:text="@={``+viewmodel.purchase.fuel}"
+                        app:onFocus="@{viewmodel.getPurchaseFocus()}" />
+                </TableRow>
 
                 <TableRow>
 
@@ -82,8 +127,8 @@
                         android:text="@string/water" />
 
                     <TextView
-                    android:padding="4dip"
-                    android:text='@{String.valueOf(viewmodel.player.planet.planetPrices[TradeGood.WATER])}' />
+                        android:padding="4dip"
+                        android:text='@{String.valueOf(viewmodel.player.planet.planetPrices[TradeGood.WATER])}' />
 
                     <TextView
                         android:padding="2dip"
@@ -95,10 +140,10 @@
 
                     <EditText
                         android:ems="5"
-                        android:inputType="number"
                         android:hint="0"
+                        android:inputType="number"
                         android:text="@={``+viewmodel.purchase.amounts[TradeGood.WATER]}"
-                        app:onFocus="@{viewmodel.getPurchaseFocus()}"/>
+                        app:onFocus="@{viewmodel.getPurchaseFocus()}" />
                 </TableRow>
 
                 <TableRow>
@@ -121,10 +166,10 @@
 
                     <EditText
                         android:ems="5"
-                        android:inputType="number"
                         android:hint="0"
+                        android:inputType="number"
                         android:text="@={``+viewmodel.purchase.amounts[TradeGood.FURS]}"
-                        app:onFocus="@{viewmodel.getPurchaseFocus()}"/>
+                        app:onFocus="@{viewmodel.getPurchaseFocus()}" />
                 </TableRow>
 
                 <TableRow>
@@ -147,10 +192,10 @@
 
                     <EditText
                         android:ems="5"
-                        android:inputType="number"
                         android:hint="0"
+                        android:inputType="number"
                         android:text="@={``+viewmodel.purchase.amounts[TradeGood.FOOD]}"
-                        app:onFocus="@{viewmodel.getPurchaseFocus()}"/>
+                        app:onFocus="@{viewmodel.getPurchaseFocus()}" />
                 </TableRow>
 
                 <TableRow>
@@ -173,10 +218,10 @@
 
                     <EditText
                         android:ems="5"
-                        android:inputType="number"
                         android:hint="0"
+                        android:inputType="number"
                         android:text="@={``+viewmodel.purchase.amounts[TradeGood.ORE]}"
-                        app:onFocus="@{viewmodel.getPurchaseFocus()}"/>
+                        app:onFocus="@{viewmodel.getPurchaseFocus()}" />
                 </TableRow>
 
                 <TableRow>
@@ -199,10 +244,10 @@
 
                     <EditText
                         android:ems="5"
-                        android:inputType="number"
                         android:hint="0"
+                        android:inputType="number"
                         android:text="@={``+viewmodel.purchase.amounts[TradeGood.GAMES]}"
-                        app:onFocus="@{viewmodel.getPurchaseFocus()}"/>
+                        app:onFocus="@{viewmodel.getPurchaseFocus()}" />
                 </TableRow>
 
                 <TableRow>
@@ -225,10 +270,10 @@
 
                     <EditText
                         android:ems="5"
-                        android:inputType="number"
                         android:hint="0"
+                        android:inputType="number"
                         android:text="@={``+viewmodel.purchase.amounts[TradeGood.FIREARMS]}"
-                        app:onFocus="@{viewmodel.getPurchaseFocus()}"/>
+                        app:onFocus="@{viewmodel.getPurchaseFocus()}" />
                 </TableRow>
 
                 <TableRow>
@@ -251,10 +296,10 @@
 
                     <EditText
                         android:ems="5"
-                        android:inputType="number"
                         android:hint="0"
+                        android:inputType="number"
                         android:text="@={``+viewmodel.purchase.amounts[TradeGood.MEDICINE]}"
-                        app:onFocus="@{viewmodel.getPurchaseFocus()}"/>
+                        app:onFocus="@{viewmodel.getPurchaseFocus()}" />
                 </TableRow>
 
                 <TableRow>
@@ -277,10 +322,10 @@
 
                     <EditText
                         android:ems="5"
-                        android:inputType="number"
                         android:hint="0"
+                        android:inputType="number"
                         android:text="@={``+viewmodel.purchase.amounts[TradeGood.MACHINES]}"
-                        app:onFocus="@{viewmodel.getPurchaseFocus()}"/>
+                        app:onFocus="@{viewmodel.getPurchaseFocus()}" />
                 </TableRow>
 
                 <TableRow>
@@ -303,10 +348,10 @@
 
                     <EditText
                         android:ems="5"
-                        android:inputType="number"
                         android:hint="0"
+                        android:inputType="number"
                         android:text="@={``+viewmodel.purchase.amounts[TradeGood.NARCOTICS]}"
-                        app:onFocus="@{viewmodel.getPurchaseFocus()}"/>
+                        app:onFocus="@{viewmodel.getPurchaseFocus()}" />
                 </TableRow>
 
                 <TableRow>
@@ -329,10 +374,10 @@
 
                     <EditText
                         android:ems="5"
-                        android:inputType="number"
                         android:hint="0"
+                        android:inputType="number"
                         android:text="@={``+viewmodel.purchase.amounts[TradeGood.ROBOTS]}"
-                        app:onFocus="@{viewmodel.getPurchaseFocus()}"/>
+                        app:onFocus="@{viewmodel.getPurchaseFocus()}" />
                 </TableRow>
 
                 <TableRow>
@@ -387,6 +432,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
                 android:layout_marginTop="607dp"
+                android:enabled="@{viewmodel.purchase.validPurchase}"
+                android:onClick="@{() -> viewmodel.onPurchaseButtonClick()}"
                 android:text="@string/marketBuy"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -394,8 +441,7 @@
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/tableLayout2"
                 app:layout_constraintTop_toTopOf="parent"
-                android:onClick="@{() -> viewmodel.onPurchaseButtonClick()}"
-                android:enabled="@{viewmodel.purchase.validPurchase}"/>
+                app:layout_constraintVertical_bias="1.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

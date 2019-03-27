@@ -179,7 +179,8 @@ public class Planet {
     private double getPriceFromGood(TradeGood good) {
         if (good.minTechLevelProduce > techLevel.getCode())
             return 0.0;
-        return good.basePrice + (good.increacePerTechLevel * (techLevel.getCode() - good.minTechLevelProduce)) + good.variance;
+        double  price = good.basePrice + (good.increacePerTechLevel * (techLevel.getCode() - good.minTechLevelProduce)) + good.variance;
+        return  price > 0 ? price : 0;
     }
 
     @Override

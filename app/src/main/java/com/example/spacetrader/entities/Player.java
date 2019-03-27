@@ -267,6 +267,7 @@ public class Player extends BaseObservable {
 
     public void applyPurchase(Purchase purchase) {
         inventory.applyPurchase(purchase);
+        ship.setFuel(ship.getFuel() + purchase.getFuel());
         credits -= purchase.getPurchaseAmount();
         for (TradeGood good: planet.getPlanetInventory().keySet()) {
             planet.getPlanetInventory().put(good,
