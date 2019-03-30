@@ -1,6 +1,6 @@
 package com.example.spacetrader.viewmodels.travel;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,16 +8,17 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 
 import com.example.spacetrader.R;
-import com.example.spacetrader.dataaccess.repositories.PlayerRepository;
 import com.example.spacetrader.databinding.TravelItemBinding;
 import com.example.spacetrader.entities.Player;
+import com.example.spacetrader.entities.event.RandomEvent;
 import com.example.spacetrader.entities.planet.Planet;
+import com.example.spacetrader.views.LoadActivity;
+import com.example.spacetrader.views.maingame.MainActivity;
 
 import java.util.List;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModel;
 
 public class MapAdapter extends BaseAdapter {
 
@@ -87,11 +88,15 @@ public class MapAdapter extends BaseAdapter {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                player.travelToPlanet(planets.get(position));
+                RandomEvent event = player.travelToPlanet(planets.get(position));
                 //need to register database change
                 viewModel.insertPlayer(player);
+
+                event.perform(viewModel.getApplication());
+
             }
         });
+
         binding.setPlanet(planets.get(position));
         binding.setDistance(player.getDistance(planets.get(position)));
         return binding.getRoot();

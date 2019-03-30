@@ -27,9 +27,11 @@ public class MapViewModel extends AndroidViewModel {
     private PlayerRepository playerRepository;
     private LiveData<Player> player;
     private MutableLiveData<List<Planet>> travelablePlanets;
+    private Application application;
 
     public MapViewModel(@NonNull Application application) {
         super(application);
+        this.application = application;
         playerRepository = new PlayerRepository(application.getApplicationContext());
         travelablePlanets = new MutableLiveData<>();
     }
@@ -63,6 +65,9 @@ public class MapViewModel extends AndroidViewModel {
         this.travelablePlanets = travelablePlanets;
     }
 
+    public Application getApplication() {
+        return application;
+    }
 
     public void insertPlayer(Player player) {
         playerRepository.insertPlayer(player);

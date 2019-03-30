@@ -76,6 +76,10 @@ public class Planet {
         return yLoc;
     }
 
+    /**
+     *
+     * @param yLoc
+     */
     public void setYLoc(int yLoc) {
         this.yLoc = yLoc;
     }

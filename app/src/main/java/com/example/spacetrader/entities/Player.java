@@ -2,6 +2,8 @@ package com.example.spacetrader.entities;
 
 import com.example.spacetrader.BR;
 import com.example.spacetrader.R;
+import com.example.spacetrader.entities.event.EventLoader;
+import com.example.spacetrader.entities.event.RandomEvent;
 import com.example.spacetrader.entities.planet.Planet;
 import com.example.spacetrader.entities.planet.Universe;
 import com.example.spacetrader.entities.ship.Ship;
@@ -82,6 +84,7 @@ public class Player extends BaseObservable {
         this.planet = planet;
         this.universe = universe;
         this.ship = ship;
+
     }
 
     @Ignore
@@ -291,11 +294,16 @@ public class Player extends BaseObservable {
         return calculateDistance(planet, this.planet) < ship.getFuel();
     }
 
-    public void travelToPlanet(Planet planet) {
+    public RandomEvent travelToPlanet(Planet planet) {
+
         //subtracts fuel
         ship.setFuel(ship.getFuel() - calculateDistance(this.planet, planet));
         //change player location
         this.planet = planet;
+
+        //return a random event
+
+        return EventLoader.loadRandomEvent(this);
     }
 
     private int calculateDistance(Planet a, Planet b) {
