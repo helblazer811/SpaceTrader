@@ -1,17 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="251dp"
+        android:contentDescription="@string/pirateAttackMsg"
+        app:srcCompat="@drawable/pirateShip" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
+        android:id="@+id/pirateAttackMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/pirateAttackMsg"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/pirateEventInfo"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="@string/pirateEventInfo"
+        android:paddingBottom="20dp"/>
 
     <Button
-        android:id="@+id/close_event"
-        android:layout_width="match_parent"
+        android:id="@+id/button3"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Fight!" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Evade!" />
+
 </LinearLayout>

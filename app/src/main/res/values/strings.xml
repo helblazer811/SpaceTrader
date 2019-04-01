@@ -45,8 +45,20 @@
     <string name="shipHealth">Ship Health</string>
     <string name="playerLocation">Player Location</string>
 
+    <!--EVENT STRINGS-->
+    <!--pirates-->
+    <string name="pirateAttackMsg">You\'ve been attacked by a pirate ship!</string>
+    <string name="pirateEventInfo">You can choose to use your skills as a fighter and dogfight
+        with the pilot, or you can use your skills as a pilot and attempt to escape him!</string>
 
+    <!--police-->
+    <string name="policeStopMsg">You\'ve been stopped by a police ship!</string>
+    <string name="policeEventInfo">You can choose to submit your cargo-hold to inspection
+    and pay a fine for carrying illegal goods you can use your skills as a pilot
+        and attempt to escape the police. Or you could fight\.\.\.</string>
 
-
+    <string name="fight">Fight!</string>
+    <string name="evade">Evade!</string>
+    <string name="submit">Submit.</string>
 
 </resources>
