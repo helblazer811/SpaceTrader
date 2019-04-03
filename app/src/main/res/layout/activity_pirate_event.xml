@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="251dp"
         android:contentDescription="@string/pirateAttackMsg"
-        app:srcCompat="@drawable/pirateShip" />
+        app:srcCompat="@drawable/pirate_ship" />
 
     <TextView
         android:id="@+id/pirateAttackMsg"
@@ -35,7 +35,7 @@
         android:text="Fight!" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/close_event"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="Evade!" />
