@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 4,
-    "identityHash": "8062e5c4dd84405e530e95fa1dfb534b",
+    "identityHash": "d8548d804fe177c4bcaec2e4a263a42d",
     "entities": [
       {
         "tableName": "Player",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`playerId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `pilotPoints` INTEGER NOT NULL, `fighterPoints` INTEGER NOT NULL, `traderPoints` INTEGER NOT NULL, `engineerPoints` INTEGER NOT NULL, `difficulty` INTEGER, `credits` REAL NOT NULL, `inventoryId` INTEGER, `inventoryMap` TEXT, `capacity` INTEGER, `count` INTEGER, `planetId` INTEGER, `planetName` TEXT, `xLoc` INTEGER, `yLoc` INTEGER, `techLevel` INTEGER, `resourceType` INTEGER, `planetInventory` TEXT, `planetPrices` TEXT, `universeId` INTEGER, `planets` TEXT, `shipId` INTEGER, `cargoLimit` INTEGER, `shipHealth` INTEGER, `shipMaxHealth` INTEGER, `fuel` INTEGER, `maxFuel` INTEGER, `maxHealth` INTEGER, `currentHealth` INTEGER, `damage` INTEGER, `speed` INTEGER)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`playerId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `pilotPoints` INTEGER NOT NULL, `fighterPoints` INTEGER NOT NULL, `traderPoints` INTEGER NOT NULL, `engineerPoints` INTEGER NOT NULL, `difficulty` INTEGER, `credits` REAL NOT NULL, `inventoryId` INTEGER, `inventoryMap` TEXT, `capacity` INTEGER, `count` INTEGER, `planetId` INTEGER, `planetName` TEXT, `xLoc` INTEGER, `yLoc` INTEGER, `techLevel` INTEGER, `resourceType` INTEGER, `planetInventory` TEXT, `planetPrices` TEXT, `universeId` INTEGER, `planets` TEXT, `shipId` INTEGER, `cargoLimit` INTEGER, `shipHealth` INTEGER, `shipMaxHealth` INTEGER, `fuel` INTEGER, `maxFuel` INTEGER, `currentHealth` INTEGER, `maxHealth` INTEGER, `damage` INTEGER)",
         "fields": [
           {
             "fieldPath": "playerId",
@@ -177,26 +177,20 @@
             "notNull": false
           },
           {
-            "fieldPath": "enemy.maxHealth",
-            "columnName": "maxHealth",
-            "affinity": "INTEGER",
-            "notNull": false
-          },
-          {
             "fieldPath": "enemy.currentHealth",
             "columnName": "currentHealth",
             "affinity": "INTEGER",
             "notNull": false
           },
           {
-            "fieldPath": "enemy.damage",
-            "columnName": "damage",
+            "fieldPath": "enemy.maxHealth",
+            "columnName": "maxHealth",
             "affinity": "INTEGER",
             "notNull": false
           },
           {
-            "fieldPath": "enemy.speed",
-            "columnName": "speed",
+            "fieldPath": "enemy.damage",
+            "columnName": "damage",
             "affinity": "INTEGER",
             "notNull": false
           }
@@ -335,47 +329,11 @@
         },
         "indices": [],
         "foreignKeys": []
-      },
-      {
-        "tableName": "Enemy",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`maxHealth` INTEGER NOT NULL, `currentHealth` INTEGER NOT NULL, `damage` INTEGER NOT NULL, `speed` INTEGER NOT NULL)",
-        "fields": [
-          {
-            "fieldPath": "maxHealth",
-            "columnName": "maxHealth",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "currentHealth",
-            "columnName": "currentHealth",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "damage",
-            "columnName": "damage",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "speed",
-            "columnName": "speed",
-            "affinity": "INTEGER",
-            "notNull": true
-          }
-        ],
-        "primaryKey": {
-          "columnNames": [],
-          "autoGenerate": false
-        },
-        "indices": [],
-        "foreignKeys": []
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"8062e5c4dd84405e530e95fa1dfb534b\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"d8548d804fe177c4bcaec2e4a263a42d\")"
     ]
   }
 }

@@ -4,7 +4,6 @@ import android.app.Application;
 
 import com.example.spacetrader.dataaccess.repositories.PlayerRepository;
 import com.example.spacetrader.entities.Player;
-import com.example.spacetrader.entities.event.Enemy;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -37,9 +36,9 @@ public class PirateViewModel extends AndroidViewModel {
 
     public void fight() {
         //subtract health from pirate
-        player.getValue().getEnemy().setCurrentHealth(10);
+        //player.getValue().getEnemy().setCurrentHealth(10);
         player.getValue().getShip().setShipHealth(20);
-/*
+        /*
 
         pirate.getValue().takeDamage(20);//starts off as 20 damage by default
         //if not dead
@@ -47,25 +46,9 @@ public class PirateViewModel extends AndroidViewModel {
             //subtract health from player
             player.getValue().getShip().takeDamage(10);//10 damage default
         }
-*/
+        */
 
         repository.insertPlayer(player.getValue());
-    }
-
-    public boolean playerIsAlive() {
-        return player.getValue().isAlive();
-    }
-
-    public boolean enemyIsAlive() {
-        return player.getValue().getEnemy().isAlive();
-    }
-
-    public void emptyPlayerInventory() {
-        player.getValue().emptyInventory();
-    }
-
-    public void setPlayerHealthHalf() {
-        player.getValue().setPlayerHealthHalf();
     }
 
     public MutableLiveData<Player> getPlayer() {

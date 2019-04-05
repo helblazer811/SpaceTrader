@@ -96,8 +96,8 @@ public class Player extends BaseObservable {
         universe = new Universe();
         ship = new Ship(ShipType.FIREFLY);
         planet = universe.pickRandomPlanet();
-        enemy = new Enemy();
         credits = 1000;
+        enemy = new Enemy();
     }
 
     public long getPlayerId() {

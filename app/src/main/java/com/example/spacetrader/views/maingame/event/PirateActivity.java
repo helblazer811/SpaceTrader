@@ -35,6 +35,7 @@ public class PirateActivity extends EventActivity {
         fight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*
                 viewModel.fight();
                 if (!viewModel.enemyIsAlive()) {
                     //end the fighting
@@ -48,6 +49,7 @@ public class PirateActivity extends EventActivity {
                     viewModel.setPlayerHealthHalf();
                     finish();
                 }
+                */
             }
         });
 
