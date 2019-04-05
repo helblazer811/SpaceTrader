@@ -1,5 +1,4 @@
 package com.example.spacetrader.entities.tradegoods;
-
 import com.example.spacetrader.BR;
 
 import java.util.HashMap;

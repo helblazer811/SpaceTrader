@@ -2,6 +2,7 @@ package com.example.spacetrader.entities;
 
 import com.example.spacetrader.BR;
 import com.example.spacetrader.R;
+import com.example.spacetrader.entities.event.Enemy;
 import com.example.spacetrader.entities.event.EventLoader;
 import com.example.spacetrader.entities.event.RandomEvent;
 import com.example.spacetrader.entities.planet.Planet;
@@ -61,6 +62,8 @@ public class Player extends BaseObservable {
     private Universe universe;
     @Embedded
     private Ship ship;
+    @Embedded
+    private Enemy enemy;
 
     //errors
     @Ignore
@@ -71,7 +74,7 @@ public class Player extends BaseObservable {
     @Ignore
     Integer selectedDifficultyPosition = 0;
 
-    public Player(long playerId, String name, int pilotPoints, int fighterPoints, int traderPoints, int engineerPoints, GameDifficulty difficulty, double credits, Inventory inventory, Planet planet, Universe universe, Ship ship) {
+    public Player(long playerId, String name, int pilotPoints, int fighterPoints, int traderPoints, int engineerPoints, GameDifficulty difficulty, double credits, Inventory inventory, Planet planet, Universe universe, Ship ship, Enemy enemy) {
         this.playerId = playerId;
         this.name = name;
         this.pilotPoints = pilotPoints;
@@ -84,7 +87,7 @@ public class Player extends BaseObservable {
         this.planet = planet;
         this.universe = universe;
         this.ship = ship;
-
+        this.enemy = enemy;
     }
 
     @Ignore
@@ -93,6 +96,7 @@ public class Player extends BaseObservable {
         universe = new Universe();
         ship = new Ship(ShipType.FIREFLY);
         planet = universe.pickRandomPlanet();
+        enemy = new Enemy();
         credits = 1000;
     }
 
@@ -177,8 +181,7 @@ public class Player extends BaseObservable {
         return credits;
     }
 
-    public void setCredits(double credits)
-    {
+    public void setCredits(double credits){
         notifyPropertyChanged(BR.validPurchase);
         this.credits = credits;
     }
@@ -196,7 +199,6 @@ public class Player extends BaseObservable {
     }
 
     public void setInventory(Inventory inventory) {
-
         notifyPropertyChanged(BR.validPurchase);
         this.inventory = inventory;
     }
@@ -295,7 +297,6 @@ public class Player extends BaseObservable {
     }
 
     public RandomEvent travelToPlanet(Planet planet) {
-
         //subtracts fuel
         ship.setFuel(ship.getFuel() - calculateDistance(this.planet, planet));
         //change player location
@@ -333,4 +334,23 @@ public class Player extends BaseObservable {
         return list;
     }
 
+    public boolean isAlive() {
+        return ship.isAlive();
+    }
+
+    public void emptyInventory() {
+        inventory.emptyInventory();
+    }
+
+    public void setPlayerHealthHalf() {
+        ship.setHealthHalf();
+    }
+
+    public Enemy getEnemy() {
+        return enemy;
+    }
+
+    public void setEnemy(Enemy enemy) {
+        this.enemy = enemy;
+    }
 }

@@ -3,13 +3,12 @@ package com.example.spacetrader.views.maingame.event;
 import android.content.Intent;
 
 import com.example.spacetrader.entities.Player;
+import com.example.spacetrader.entities.event.Enemy;
 import com.example.spacetrader.views.maingame.MainActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public abstract class EventActivity extends AppCompatActivity {
-
-    private Player player;
 
     public EventActivity() {
         //get intent

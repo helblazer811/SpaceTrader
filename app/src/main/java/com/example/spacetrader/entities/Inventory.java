@@ -111,5 +111,17 @@ public class Inventory extends BaseObservable {
         }
     }
 
+    public void emptyInventory() {
+        inventoryMap.put(TradeGood.WATER,0);
+        inventoryMap.put(TradeGood.FURS,0);
+        inventoryMap.put(TradeGood.FOOD,0);
+        inventoryMap.put(TradeGood.ORE,0);
+        inventoryMap.put(TradeGood.GAMES,0);
+        inventoryMap.put(TradeGood.FIREARMS,0);
+        inventoryMap.put(TradeGood.MEDICINE,0);
+        inventoryMap.put(TradeGood.MACHINES,0);
+        inventoryMap.put(TradeGood.NARCOTICS,0);
+        inventoryMap.put(TradeGood.ROBOTS,0);
+    }
 
 }

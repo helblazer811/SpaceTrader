@@ -63,6 +63,8 @@ public class LoadActivity extends AppCompatActivity {
         }
 
         binding.setViewmodel(viewModel);
+
+        binding.setLifecycleOwner(this);
     }
 
 }
