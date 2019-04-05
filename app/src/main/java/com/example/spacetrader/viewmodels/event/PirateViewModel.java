@@ -16,6 +16,7 @@ public class PirateViewModel extends AndroidViewModel {
 
     private MutableLiveData<Player> player;
     private PlayerRepository repository;
+    private boolean fightStarted = false;
 
     public PirateViewModel(@NonNull Application application) {
         super(application);
@@ -29,6 +30,11 @@ public class PirateViewModel extends AndroidViewModel {
         loadPlayer.observe(owner, new Observer<Player>() {
             @Override
             public void onChanged(Player p) {
+                if (!fightStarted)
+                    p.getEnemy().resetHealth();
+
+                fightStarted = true;
+                //rest enemy
                 player.setValue(p);
             }
         });
@@ -37,18 +43,30 @@ public class PirateViewModel extends AndroidViewModel {
     public void fight() {
         //subtract health from pirate
         //player.getValue().getEnemy().setCurrentHealth(10);
-        player.getValue().getShip().setShipHealth(20);
-        /*
-
-        pirate.getValue().takeDamage(20);//starts off as 20 damage by default
+        player.getValue().getEnemy().doDamage(20);//starts off as 20 damage by default
         //if not dead
-        if (pirate.getValue().isAlive()) {
+        if (player.getValue().getEnemy().isAlive()) {
             //subtract health from player
             player.getValue().getShip().takeDamage(10);//10 damage default
         }
-        */
 
         repository.insertPlayer(player.getValue());
+    }
+
+    public boolean enemyIsAlive() {
+        return player.getValue().getEnemy().isAlive();
+    }
+
+    public boolean playerIsAlive() {
+        return player.getValue().isAlive();
+    }
+
+    public void emptyPlayerInventory() {
+        player.getValue().emptyInventory();
+    }
+
+    public void setPlayerHealthHalf() {
+        player.getValue().setPlayerHealthHalf();
     }
 
     public MutableLiveData<Player> getPlayer() {

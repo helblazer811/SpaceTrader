@@ -353,4 +353,8 @@ public class Player extends BaseObservable {
     public void setEnemy(Enemy enemy) {
         this.enemy = enemy;
     }
+
+    public void doDamage(int damage) {
+        this.getShip().takeDamage(damage);
+    }
 }

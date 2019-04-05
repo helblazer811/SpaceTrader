@@ -44,4 +44,18 @@ public class Enemy {
     public void setDamage(int damage) {
         this.damage = damage;
     }
+
+    public void doDamage(int damage) {
+        this.currentHealth -= damage;
+        if (this.currentHealth < 0)
+            this.currentHealth = 0;
+    }
+
+    public boolean isAlive() {
+        return this.currentHealth > 0;
+    }
+
+    public void resetHealth() {
+        currentHealth = maxHealth;
+    }
 }
