@@ -4,7 +4,11 @@ import com.example.spacetrader.entities.Player;
 
 public class EventLoader {
 
-
+    /**
+     * determines the chance for the player to encounter a pirate
+     * @param player the current player
+     * @return chances of [irate attack
+     */
     public static RandomEvent loadRandomEvent(Player player) {
 
         //performs event loading logic based on the players
