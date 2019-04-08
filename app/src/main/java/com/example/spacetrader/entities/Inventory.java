@@ -69,7 +69,7 @@ public class Inventory extends BaseObservable {
      * @param amount the amount of the good
      */
     public void put(TradeGood type, int amount) {
-        if (count + amount > capacity) {
+        if ((count + amount) > capacity) {
             //throw an inventory full exception
         } else {
             count += amount;

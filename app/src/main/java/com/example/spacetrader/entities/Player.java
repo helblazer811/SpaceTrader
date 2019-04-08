@@ -27,6 +27,9 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+/**
+ * The player class is the beating heart of this game.
+ */
 @Entity
 @InverseBindingMethods({
         @InverseBindingMethod(type = AppCompatSpinner.class, attribute = "android:selectedItemPosition"),
@@ -74,6 +77,22 @@ public class Player extends BaseObservable {
     @Ignore
     Integer selectedDifficultyPosition = 0;
 
+    /**
+     * Constructor for player
+     * @param playerId the unique id
+     * @param name player name
+     * @param pilotPoints points in pilot skill
+     * @param fighterPoints fighter skill
+     * @param traderPoints trader skill
+     * @param engineerPoints engineer skill
+     * @param difficulty the difficulty the player is playing
+     * @param credits money
+     * @param inventory what the player has
+     * @param planet the planet the player is on
+     * @param universe the universe the player plays in
+     * @param ship the ship the player is flying
+     * @param enemy potential enemies the player has
+     */
     public Player(long playerId, String name, int pilotPoints, int fighterPoints, int traderPoints, int engineerPoints, GameDifficulty difficulty, double credits, Inventory inventory, Planet planet, Universe universe, Ship ship, Enemy enemy) {
         this.playerId = playerId;
         this.name = name;
@@ -90,6 +109,9 @@ public class Player extends BaseObservable {
         this.enemy = enemy;
     }
 
+    /**
+     * alternate constructor; ignore
+     */
     @Ignore
     public Player() {
         inventory = new Inventory(10);
