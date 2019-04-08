@@ -1,43 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.spacetrader.viewmodels.event.PirateViewModel"/>
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="251dp"
-        android:contentDescription="@string/pirateAttackMsg"
-        app:srcCompat="@drawable/pirateShip" />
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/pirateAttackMsg"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginTop="4dp"
-        android:text="@string/pirateAttackMsg"
-        android:textSize="22sp" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="251dp"
+            android:contentDescription="@string/pirateAttackMsg"
+            app:srcCompat="@drawable/pirate_ship" />
 
-    <TextView
-        android:id="@+id/pirateEventInfo"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="@string/pirateEventInfo"
-        android:paddingBottom="20dp"/>
+        <TextView
+            android:id="@+id/pirateAttackMsg"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/pirateAttackMsg"
+            android:textSize="22sp" />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="Fight!" />
+        <TextView
+            android:id="@+id/pirateEventInfo"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="@string/pirateEventInfo"
+            android:paddingBottom="20dp"/>
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="Evade!" />
+        <Button
+            android:id="@+id/fight_event"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Fight!" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/evade_event"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Evade!" />
+
+        <TextView
+            android:id="@+id/player_health"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text='@{String.format("Player health : %d/%d", viewmodel.player.ship.shipHealth,viewmodel.player.ship.shipMaxHealth)}'
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/enemy_health"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text='@{String.format("Enemy health : %d/%d", viewmodel.player.enemy.currentHealth, viewmodel.player.enemy.getMaxHealth)}'
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+</layout>

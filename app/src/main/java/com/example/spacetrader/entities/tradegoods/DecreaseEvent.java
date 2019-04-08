@@ -1,5 +1,9 @@
 package com.example.spacetrader.entities.tradegoods;
 
+/**
+ * DecreaseEvent is an enum with instances of planet characteristics that can affect
+ * prices
+ */
 public enum DecreaseEvent {
     LOTSOFWATER(0),
     RICHFAUNA(1),
@@ -10,12 +14,17 @@ public enum DecreaseEvent {
     LOTSOFHERBS(6),
     WEIRDMUSHROOMS(7);
 
-    private Integer code;
+    private final Integer code;
 
     DecreaseEvent(Integer code){
         this.code = code;
     }
 
+
+    /**
+     * getter for the code
+     * @return the Integer code
+     */
     public Integer getCode() {
         return code;
     }

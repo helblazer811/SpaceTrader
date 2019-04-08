@@ -1,7 +1,7 @@
 package com.example.spacetrader.entities.ship;
 
 public enum ShipType {
-    FIREFLY(10,0,100,200,200);
+    FIREFLY(10,100,100,200,200);
 
     public int cargoLimit;
     public int shipHealth;

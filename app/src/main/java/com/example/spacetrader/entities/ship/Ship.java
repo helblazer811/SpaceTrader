@@ -3,6 +3,7 @@ package com.example.spacetrader.entities.ship;
 import com.example.spacetrader.entities.planet.Planet;
 
 import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
@@ -81,5 +82,19 @@ public class Ship extends BaseObservable {
 
     public void setMaxFuel(int maxFuel) {
         this.maxFuel = maxFuel;
+    }
+
+    public boolean isAlive() {
+        return shipHealth > 0;
+    }
+
+    public void takeDamage(int damage) {
+        shipHealth -= damage;
+        if (damage < 0)
+            shipHealth = 0;
+    }
+
+    public void setHealthHalf() {
+        shipHealth = shipMaxHealth/2;
     }
 }
