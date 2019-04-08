@@ -1,9 +1,23 @@
 package com.example.spacetrader;
-import org.junit.Before;
+import com.example.spacetrader.entities.ship.Ship;
+import com.example.spacetrader.entities.ship.ShipType;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+<<<<<<< HEAD
 //public class M10TestAndrew {
 //
 //    @Test
 //}
+=======
+public class M10TestAndrew {
+
+    @Test
+    public void testTakeDamage() {
+        Ship s = new Ship(ShipType.FIREFLY);
+        s.takeDamage(10);
+        assertEquals(90, s.getShipHealth());
+    }
+}
+>>>>>>> 4ea7ccb68ee6a98ceedae4bde0509301a6226913
