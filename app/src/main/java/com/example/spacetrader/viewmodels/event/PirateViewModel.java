@@ -12,22 +12,39 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 
+/**
+ * ViewModel of A Pirate Event
+ */
+
 public class PirateViewModel extends AndroidViewModel {
 
     private MutableLiveData<Player> player;
     private PlayerRepository repository;
     private boolean fightStarted = false;
 
+    /**
+     * Constructor that creates PirateViewModel
+     * @param application Android Application
+     */
     public PirateViewModel(@NonNull Application application) {
         super(application);
         repository = new PlayerRepository(application.getApplicationContext());
     }
 
+    /**
+     * Initializes player into Pirate ViewModel
+     * @param playerId id of the Player
+     * @param owner owner of lifecycle of UI controllers
+     */
     public void init(long playerId, LifecycleOwner owner) {
         LiveData<Player> loadPlayer = repository.getPlayer(playerId);
         player = new MutableLiveData<>();
 
         loadPlayer.observe(owner, new Observer<Player>() {
+            /**
+             * Inner class that calls when data is changed
+             * @param p Player
+             */
             @Override
             public void onChanged(Player p) {
                 if (!fightStarted)
@@ -40,6 +57,9 @@ public class PirateViewModel extends AndroidViewModel {
         });
     }
 
+    /**
+     * Fight Pirate in Pirate event
+     */
     public void fight() {
         //subtract health from pirate
         //player.getValue().getEnemy().setCurrentHealth(10);
@@ -53,22 +73,40 @@ public class PirateViewModel extends AndroidViewModel {
         repository.insertPlayer(player.getValue());
     }
 
+    /**
+     * Tells if enemy is alive
+     * @return if enemy is alive
+     */
     public boolean enemyIsAlive() {
         return player.getValue().getEnemy().isAlive();
     }
 
+    /**
+     * Tells if player is alive
+     * @return if player is alive
+     */
     public boolean playerIsAlive() {
         return player.getValue().isAlive();
     }
 
+    /**
+     * Empties Player Inventory
+     */
     public void emptyPlayerInventory() {
         player.getValue().emptyInventory();
     }
 
+    /**
+     * Sets Player Health to half
+     */
     public void setPlayerHealthHalf() {
         player.getValue().setPlayerHealthHalf();
     }
 
+    /**
+     * Gets Player
+     * @return Player
+     */
     public MutableLiveData<Player> getPlayer() {
         return player;
     }

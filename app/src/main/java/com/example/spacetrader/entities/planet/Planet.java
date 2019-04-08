@@ -10,7 +10,9 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-
+/**
+ * Represents Planet in Space Trader
+ */
 @Entity
 public class Planet {
 
@@ -25,6 +27,17 @@ public class Planet {
     private HashMap<TradeGood, Integer> planetInventory;
     private HashMap<TradeGood, Double> planetPrices;
 
+    /**
+     * Main constructor that creates Planet object
+     * @param planetId Planet's unique number id
+     * @param planetName name of Planet
+     * @param xLoc x coordinate of Planet
+     * @param yLoc y coordinate of Planet
+     * @param techLevel the technology level of the Planet
+     * @param resourceType the
+     * @param planetInventory the inventory of  trade goods of the Planet
+     * @param planetPrices the prices of the trade goods on this Planet
+     */
     public Planet(long planetId, String planetName, int xLoc, int yLoc, TechLevel techLevel, ResourceType resourceType, HashMap<TradeGood, Integer> planetInventory, HashMap<TradeGood, Double> planetPrices) {
         this.planetId = planetId;
         this.planetName = planetName;
@@ -39,8 +52,8 @@ public class Planet {
     }
 
     /**
-     * This constructor randomly generates everything but the name
-     * @param planetName
+     * This constructor randomly generates everything but the name for the Planet
+     * @param planetName name of the Planet
      */
     @Ignore
     public Planet(String planetName) {
@@ -56,86 +69,130 @@ public class Planet {
         Log.i("Planet Information: ", this.toString());
     }
 
+    /**
+     * Gets Planet name
+     * @return name of the Planet
+     */
     public String getPlanetName() {
         return planetName;
     }
 
+    /**
+     * Sets Planet name
+     * @param planetName name of the Planet
+     */
     public void setPlanetName(String planetName) {
         this.planetName = planetName;
     }
 
+    /**
+     * Gets X coordinate of Planet
+     * @return X coordinate of Planet
+     */
     public int getXLoc() {
         return xLoc;
     }
 
+    /**
+     * Sets X coordinate of Planet
+     * @param xLoc X coordinate of Planet
+     */
     public void setXLoc(int xLoc) {
         this.xLoc = xLoc;
     }
 
+    /**
+     * Gets Y coordinate of Planet
+     * @return Y coordinate of Planet
+     */
     public int getYLoc() {
         return yLoc;
     }
 
     /**
-     *
-     * @param yLoc
+     * Sets Y coordinate of Planet
+     * @param yLoc Y coordinate of Planet
      */
     public void setYLoc(int yLoc) {
         this.yLoc = yLoc;
     }
 
+    /**
+     * Gets Tech Level
+     * @return Tech Level
+     */
     public TechLevel getTechLevel() {
         return techLevel;
     }
 
+    /**
+     * Sets Tech Level
+     * @param techLevel Tech Level of the Planet
+     */
     public void setTechLevel(TechLevel techLevel) {
         this.techLevel = techLevel;
     }
 
+    /**
+     * Get Resource Type of the Planet
+     * @return Resource Type
+     */
     public ResourceType getResourceType() {
         return resourceType;
     }
 
+    /**
+     * Set Resource Type of the Planet
+     * @param resourceType Resource Type of the Planet
+     */
     public void setResourceType(ResourceType resourceType) {
         this.resourceType = resourceType;
     }
 
+    /**
+     * Get Planet Id of Planet
+     * @return Planet Id
+     */
     public long getPlanetId() {
         return planetId;
     }
 
+    /**
+     * Set Planet Id of Planet
+     * @param planetId Planet Id of Planet
+     */
     public void setPlanetId(long planetId) {
         this.planetId = planetId;
     }
 
-    public int getxLoc() {
-        return xLoc;
-    }
-
-    public void setxLoc(int xLoc) {
-        this.xLoc = xLoc;
-    }
-
-    public int getyLoc() {
-        return yLoc;
-    }
-
-    public void setyLoc(int yLoc) {
-        this.yLoc = yLoc;
-    }
-
+    /**
+     * Gets Planet Inventory of Trade Goods of Planet
+     * @return Planet Inventory
+     */
     public HashMap<TradeGood, Integer> getPlanetInventory() {
         return planetInventory;
     }
 
+    /**
+     * Sets Planet Inventory of Trade Goods of Planet
+     * @param planetInventory Planet Inventory
+     */
     public void setPlanetInventory(HashMap<TradeGood, Integer> planetInventory) {
         this.planetInventory = planetInventory;
     }
 
+    /**
+     * Gets Planet prices of Trade Goods
+     * @return Planet prices
+     */
     public HashMap<TradeGood, Double> getPlanetPrices() {
         return planetPrices;
     }
 
+    /**
+     * Sets Planet prices of Trade Goods
+     * @param planetPrices Planet prices
+     */
     public void setPlanetPrices(HashMap<TradeGood, Double> planetPrices) {
         this.planetPrices = planetPrices;
     }

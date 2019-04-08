@@ -15,6 +15,9 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 
+/**
+ * ViewModel of Buying in-game
+ */
 public class BuyViewModel extends AndroidViewModel {
 
     private PlayerRepository playerRepository;
@@ -26,13 +29,21 @@ public class BuyViewModel extends AndroidViewModel {
     private MutableLiveData<Player> player;
     private LiveData<Player> data;
 
-
+    /**
+     * Constructor for BuyViewModel
+     * @param application Android application
+     */
     public BuyViewModel(@NonNull Application application) {
         super(application);
 
         playerRepository = new PlayerRepository(application.getApplicationContext());
     }
 
+    /**
+     * Initializes Player in the BuyViewModel
+     * @param playerId id of Player
+     * @param owner owner of lifecycle of UI controllers
+     */
     public void init(long playerId, LifecycleOwner owner) {
         //initialize player object
         //encapsulation does not work by default
@@ -42,6 +53,10 @@ public class BuyViewModel extends AndroidViewModel {
         data = playerRepository.getPlayer(playerId);
 
         data.observe(owner, new Observer<Player>() {
+            /**
+             * Called when data is changed
+             * @param data Player data
+             */
             @Override
             public void onChanged(@Nullable Player data) {
                 player.setValue(data);
@@ -54,6 +69,11 @@ public class BuyViewModel extends AndroidViewModel {
         });
 
         onPurchaseFocus = new View.OnFocusChangeListener() {
+            /**
+             * Called when the focus state of a view has changed.
+             * @param view current View
+             * @param focused if state is focused or not
+             */
             @Override
             public void onFocusChange(View view, boolean focused) {
                 if (!focused) {
@@ -63,14 +83,25 @@ public class BuyViewModel extends AndroidViewModel {
         };
     }
 
+    /**
+     * Gets Purchase Button Click
+     * @return player
+     */
     public MutableLiveData<Player> getPurchaseButtonClick() {
         return player;
     }
 
+    /**
+     * Gets Purchase Focus
+     * @return onPurchaseFocus state
+     */
     public View.OnFocusChangeListener getPurchaseFocus() {
         return onPurchaseFocus;
     }
 
+    /**
+     * Clicks buy event
+     */
     public void onPurchaseButtonClick() {
         //click event
         if (purchase.getValue().isValidPurchase()) {
@@ -79,10 +110,18 @@ public class BuyViewModel extends AndroidViewModel {
         }
     }
 
+    /**
+     * Gets player data
+     * @return player
+     */
     public MutableLiveData<Player> getPlayer() {
         return player;
     }
 
+    /**
+     * Gets purchase data
+     * @return purchase
+     */
     public MutableLiveData<Purchase> getPurchase() {
         return purchase;
     }
