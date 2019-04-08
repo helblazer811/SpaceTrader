@@ -31,7 +31,7 @@ public class Enemy {
     }
 
     /**
-     *
+     * getter for current health
      * @return current health of the enemy
      */
     public int getCurrentHealth() {
@@ -46,7 +46,7 @@ public class Enemy {
         this.currentHealth = currentHealth;
     }
 
-    /**
+    /** getter for max health
      *
      * @return max health of enemy
      */
@@ -55,7 +55,7 @@ public class Enemy {
     }
 
     /**
-     *
+     *  max health setter
      * @param maxHealth maximum health setter
      */
     public void setMaxHealth(int maxHealth) {
@@ -63,7 +63,7 @@ public class Enemy {
     }
 
     /**
-     *
+     * damage getter
      * @return damage variable
      */
     public int getDamage() {
@@ -71,7 +71,7 @@ public class Enemy {
     }
 
     /**
-     *
+     * damage setter
      * @param damage to be set to the damage variable
      */
     public void setDamage(int damage) {
@@ -89,7 +89,7 @@ public class Enemy {
     }
 
     /**
-     *
+     * returns true if enemys health if greater than 0, false otherwise
      * @return if the enemy is dead or not
      */
     public boolean isAlive() {
