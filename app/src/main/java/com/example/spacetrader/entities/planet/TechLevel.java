@@ -1,5 +1,8 @@
 package com.example.spacetrader.entities.planet;
 
+/**
+ * Represents Tech Levels of  Planet
+ */
 public enum TechLevel {
     PRE_AGRICULTURE(0, "Pre-Agriculture"),
     AGRICULTURE(1,"Agriculture"),
@@ -12,18 +15,31 @@ public enum TechLevel {
 
     public static final int numLevels = 8;
 
-    private Integer code;
-    private String stringName;
+    private final Integer code;
+    private final String stringName;
 
+    /**
+     * Constructor for TechLevel
+     * @param code code for Tech Level
+     * @param stringName name of Tech Level
+     */
     TechLevel(Integer code, String stringName) {
         this.code = code;
         this.stringName = stringName;
     }
 
+    /**
+     * Gets code of Tech Level
+     * @return code of Tech Level
+     */
     public Integer getCode() {
         return code;
     }
 
+    /**
+     * String representation of Tech Level
+     * @return name of Tech Level
+     */
     public String toString() {
         return stringName;
     }

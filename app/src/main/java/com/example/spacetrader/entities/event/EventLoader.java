@@ -2,6 +2,9 @@ package com.example.spacetrader.entities.event;
 
 import com.example.spacetrader.entities.Player;
 
+/**
+ * Event loader class, loads events for the player
+ */
 public class EventLoader {
 
     /**
