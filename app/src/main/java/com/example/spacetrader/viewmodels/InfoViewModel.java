@@ -16,7 +16,7 @@ import androidx.lifecycle.LiveData;
 public class InfoViewModel extends AndroidViewModel {
 
 
-    private PlayerRepository playerRepository;
+    private final PlayerRepository playerRepository;
 
     private LiveData<Player> player;
 

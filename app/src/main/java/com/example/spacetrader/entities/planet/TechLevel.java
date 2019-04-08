@@ -15,8 +15,8 @@ public enum TechLevel {
 
     public static final int numLevels = 8;
 
-    private Integer code;
-    private String stringName;
+    private final Integer code;
+    private final String stringName;
 
     /**
      * Constructor for TechLevel

@@ -26,7 +26,7 @@ public class LoadViewModel extends AndroidViewModel {
         integrated later.
      */
 
-    private PlayerRepository playerRepository;
+    private final PlayerRepository playerRepository;
     private LiveData<List<Player>> players;
 
     /**

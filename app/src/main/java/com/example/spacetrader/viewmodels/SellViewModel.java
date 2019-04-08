@@ -20,14 +20,13 @@ import androidx.lifecycle.Observer;
  */
 public class SellViewModel extends AndroidViewModel {
 
-    private PlayerRepository playerRepository;
+    private final PlayerRepository playerRepository;
 
     private View.OnFocusChangeListener onSaleFocus;
 
     private MutableLiveData<Sale> sale;
 
     private MutableLiveData<Player> player;
-    private LiveData<Player> data;
 
     /**
      * Constructor that creates SellViewModel
@@ -50,7 +49,7 @@ public class SellViewModel extends AndroidViewModel {
         //everything needs to be pulled from the database
         player = new MutableLiveData<Player>();
         sale = new MutableLiveData<Sale>();
-        data = playerRepository.getPlayer(playerId);
+        LiveData<Player> data = playerRepository.getPlayer(playerId);
 
         data.observe(owner, new Observer<Player>() {
             /**

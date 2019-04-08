@@ -42,7 +42,7 @@ public class Universe extends BaseObservable {
     @Ignore
     public static final int yRange = 300;
     @Ignore
-    public static final int numPlanets = planetNames.length;
+    private static final int numPlanets = planetNames.length;
 
     /**
      * Creates Universe consisting of Planets

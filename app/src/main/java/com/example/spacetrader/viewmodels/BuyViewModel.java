@@ -27,7 +27,7 @@ public class BuyViewModel extends AndroidViewModel {
     private MutableLiveData<Purchase> purchase;
 
     private MutableLiveData<Player> player;
-    private LiveData<Player> data;
+
 
     /**
      * Constructor for BuyViewModel
@@ -50,7 +50,7 @@ public class BuyViewModel extends AndroidViewModel {
         //everything needs to be pulled from the database
         player = new MutableLiveData<Player>();
         purchase = new MutableLiveData<Purchase>();
-        data = playerRepository.getPlayer(playerId);
+        LiveData<Player> data = playerRepository.getPlayer(playerId);
 
         data.observe(owner, new Observer<Player>() {
             /**

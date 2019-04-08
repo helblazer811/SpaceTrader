@@ -19,7 +19,7 @@ import androidx.lifecycle.Observer;
 public class PirateViewModel extends AndroidViewModel {
 
     private MutableLiveData<Player> player;
-    private PlayerRepository repository;
+    private final PlayerRepository repository;
     private boolean fightStarted = false;
 
     /**

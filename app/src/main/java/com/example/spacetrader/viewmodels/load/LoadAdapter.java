@@ -27,9 +27,9 @@ import androidx.lifecycle.LiveData;
  */
 public class LoadAdapter extends BaseAdapter {
 
-    private List<Player> players;
-    private Activity activity;
-    private Intent intent;
+    private final List<Player> players;
+    private final Activity activity;
+    private final Intent intent;
 
     /**
      * Creates LoadAdapter

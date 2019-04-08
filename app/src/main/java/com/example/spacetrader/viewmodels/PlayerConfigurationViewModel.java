@@ -23,14 +23,14 @@ import androidx.lifecycle.MutableLiveData;
  */
 public class PlayerConfigurationViewModel extends AndroidViewModel {
 
-    private PlayerRepository playerRepository;
+    private final PlayerRepository playerRepository;
 
     private Player player;
 
     private View.OnFocusChangeListener onFocusPoint;
 
     //Live data objects for the form data
-    private MutableLiveData<Player> submitButtonClick = new MutableLiveData<>();
+    private final MutableLiveData<Player> submitButtonClick = new MutableLiveData<>();
 
     /**
      * Constructor of PlayerConfiguration
