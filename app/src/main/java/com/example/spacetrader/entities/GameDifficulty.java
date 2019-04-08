@@ -1,5 +1,8 @@
 package com.example.spacetrader.entities;
 
+/**
+ * Instances of game difficulty
+ */
 public enum GameDifficulty {
     BEGINNER(0),
     EASY(1),
@@ -7,12 +10,16 @@ public enum GameDifficulty {
     HARD(3),
     IMPOSSIBLE(4);
 
-    private Integer code;
+    private final Integer code;
 
     GameDifficulty(Integer code) {
         this.code = code;
     }
 
+    /**
+     * getter for code
+     * @return the code Integer object
+     */
     public Integer getCode() {
         return code;
     }

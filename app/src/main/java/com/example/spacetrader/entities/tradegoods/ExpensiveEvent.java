@@ -15,6 +15,10 @@ public enum ExpensiveEvent {
         this.code = code;
     }
 
+    /**
+     * getter for the code
+     * @return the Integer code
+     */
     public Integer getCode() {
         return code;
     }
