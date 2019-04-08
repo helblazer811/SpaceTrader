@@ -122,28 +122,52 @@ public class Player extends BaseObservable {
         enemy = new Enemy();
     }
 
+    /**
+     * a getter for the player ID for the database
+     * @return the player ID
+     */
     public long getPlayerId() {
         return playerId;
     }
 
+    /**
+     * a setter for the player ID for the database
+     * @param playerId the new player ID to set
+     */
     public void setPlayerId(long playerId) {
         this.playerId = playerId;
     }
 
+    /**
+     * a getter for the pilot skill level stat
+     * @return the pilot skill level
+     */
     public int getPilotPoints() {
         return pilotPoints;
     }
 
+    /**
+     * a setter for the pilot skill level stat
+     * @param pilotPoints the new pilot skill level to set
+     */
     public void setPilotPoints(int pilotPoints) {
         // Notify that the valid property could have changed.
         notifyPropertyChanged(BR.valid);
         this.pilotPoints = pilotPoints;
     }
 
+    /**
+     * a getter for the fighter skill level stat
+     * @return the fighter skill level
+     */
     public int getFighterPoints() {
         return fighterPoints;
     }
 
+    /**
+     * a setter for the fighter skill level stat
+     * @param fighterPoints
+     */
     public void setFighterPoints(int fighterPoints) {
         // Notify that the valid property could have changed.
         notifyPropertyChanged(BR.valid);

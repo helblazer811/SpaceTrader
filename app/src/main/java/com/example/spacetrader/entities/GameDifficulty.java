@@ -12,6 +12,10 @@ public enum GameDifficulty {
 
     private final Integer code;
 
+    /**
+     * creates a GameDifficulty object
+     * @param code the Integer representation of the difficulty code
+     */
     GameDifficulty(Integer code) {
         this.code = code;
     }
