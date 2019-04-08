@@ -67,8 +67,9 @@ public class Inventory extends BaseObservable {
      * the put method for an inventory
      * @param type type of trade good
      * @param amount the amount of the good
+     * @throws Exception for inventory full
      */
-    public void put(TradeGood type, int amount) {
+    public void put(TradeGood type, int amount) throws Exception {
         if ((count + amount) > capacity) {
             throw new Exception("The Inventory is full!");
         } else {

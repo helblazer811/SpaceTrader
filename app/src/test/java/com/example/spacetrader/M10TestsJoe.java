@@ -14,16 +14,8 @@ public class M10TestsJoe {
     @Test
     public void check_put() {
         Inventory testInv = new Inventory(10);
-        testInv.put(TradeGood.WATER,1);
-        testInv.put(TradeGood.FURS,1);
-        testInv.put(TradeGood.FOOD,1);
-        testInv.put(TradeGood.ORE,1);
-        testInv.put(TradeGood.GAMES,1);
-        testInv.put(TradeGood.FIREARMS,1);
-        testInv.put(TradeGood.MEDICINE,1);
-        testInv.put(TradeGood.MACHINES,1);
-        testInv.put(TradeGood.NARCOTICS,1);
-        testInv.put(TradeGood.ROBOTS,1);
+        testInv.put(TradeGood.WATER,10);
         assertEquals(testInv.getCount(), 10);
+        assertEquals(testInv.put(TradeGood.WATER,1), new Exception("The Inventory is full!"));
     }
 }
