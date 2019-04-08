@@ -70,7 +70,7 @@ public class Inventory extends BaseObservable {
      */
     public void put(TradeGood type, int amount) {
         if ((count + amount) > capacity) {
-            //throw an inventory full exception
+            throw new Exception("The Inventory is full!");
         } else {
             count += amount;
             this.inventoryMap.put(type, amount);
