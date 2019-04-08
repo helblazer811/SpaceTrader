@@ -15,6 +15,9 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 
+/**
+ * ViewModel of Selling in-game
+ */
 public class SellViewModel extends AndroidViewModel {
 
     private PlayerRepository playerRepository;
@@ -26,12 +29,21 @@ public class SellViewModel extends AndroidViewModel {
     private MutableLiveData<Player> player;
     private LiveData<Player> data;
 
+    /**
+     * Constructor that creates SellViewModel
+     * @param application Android Application
+     */
     public SellViewModel(@NonNull Application application) {
         super(application);
 
         playerRepository = new PlayerRepository(application.getApplicationContext());
     }
 
+    /**
+     * Initializes Player object in SellViewModel
+     * @param playerId id of Player
+     * @param owner owner of lifecycle of UI controllers
+     */
     public void init(long playerId, LifecycleOwner owner) {
         //initialize player object
         //encapsulation does not work by default
@@ -41,6 +53,10 @@ public class SellViewModel extends AndroidViewModel {
         data = playerRepository.getPlayer(playerId);
 
         data.observe(owner, new Observer<Player>() {
+            /**
+             * Called when the data is changed.
+             * @param data Player data
+             */
             @Override
             public void onChanged(@Nullable Player data) {
                 player.setValue(data);
@@ -52,6 +68,13 @@ public class SellViewModel extends AndroidViewModel {
         });
 
         onSaleFocus = new View.OnFocusChangeListener() {
+
+            /**
+             * Called when the focus state of a view has changed.
+             *
+             * @param view view whose state has changed
+             * @param focused if the state is focused
+             */
             @Override
             public void onFocusChange(View view, boolean focused) {
                 if (!focused) {
@@ -61,14 +84,25 @@ public class SellViewModel extends AndroidViewModel {
         };
     }
 
+    /**
+     * Gets Sale Button Click data
+     * @return player data
+     */
     public MutableLiveData<Player> getSaleButtonClick() {
         return player;
     }
 
+    /**
+     * Gets Sale Focus data
+     * @return onSaleFocus data
+     */
     public View.OnFocusChangeListener getSaleFocus() {
         return onSaleFocus;
     }
 
+    /**
+     * Click Sale Button
+     */
     public void onSaleButtonClick() {
         //click event
         if (sale.getValue().isValidSale()) {
@@ -77,10 +111,18 @@ public class SellViewModel extends AndroidViewModel {
         }
     }
 
+    /**
+     * Gets Player data
+     * @return player
+     */
     public MutableLiveData<Player> getPlayer() {
         return player;
     }
 
+    /**
+     * Gets Sale data
+     * @return sale
+     */
     public MutableLiveData<Sale> getSale() {
         return sale;
     }
