@@ -15,11 +15,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
+/**
+ * set of main screens
+ */
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+
+    /**
+     * initializes the main view
+     * @param savedInstanceState bundle containing the state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * initializes the view-switching features
+     * @param viewPager the viewpager
+     */
     private void setupViewPager(ViewPager viewPager) {
         SampleFragmentPagerAdapter adapter =
                 new SampleFragmentPagerAdapter(getSupportFragmentManager());
