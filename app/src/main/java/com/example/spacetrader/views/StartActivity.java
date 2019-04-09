@@ -7,8 +7,15 @@ import android.widget.Button;
 
 import com.example.spacetrader.R;
 
+/**
+ * the initial game start screen view
+ */
 public class StartActivity extends Activity {
 
+    /**
+     * initializes the game start screen
+     * @param savedInstanceState bundle containing the state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +25,9 @@ public class StartActivity extends Activity {
         defineLoadButton();
     }
 
+    /**
+     * initializes the game start button
+     */
     private void defineStartButton(){
         final Button start = findViewById(R.id.button);
         start.setOnClickListener(new View.OnClickListener() {
@@ -30,6 +40,9 @@ public class StartActivity extends Activity {
         });
     }
 
+    /**
+     * initializes the game load button
+     */
     private void defineLoadButton(){
         final Button load = findViewById(R.id.button2);
         load.setOnClickListener(new View.OnClickListener() {

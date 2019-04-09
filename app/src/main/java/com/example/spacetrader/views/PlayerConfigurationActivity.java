@@ -20,11 +20,17 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-
+/**
+ * the player config screen view
+ */
 public class PlayerConfigurationActivity extends AppCompatActivity {
 
     private PlayerConfigurationViewModel viewModel;
 
+    /**
+     * initializes the player config screen
+     * @param savedInstanceState bundle containing state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +41,10 @@ public class PlayerConfigurationActivity extends AppCompatActivity {
         setupCloseButton();
     }
 
+    /**
+     * binds view items to player customization operations
+     * @param savedInstanceState bundle containing state
+     */
     private void setupBindings(Bundle savedInstanceState) {
         ActivityPlayerConfigurationBinding binding =
                 DataBindingUtil.setContentView(this, R.layout.activity_player_configuration);
@@ -49,6 +59,9 @@ public class PlayerConfigurationActivity extends AppCompatActivity {
        binding.setViewmodel(viewModel);
     }
 
+    /**
+     * initializes config submit button
+     */
     private void setupSubmitButton() {
         viewModel.getSubmitButtonClick().observe(this, new Observer<Player>() {
             @Override
@@ -68,6 +81,10 @@ public class PlayerConfigurationActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * initializes game difficulty selection spinner
+     */
     private void setupGameDifficultySpinner(){
         AppCompatSpinner gameDifficultySpinner = (AppCompatSpinner) findViewById(R.id.game_difficulty_spinner);
 
@@ -76,7 +93,9 @@ public class PlayerConfigurationActivity extends AppCompatActivity {
         gameDifficultySpinner.setAdapter(gameDifficultySpinnerAdapter);
     }
 
-
+    /**
+     * initializes close button to return to start screen
+     */
     private void setupCloseButton(){
         Button closeButton = (Button) findViewById(R.id.close);
         closeButton.setOnClickListener(new View.OnClickListener() {

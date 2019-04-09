@@ -24,10 +24,17 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+/**
+ * the load game screen view
+ */
 public class LoadActivity extends AppCompatActivity {
 
     LoadViewModel viewModel;
 
+    /**
+     * initializes the load game screen view
+     * @param savedInstanceState bundle containing state
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load);
@@ -51,6 +58,10 @@ public class LoadActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * binds view items to game load operations
+     * @param savedInstanceState bundle containing state
+     */
     private void setupBindings(Bundle savedInstanceState) {
         ActivityLoadBinding binding =
                 DataBindingUtil.setContentView(this, R.layout.activity_load);
