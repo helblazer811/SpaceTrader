@@ -67,10 +67,17 @@ public class Inventory extends BaseObservable {
      * the put method for an inventory
      * @param type type of trade good
      * @param amount the amount of the good
+     * @throws Exception for inventory full
      */
-    public void put(TradeGood type, int amount) {
+    public void put(TradeGood type, int amount) throws Exception {
+        if (type == null) {
+            throw new Exception("The TradeGood cannot be null!");
+        }
+        if (amount < 0) {
+            throw new Exception("The amount must be non negative");
+        }
         if ((count + amount) > capacity) {
-            //throw an inventory full exception
+            throw new Exception("The Inventory is full!");
         } else {
             count += amount;
             this.inventoryMap.put(type, amount);

@@ -5,6 +5,11 @@ import com.example.spacetrader.entities.ship.ShipType;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+//public class M10TestAndrew {
+//
+//    @Test
+//}
+
 public class M10TestAndrew {
 
     @Test
@@ -16,3 +21,4 @@ public class M10TestAndrew {
         assertEquals("Ship Health is not set to 0 if damage is negative", 0, s.getShipHealth());
     }
 }
+
