@@ -11,6 +11,8 @@ public class M10TestAndrew {
     public void testTakeDamage() {
         Ship s = new Ship(ShipType.FIREFLY);
         s.takeDamage(10);
-        assertEquals(90, s.getShipHealth());
+        assertEquals("Ship health incorrectly updated", 90, s.getShipHealth());
+        s.takeDamage(-5);
+        assertEquals("Ship Health is not set to 0 if damage is negative", 0, s.getShipHealth());
     }
 }
