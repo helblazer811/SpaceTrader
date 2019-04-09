@@ -23,10 +23,20 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+/**
+ * defines operating parameters for unniverse map; data binding
+ */
 public class MapFragment extends Fragment {
 
     MapViewModel viewModel;
 
+    /**
+     * defines xml for fragment, sets up data binding, updates view
+     * @param inflater used for layout
+     * @param parent the view for the buy
+     * @param savedInstanceState the bundle containing the state
+     * @return the updated view
+     */
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         // Defines the xml file for the fragment
         FragmentMapBinding binding =

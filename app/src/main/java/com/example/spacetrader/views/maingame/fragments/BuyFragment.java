@@ -16,10 +16,20 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+/**
+ * defines operating parameters for buying; data binding
+ */
 public class BuyFragment extends Fragment {
 
     private BuyViewModel viewModel;
 
+    /**
+     * defines xml for fragment, sets up data binding, updates view
+     * @param inflater used for layout
+     * @param parent the view for the buy
+     * @param savedInstanceState the bundle containing the state
+     * @return the updated view
+     */
     public View onCreateView(LayoutInflater inflater,final ViewGroup parent, Bundle savedInstanceState) {
         // Defines the xml file for the fragment
         //setup data binding here
@@ -44,6 +54,10 @@ public class BuyFragment extends Fragment {
         return view;
     }
 
+    /**
+     * sets up purchase button
+     * @param parent the view for the purchase button
+     */
     private void setupPurchaseButton(final ViewGroup parent) {
         viewModel.getPurchaseButtonClick().observe(this, new Observer<Player>() {
             @Override

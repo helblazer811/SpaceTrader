@@ -15,10 +15,20 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+/**
+ * defines operating parameters for planet info; data binding
+ */
 public class InfoFragment extends Fragment {
 
     InfoViewModel viewModel;
 
+    /**
+     * defines xml for fragment, sets up data binding, updates view
+     * @param inflater used for layout
+     * @param parent the view for the buy
+     * @param savedInstanceState the bundle containing the state
+     * @return the updated view
+     */
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         // Defines the xml file for the fragment
         FragmentInfoBinding binding =
