@@ -5,12 +5,11 @@ import com.example.spacetrader.entities.ship.ShipType;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-<<<<<<< HEAD
 //public class M10TestAndrew {
 //
 //    @Test
 //}
-=======
+
 public class M10TestAndrew {
 
     @Test
@@ -20,4 +19,4 @@ public class M10TestAndrew {
         assertEquals(90, s.getShipHealth());
     }
 }
->>>>>>> 4ea7ccb68ee6a98ceedae4bde0509301a6226913
+

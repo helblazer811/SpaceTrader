@@ -70,6 +70,12 @@ public class Inventory extends BaseObservable {
      * @throws Exception for inventory full
      */
     public void put(TradeGood type, int amount) throws Exception {
+        if (type == null) {
+            throw new Exception("The TradeGood cannot be null!");
+        }
+        if (amount < 0) {
+            throw new Exception("The amount must be non negative");
+        }
         if ((count + amount) > capacity) {
             throw new Exception("The Inventory is full!");
         } else {
