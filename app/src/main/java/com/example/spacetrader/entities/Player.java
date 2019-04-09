@@ -502,6 +502,10 @@ public class Player extends BaseObservable {
         return calculateDistance(planet, this.planet);
     }
 
+    /**
+     * determines planets that are within traveling range
+     * @return a List of planets that can be reached from the player's location
+     */
     public List<Planet> getPlanetsWithinRange() {
         List<Planet> list = new ArrayList<>();
 
@@ -514,26 +518,48 @@ public class Player extends BaseObservable {
         return list;
     }
 
+    /**
+     * checks if the ship has not been destroyed
+     * @return true if the ship is alive, false otherwise
+     */
     public boolean isAlive() {
         return ship.isAlive();
     }
 
+    /**
+     * clears the player's inventory
+     */
     public void emptyInventory() {
         inventory.emptyInventory();
     }
 
+    /**
+     * halves the health of the player's ship
+     */
     public void setPlayerHealthHalf() {
         ship.setHealthHalf();
     }
 
+    /**
+     * a getter for the player's current enemy
+     * @return the current enemy
+     */
     public Enemy getEnemy() {
         return enemy;
     }
 
+    /**
+     * a setter for the player's current enemy
+     * @param enemy the new enemy to set
+     */
     public void setEnemy(Enemy enemy) {
         this.enemy = enemy;
     }
 
+    /**
+     * deals damage to the player's ship
+     * @param damage the amount of damage to do
+     */
     public void doDamage(int damage) {
         this.getShip().takeDamage(damage);
     }
