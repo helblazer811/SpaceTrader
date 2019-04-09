@@ -166,7 +166,7 @@ public class Player extends BaseObservable {
 
     /**
      * a setter for the fighter skill level stat
-     * @param fighterPoints
+     * @param fighterPoints the new fighter skill level to set
      */
     public void setFighterPoints(int fighterPoints) {
         // Notify that the valid property could have changed.
@@ -174,29 +174,54 @@ public class Player extends BaseObservable {
         this.fighterPoints = fighterPoints;
     }
 
+    /**
+     * a getter for the trader skill level stat
+     * @return the trader skill level
+     */
     public int getTraderPoints() {
         return traderPoints;
     }
 
+    /**
+     * a setter for the trader skill level stat
+     * @param traderPoints the new trader skill level to set
+     */
     public void setTraderPoints(int traderPoints) {
         // Notify that the valid property could have changed.
         notifyPropertyChanged(BR.valid);
         this.traderPoints = traderPoints;
     }
 
+    /**
+     * a getter for the engineer skill level stat
+     * @return the engineer skill level
+     */
     public int getEngineerPoints() {
         return engineerPoints;
     }
 
+    /**
+     * a setter for the engineer skill level stat
+     * @param engineerPoints the new engineer skill level to set
+     */
     public void setEngineerPoints(int engineerPoints) {
         // Notify that the valid property could have changed.
         notifyPropertyChanged(BR.valid);
         this.engineerPoints = engineerPoints;
     }
+
+    /**
+     * a getter for the player name
+     * @return the player name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * a setter for the player name
+     * @param name the new player name to set
+     */
     public void setName(String name) {
         // Notify that the valid property could have changed.
         notifyPropertyChanged(BR.valid);
