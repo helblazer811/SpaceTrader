@@ -228,73 +228,138 @@ public class Player extends BaseObservable {
         this.name = name;
     }
 
+    /**
+     * a getter for the game difficulty
+     * @return the game difficulty
+     */
     @Bindable
     public GameDifficulty getDifficulty() {
         return difficulty;
     }
 
+    /**
+     * a setter for the game difficulty
+     * @param difficulty the new game difficulty to set
+     */
     public void setDifficulty(GameDifficulty difficulty) {
         this.difficulty = difficulty;
         //notifyPropertyChanged(BR.);
     }
 
+    /**
+     * a getter for the selected difficulty position
+     * @return the selected difficulty position
+     */
     @Bindable
     public Integer getSelectedDifficultyPosition() {
         return selectedDifficultyPosition;
     }
 
+    /**
+     * a setter for the selected difficulty position; also sets the official game difficulty
+     * @param position the new game difficulty to set, represented as the selector position
+     */
     public void setSelectedDifficultyPosition(Integer position) {
         selectedDifficultyPosition = position;
         difficulty = GameDifficulty.values()[selectedDifficultyPosition];
     }
 
+    /**
+     * a getter for the number of credits
+     * @return the number of credits
+     */
     public double getCredits() {
         return credits;
     }
 
+    /**
+     * a setter for the number of credits
+     * @param credits the new number of credits to set
+     */
     public void setCredits(double credits){
         notifyPropertyChanged(BR.validPurchase);
         this.credits = credits;
     }
 
+    /**
+     * a getter for the universe
+     * @return the universe
+     */
     public Universe getUniverse() {
         return universe;
     }
 
+    /**
+     * a setter for the universe
+     * @param universe the new universe to set
+     */
     public void setUniverse(Universe universe) {
         this.universe = universe;
     }
 
+    /**
+     * a getter for the inventory
+     * @return the inventory
+     */
     public Inventory getInventory() {
         return inventory;
     }
 
+    /**
+     * a setter for the inventory
+     * @param inventory the new inventory to set
+     */
     public void setInventory(Inventory inventory) {
         notifyPropertyChanged(BR.validPurchase);
         this.inventory = inventory;
     }
 
+    /**
+     * a getter for the planet
+     * @return the planet
+     */
     public Planet getPlanet() {
         return planet;
     }
 
+    /**
+     * a setter for the planet
+     * @param planet the new planet to set
+     */
     public void setPlanet(Planet planet) {
         this.planet = planet;
     }
 
+    /**
+     * a getter for the ship
+     * @return the ship
+     */
     public Ship getShip() {
         return ship;
     }
 
+    /**
+     * a setter for the ship
+     * @param ship the new ship to set
+     */
     public void setShip(Ship ship) {
         this.ship = ship;
     }
 
+    /**
+     * calls a valid stat config checker method without generating an error
+     * @return true if the stat config is valid, false otherwise
+     */
     @Bindable
     public boolean isValid() {
         return isValidConfiguration(false);
     }
 
+    /**
+     * checks if the current stat config is valid (i.e. 16 points allocated)
+     * @param setMessage determines if errors should be generated for invalid configs
+     * @return true if the stat config is valid, false otherwise
+     */
     public boolean isValidConfiguration(boolean setMessage) {
         int sum = 0;
         sum += pilotPoints;
@@ -320,10 +385,18 @@ public class Player extends BaseObservable {
         }
     }
 
+    /**
+     * modifies the amount of credits a player has
+     * @param amount the amount of credits that are being added/removed from a player
+     */
     public void changeCredits(Double amount) {
         credits += amount;
     }
 
+    /**
+     * generates a String representation of the player
+     * @return a String representation of the player
+     */
     @Override
     public String toString() {
         return "Player{" +
@@ -337,10 +410,19 @@ public class Player extends BaseObservable {
                 '}';
     }
 
+    /**
+     * determines the remaining space in the player's inventory
+     * @return the number of available spaces in the inventory
+     */
     public int getAvailableInventorySpace() {
         return inventory.getCapacity() - inventory.getCount();
     }
 
+    /**
+     * executes all aspects of a purchase by adding items to player inventory, charging credits, and
+     * modifying the source planet's inventory
+     * @param purchase the purchase to use to perform calculations
+     */
     public void applyPurchase(Purchase purchase) {
         inventory.applyPurchase(purchase);
         ship.setFuel(ship.getFuel() + purchase.getFuel());
@@ -352,6 +434,11 @@ public class Player extends BaseObservable {
         }
     }
 
+    /**
+     * executes all aspects of a sale by removing items from player inventory, charging credits, and
+     * modifying the source planet's inventory
+     * @param sale the purchase to use to perform calculations
+     */
     public void applySale(Sale sale) {
         inventory.applySale(sale);
         credits += sale.getSaleAmount();
@@ -362,11 +449,22 @@ public class Player extends BaseObservable {
         }
     }
 
+    /**
+     * checks if a given planet can be reached given its distance to another planet vs. fuel
+     * reserves
+     * @param planet the planet to reach
+     * @return true if the planet can be reached and false otherwise
+     */
     public boolean isPlanetWithinRange(Planet planet) {
         //fuel is in the units of distance
         return calculateDistance(planet, this.planet) < ship.getFuel();
     }
 
+    /**
+     * move the player to a new planet and generate an event
+     * @param planet the planet to travel to
+     * @return the random event the player encounters
+     */
     public RandomEvent travelToPlanet(Planet planet) {
         //subtracts fuel
         ship.setFuel(ship.getFuel() - calculateDistance(this.planet, planet));
@@ -378,6 +476,12 @@ public class Player extends BaseObservable {
         return EventLoader.loadRandomEvent(this);
     }
 
+    /**
+     * determines the distance between two planets
+     * @param a the first planet
+     * @param b the second planet
+     * @return the distance, rounded up, between two planets
+     */
     private int calculateDistance(Planet a, Planet b) {
         //simple pythagorean theorem
         return (int) Math.ceil(
@@ -389,6 +493,11 @@ public class Player extends BaseObservable {
 
     }
 
+    /**
+     * determines the distance between the planet the player is on and a given planet
+     * @param planet the planet to compare to
+     * @return the distance between the planets
+     */
     public int getDistance(Planet planet) {
         return calculateDistance(planet, this.planet);
     }
