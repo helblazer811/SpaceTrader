@@ -231,7 +231,7 @@ public class Planet {
         return planetInventory;
     }
 
-    private int calculateAmount(TradeGood good) {
+    public int calculateAmount(TradeGood good) {
         if (good.minTechLevelProduce > techLevel.getCode())
             return 0;
         return (int) (Math.random() * 20);
