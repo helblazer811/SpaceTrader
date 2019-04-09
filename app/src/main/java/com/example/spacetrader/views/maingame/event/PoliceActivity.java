@@ -8,6 +8,10 @@ import com.example.spacetrader.R;
 
 public class PoliceActivity extends EventActivity {
 
+    /**
+     * initializes the police event
+     * @param savedInstanceState the bundle containing the state
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_police_event);

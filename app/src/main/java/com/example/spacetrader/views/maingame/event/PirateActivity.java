@@ -11,10 +11,17 @@ import com.example.spacetrader.viewmodels.event.PirateViewModel;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
+/**
+ * randomized pirate event during player transit
+ */
 public class PirateActivity extends EventActivity {
 
     private PirateViewModel viewModel;
 
+    /**
+     * initializes the pirate event
+     * @param savedInstanceState the bundle containing the state
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pirate_event);
@@ -54,6 +61,10 @@ public class PirateActivity extends EventActivity {
 
     }
 
+    /**
+     * sets up bindings for the event
+     * @param savedInstanceState the bundle containing the state
+     */
     private void setupBindings(Bundle savedInstanceState) {
 
         ActivityPirateEventBinding binding =
