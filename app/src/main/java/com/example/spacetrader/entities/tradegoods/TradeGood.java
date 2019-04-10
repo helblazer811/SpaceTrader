@@ -41,98 +41,184 @@ package com.example.spacetrader.entities.tradegoods;
         this.maxPriceTrader = maxPriceTrader;
     }
 
+     /**
+      * getter for min TechLevel Produce
+      * @return minTechLevelProduce
+      */
      public Integer getMinTechLevelProduce() {
          return minTechLevelProduce;
      }
-
+     /**
+      * getter for minTechLevelUse
+      * @return minTechLevelUse
+      */
      public Integer getMinTechLevelUse() {
          return minTechLevelUse;
      }
-
+     /**
+      * getter for techLevelMost
+      * @return techLevelMost
+      */
      public Integer getTechLevelMost() {
          return techLevelMost;
      }
-
+     /**
+      * getter for increasePerTechLevel
+      * @return increasePerTechLevel
+      */
      public Integer getIncreacePerTechLevel() {
          return increacePerTechLevel;
      }
-
+     /**
+      * getter for basePrice
+      * @return basePrice
+      */
      public Double getBasePrice() {
          return basePrice;
      }
-
+     /**
+      * getter for variance
+      * @return variance
+      */
      public Double getVariance() {
          return variance;
      }
-
+     /**
+      * getter for ie
+      * @return ie
+      */
      public IncreaseEvent getIe() {
          return ie;
      }
-
+     /**
+      * getter for de
+      * @return de
+      */
      public DecreaseEvent getDe() {
          return de;
      }
-
+     /**
+      * getter for ee
+      * @return ee
+      */
      public ExpensiveEvent getEe() {
          return ee;
      }
-
+     /**
+      * getter for minPriceTrader
+      * @return mindOriceTrader
+      */
      public Integer getMinPriceTrader() {
          return minPriceTrader;
      }
-
+     /**
+      * getter for getMaxPriceTrader
+      * @return getMaxPriceTrader
+      */
      public Integer getMaxPriceTrader() {
          return maxPriceTrader;
      }
 
+     /**
+      * setter for code
+      * @param code being set
+      */
      public void setCode(Integer code) {
          this.code = code;
      }
 
+     /**
+      * setter for minTechLevelProduce
+      * @param minTechLevelProduce being set
+      */
      public void setMinTechLevelProduce(Integer minTechLevelProduce) {
          this.minTechLevelProduce = minTechLevelProduce;
      }
 
+     /**
+      * setter for minTechLevelUse
+      * @param minTechLevelUse being set
+      */
      public void setMinTechLevelUse(Integer minTechLevelUse) {
          this.minTechLevelUse = minTechLevelUse;
      }
 
+     /**
+      * setter for techLevelMost
+      * @param techLevelMost being set
+      */
      public void setTechLevelMost(Integer techLevelMost) {
          this.techLevelMost = techLevelMost;
      }
 
+     /**
+      * setter for increacePerTechLevel
+      * @param increacePerTechLevel being set
+      */
      public void setIncreacePerTechLevel(Integer increacePerTechLevel) {
          this.increacePerTechLevel = increacePerTechLevel;
      }
 
+     /**
+      * setter for basePrice
+      * @param basePrice being set
+      */
      public void setBasePrice(Double basePrice) {
          this.basePrice = basePrice;
      }
 
+     /**
+      * setter for variance
+      * @param variance being set
+      */
      public void setVariance(Double variance) {
          this.variance = variance;
      }
 
+     /**
+      * setter for ie
+      * @param ie being set
+      */
      public void setIe(IncreaseEvent ie) {
          this.ie = ie;
      }
 
+     /**
+      * setter for de
+      * @param de being set
+      */
      public void setDe(DecreaseEvent de) {
          this.de = de;
      }
 
+     /**
+      * setter for ee
+      * @param ee ee being set
+      */
      public void setEe(ExpensiveEvent ee) {
          this.ee = ee;
      }
 
+     /**
+      * setter for minPriceTrader
+      * @param minPriceTrader being set
+      */
      public void setMinPriceTrader(Integer minPriceTrader) {
          this.minPriceTrader = minPriceTrader;
      }
 
+     /**
+      * setter for maxPriceTrader
+      * @param maxPriceTrader being set
+      */
      public void setMaxPriceTrader(Integer maxPriceTrader) {
          this.maxPriceTrader = maxPriceTrader;
      }
 
+     /**
+      * getter for code
+      * @return code of object
+      */
      public Integer getCode() {
         return code;
     }
