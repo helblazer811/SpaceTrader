@@ -17,7 +17,7 @@ package com.example.spacetrader.entities.tradegoods;
     public Integer minTechLevelProduce;
     public Integer minTechLevelUse;
     public Integer techLevelMost;
-    public Integer increacePerTechLevel;
+    public Integer increasePerTechLevel;
     public Double basePrice;
     public Double variance;
     public IncreaseEvent ie;
@@ -26,12 +26,12 @@ package com.example.spacetrader.entities.tradegoods;
     public Integer minPriceTrader;
     public Integer maxPriceTrader;
 
-    TradeGood(Integer code, Integer minTechLevelProduce, Integer minTechLevelUse, Integer techLevelMost, Integer increacePerTechLevel, Double basePrice, Double variance, IncreaseEvent ie, DecreaseEvent de, ExpensiveEvent ee, Integer minPriceTrader, Integer maxPriceTrader) {
+    TradeGood(Integer code, Integer minTechLevelProduce, Integer minTechLevelUse, Integer techLevelMost, Integer increasePerTechLevel, Double basePrice, Double variance, IncreaseEvent ie, DecreaseEvent de, ExpensiveEvent ee, Integer minPriceTrader, Integer maxPriceTrader) {
         this.code = code;
         this.minTechLevelProduce = minTechLevelProduce;
         this.minTechLevelUse = minTechLevelUse;
         this.techLevelMost = techLevelMost;
-        this.increacePerTechLevel = increacePerTechLevel;
+        this.increasePerTechLevel = increasePerTechLevel;
         this.basePrice = basePrice;
         this.variance = variance;
         this.ie = ie;
@@ -66,8 +66,8 @@ package com.example.spacetrader.entities.tradegoods;
       * getter for increasePerTechLevel
       * @return increasePerTechLevel
       */
-     public Integer getIncreacePerTechLevel() {
-         return increacePerTechLevel;
+     public Integer getincreasePerTechLevel() {
+         return increasePerTechLevel;
      }
      /**
       * getter for basePrice
@@ -152,11 +152,11 @@ package com.example.spacetrader.entities.tradegoods;
      }
 
      /**
-      * setter for increacePerTechLevel
-      * @param increacePerTechLevel being set
+      * setter for increasePerTechLevel
+      * @param increasePerTechLevel being set
       */
-     public void setIncreacePerTechLevel(Integer increacePerTechLevel) {
-         this.increacePerTechLevel = increacePerTechLevel;
+     public void setincreasePerTechLevel(Integer increasePerTechLevel) {
+         this.increasePerTechLevel = increasePerTechLevel;
      }
 
      /**

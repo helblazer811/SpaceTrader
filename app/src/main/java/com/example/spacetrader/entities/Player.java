@@ -17,11 +17,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.appcompat.widget.AppCompatSpinner;
-import androidx.databinding.BaseObservable;
-import androidx.databinding.Bindable;
-import androidx.databinding.InverseBindingMethod;
-import androidx.databinding.InverseBindingMethods;
-import androidx.databinding.ObservableField;
+//import androidx.databinding.BaseObservable;
+import androidx.databinding.*;
+//import androidx.databinding.Bindable;
+//import androidx.databinding.InverseBindingMethod;
+//import androidx.databinding.InverseBindingMethods;
+//import androidx.databinding.ObservableField;
 import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.Ignore;

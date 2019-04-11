@@ -20,9 +20,9 @@ public class Enemy {
 
     /**
      * Enemy constructor with values given
-     * @param currentHealth
-     * @param maxHealth
-     * @param damage
+     * @param currentHealth the current amount of health you have
+     * @param maxHealth the max amount of health you have
+     * @param damage damage taken
      */
     public Enemy(int currentHealth, int maxHealth, int damage) {
         this.currentHealth = currentHealth;
