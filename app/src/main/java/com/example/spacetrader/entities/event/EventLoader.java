@@ -14,10 +14,14 @@ public class EventLoader {
      */
     public static RandomEvent loadRandomEvent(Player player) {
 
+        RandomEvent [] events = {
+                new PirateEvent(0.50f, player),
+                new PoliceEvent(0.50f, player)
+        };
+
+        int choice = (int) (Math.random() * events.length);
         //performs event loading logic based on the players
         //stats and location
-
-        //right now just returns a pirate random event
-        return new PirateEvent(0.50f, player);//ten percent chance of happening
+        return events[choice];
     }
 }
