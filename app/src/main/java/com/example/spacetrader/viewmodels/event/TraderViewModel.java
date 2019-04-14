@@ -104,4 +104,5 @@ public class TraderViewModel extends AndroidViewModel {
     public MutableLiveData<Player> getPlayer() {
         return player;
     }
+
 }
