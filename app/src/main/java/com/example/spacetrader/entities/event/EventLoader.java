@@ -16,7 +16,8 @@ public class EventLoader {
 
         RandomEvent [] events = {
                 new PirateEvent(0.50f, player),
-                new PoliceEvent(0.50f, player)
+                new PoliceEvent(0.50f, player),
+                new TraderEvent(0.50f, player)
         };
 
         int choice = (int) (Math.random() * events.length);

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.example.spacetrader.viewmodels.event.PoliceViewModel"/>
+            type="com.example.spacetrader.viewmodels.event.TraderViewModel"/>
     </data>
 
     <LinearLayout
@@ -18,48 +18,44 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="251dp"
-            android:contentDescription="@string/policeStopMsg"
+            android:contentDescription="@string/traderStopMsg"
             app:srcCompat="@drawable/police_ship" />
 
         <TextView
-            android:id="@+id/policeStopMsg"
+            android:id="@+id/traderMsg"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginTop="4dp"
-            android:text="@string/policeStopMsg"
+            android:text="@string/traderStopMsg"
             android:textSize="22sp" />
 
         <TextView
-            android:id="@+id/policeEventInfo"
+            android:id="@+id/traderEventInfo"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="@string/policeEventInfo"
+            android:text="@string/traderEventInfo"
             android:paddingBottom="20dp"/>
 
-        <Button
-            android:id="@+id/fight_event"
-            android:layout_width="100dp"
+        <TextView
+            android:id="@+id/purchaseSpecifics"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="Fight!" />
+            android:text="@{viewmodel.tradeString}"
+            android:paddingBottom="20dp"/>
+
 
         <Button
-            android:id="@+id/evade_event"
+            android:id="@+id/purchase_event"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Evade!" />
+            android:text="Purchase!" />
 
-        <TextView
-            android:id="@+id/player_health"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/leave_event"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text='@{String.format("Player health : %d/%d", viewmodel.player.ship.shipHealth,viewmodel.player.ship.shipMaxHealth)}'
-            android:gravity="center"/>
-        <TextView
-            android:id="@+id/enemy_health"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text='@{String.format("Enemy health : %d/%d", viewmodel.player.enemy.currentHealth, viewmodel.player.enemy.getMaxHealth)}'
-            android:gravity="center"/>
+            android:text="Leave." />
+
 
     </LinearLayout>
 

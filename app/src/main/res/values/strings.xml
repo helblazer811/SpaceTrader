@@ -57,6 +57,13 @@
     and pay a fine for carrying illegal goods you can use your skills as a pilot
         and attempt to escape the police. Or you could fight\.\.\.</string>
 
+    <!--trader-->
+    <string name="traderStopMsg">You\'ve discovered a trader ship!</string>
+    <string name="traderEventInfo">The trader ship does not have fuel. You can help this ship get back to civilization and in exchange
+    they will give you some goods at a fair price\.
+    </string>
+
+
     <string name="fight">Fight!</string>
     <string name="evade">Evade!</string>
     <string name="submit">Submit.</string>
