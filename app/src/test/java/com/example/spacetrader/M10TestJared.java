@@ -18,12 +18,23 @@ public class M10TestJared {
 
     @Test
     public void calcAmount_isCorrect() {
+        //amount must be a random number between 0 and 20
         Planet planet = new Planet("Uranus");
         TradeGood good = TradeGood.WATER;
         double actual = planet.calculateAmount(good);
         double expected =  Math.random() * 20;
-        System.out.println(good.getBasePrice());
-        assertEquals(expected > 0 && expected < 20, actual);
+        for (int i = 0; i < 1000; i++) {
+            expected =  Math.random() * 20;
+            assertEquals(expected > 0 && expected < 20, actual > 0 && actual < 20);
+        }
+
+        //test when goods tech level produce is bigger than the goods tech level
+        good.setMinTechLevelProduce(1000);
+        actual = planet.calculateAmount(good);
+        //should be 0.0
+        assertEquals(0.0, actual);
+
+
     }
 
 
